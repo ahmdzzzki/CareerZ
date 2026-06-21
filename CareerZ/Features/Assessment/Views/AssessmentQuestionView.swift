@@ -10,7 +10,8 @@ import SwiftUI
 struct AssessmentQuestionView: View {
     
     @State private var viewModel: AssessmentViewModel
-    
+    @State private var showSkipAlert = false
+
     var onBack: () -> Void
     var onSkip: () -> Void
     var onComplete: () -> Void
@@ -41,9 +42,23 @@ struct AssessmentQuestionView: View {
                         viewModel.goBack()
                     }
                 },
-                onSkip: onSkip
+                onSkip: {
+                    showSkipAlert = true
+                }
             )
-            
+            .alert(
+                "Career Profile Setup",
+                isPresented: $showSkipAlert
+            ) {
+                Button("Continue Setup", role: .cancel) { }
+
+                Button("Skip") {
+                    onSkip()
+                }
+            } message: {
+                Text("You can complete your career profile later from Settings.")
+            }
+                
             VStack(spacing: AppSpacing.xs) {
                 HStack {
                     Text(viewModel.questionNumberText)

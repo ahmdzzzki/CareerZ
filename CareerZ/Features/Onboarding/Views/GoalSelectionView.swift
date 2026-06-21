@@ -10,6 +10,7 @@ import SwiftUI
 struct GoalSelectionView: View {
     
     @State private var viewModel = GoalSelectionViewModel()
+    @State private var showSkipAlert = false
     
     var onBack: () -> Void = {}
     var onSkip: () -> Void = {}
@@ -20,8 +21,22 @@ struct GoalSelectionView: View {
             
             OnboardingTopBar(
                 onBack: onBack,
-                onSkip: onSkip
+                onSkip: {
+                    showSkipAlert = true
+                }
             )
+            .alert(
+                "Career Profile Setup",
+                isPresented: $showSkipAlert
+            ) {
+                Button("Continue Setup", role: .cancel) { }
+
+                Button("Skip") {
+                    onSkip()
+                }
+            } message: {
+                Text("You can complete your career profile later from Settings.")
+            }
             
             VStack(alignment: .leading, spacing: AppSpacing.xs) {
                 Text("What’s your goal?")
