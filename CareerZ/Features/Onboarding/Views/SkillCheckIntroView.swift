@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SkillCheckIntroView: View {
-    
+
+    @State private var showSkipAlert = false
+
     let selectedGoal: CareerGoalOption
     
     var onBack: () -> Void = {}
@@ -20,8 +22,22 @@ struct SkillCheckIntroView: View {
             
             OnboardingTopBar(
                 onBack: onBack,
-                onSkip: onSkip
+                onSkip: {
+                    showSkipAlert = true
+                }
             )
+            .alert(
+                "Career Profile Setup",
+                isPresented: $showSkipAlert
+            ) {
+                Button("Continue Setup", role: .cancel) { }
+
+                Button("Skip") {
+                    onSkip()
+                }
+            } message: {
+                Text("You can complete your career profile later from Settings.")
+            }
             
             VStack(spacing: AppSpacing.xl) {
                 selectedGoalCard

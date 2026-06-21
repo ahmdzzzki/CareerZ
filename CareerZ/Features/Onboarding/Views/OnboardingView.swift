@@ -42,7 +42,9 @@ struct OnboardingView: View {
             case .goal:
                 GoalSelectionView(
                     onBack: { step = .intro },
-                    onSkip: { step = .skillCheck },
+                    onSkip: {
+                        onFinished()
+                    },
                     onContinue: { goal in
                         selectedGoal = goal
                         step = .skillCheck
@@ -54,7 +56,9 @@ struct OnboardingView: View {
                     SkillCheckIntroView(
                         selectedGoal: selectedGoal,
                         onBack: { step = .goal },
-                        onSkip: { step = .completed },
+                        onSkip: {
+                            onFinished()
+                        },
                         onStart: { step = .assessment }
                     )
                 }
@@ -64,7 +68,9 @@ struct OnboardingView: View {
                     AssessmentQuestionView(
                         goal: selectedGoal,
                         onBack: { step = .skillCheck },
-                        onSkip: { step = .completed },
+                        onSkip: {
+                            onFinished()
+                        },
                         onComplete: { step = .completed }
                     )
                 }
