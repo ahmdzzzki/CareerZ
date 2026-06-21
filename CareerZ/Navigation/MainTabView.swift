@@ -20,11 +20,6 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Roadmap", systemImage: "map.fill")
                 }
-            
-            ProfileSheetView()
-                .tabItem {
-                    Label("Profile", systemImage: "person.fill")
-                }
         }
         .tint(.appPrimary)
     }
@@ -32,12 +27,6 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
-}
-
-struct HomeView: View {
-    var body: some View {
-        Text("Home")
-    }
 }
 
 struct RoadmapView: View {
