@@ -24,62 +24,95 @@ struct OnboardingView: View {
     }
     
     var body: some View {
-        Group {
-            switch step {
-            case .splash:
-                splashView
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+        ZStack {
+            currentStepView
+                .id(step)
+                .transition(
+                    .asymmetric(
+                        insertion: .opacity.combined(with: .scale(scale: 0.98)),
+                        removal: .opacity
+                    )
+                )
+        }
+        .animation(.easeInOut(duration: 0.45), value: step)
+    }
+    
+    @ViewBuilder
+    private var currentStepView: some View {
+        switch step {
+        case .splash:
+            splashView
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                        withAnimation(.easeInOut(duration: 0.45)) {
                             step = .intro
                         }
                     }
-                
-            case .intro:
-                OnboardingIntroView {
+                }
+            
+        case .intro:
+            OnboardingIntroView {
+                withAnimation(.easeInOut(duration: 0.3)) {
                     step = .goal
                 }
-                
-            case .goal:
-                GoalSelectionView(
-                    onBack: { step = .intro },
-                    onSkip: {
-                        onFinished()
-                    },
-                    onContinue: { goal in
-                        selectedGoal = goal
+            }
+            
+        case .goal:
+            GoalSelectionView(
+                onBack: {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        step = .intro
+                    }
+                },
+                onSkip: { onFinished() },
+                onContinue: { goal in
+                    selectedGoal = goal
+                    withAnimation(.easeInOut(duration: 0.3)) {
                         step = .skillCheck
                     }
-                )
-                
-            case .skillCheck:
-                if let selectedGoal {
-                    SkillCheckIntroView(
-                        selectedGoal: selectedGoal,
-                        onBack: { step = .goal },
-                        onSkip: {
-                            onFinished()
-                        },
-                        onStart: { step = .assessment }
-                    )
                 }
-                
-            case .assessment:
-                if let selectedGoal {
-                    AssessmentQuestionView(
-                        goal: selectedGoal,
-                        onBack: { step = .skillCheck },
-                        onSkip: {
-                            onFinished()
-                        },
-                        onComplete: { step = .completed }
-                    )
-                }
-                
-            case .completed:
-                AssessmentCompletedView(
-                    onGoHome: onFinished
+            )
+            
+        case .skillCheck:
+            if let selectedGoal {
+                SkillCheckIntroView(
+                    selectedGoal: selectedGoal,
+                    onBack: {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            step = .goal
+                        }
+                    },
+                    onSkip: { onFinished() },
+                    onStart: {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            step = .assessment
+                        }
+                    }
                 )
             }
+            
+        case .assessment:
+            if let selectedGoal {
+                AssessmentQuestionView(
+                    goal: selectedGoal,
+                    onBack: {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            step = .skillCheck
+                        }
+                    },
+                    onSkip: { onFinished() },
+                    onComplete: {
+                        withAnimation(.easeInOut(duration: 0.35)) {
+                            step = .completed
+                        }
+                    }
+                )
+            }
+            
+        case .completed:
+            AssessmentCompletedView(
+                onGoHome: onFinished
+            )
         }
     }
     
@@ -93,12 +126,14 @@ struct OnboardingView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 45, height: 45)
+                    .accessibilityHidden(true)
                 
                 Text("CareerZ")
-                    .font(AppTypography.largeTitle)
-                    .fontWeight(.bold)
+                    .font(AppTypography.largeTitle.bold())
             }
             .foregroundStyle(.white)
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("CareerZ")
         }
     }
 }
