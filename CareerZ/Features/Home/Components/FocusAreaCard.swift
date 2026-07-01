@@ -92,5 +92,5 @@ struct FocusAreaCard: View {
         }
         .padding()
     }
-    .background(Color.appSecondaryBackground)
+    .background(Color.appGroupedBackground)
 }

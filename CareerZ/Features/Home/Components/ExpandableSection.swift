@@ -66,5 +66,5 @@ struct ExpandableSection: View {
         detail: "Networking helps you discover opportunities, learn from professionals, and build meaningful industry relationships."
     )
     .padding()
-    .background(Color.appBackground)
+    .background(Color.appGroupedBackground)
 }

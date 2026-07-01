@@ -33,7 +33,7 @@ struct FocusAreaDetailView: View {
             .padding(.top, AppSpacing.screenVertical)
             .padding(.bottom, AppSpacing.xl)
         }
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
         .navigationTitle(area.title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
@@ -246,10 +246,6 @@ struct FocusAreaDetailView: View {
         }
         .padding(AppSpacing.xs)
         .frame(maxWidth: .infinity)
-        .background {
-            RoundedRectangle(cornerRadius: AppRadius.sm, style: .continuous)
-                .fill(Color.appBackground)
-        }
     }
 
     private func metricIcon(index: Int, title: String) -> some View {

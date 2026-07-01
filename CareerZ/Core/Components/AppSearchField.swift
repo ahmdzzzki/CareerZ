@@ -73,6 +73,6 @@ private struct SearchFieldPreview: View {
             )
         }
         .padding()
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
     }
 }

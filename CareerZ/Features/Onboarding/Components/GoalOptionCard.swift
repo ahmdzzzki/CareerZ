@@ -118,5 +118,5 @@ struct GoalOptionCard: View {
         )
     }
     .padding()
-    .background(Color.appBackground)
+    .background(Color.appGroupedBackground)
 }

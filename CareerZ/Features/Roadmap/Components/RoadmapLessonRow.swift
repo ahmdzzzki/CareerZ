@@ -72,5 +72,5 @@ struct RoadmapLessonRow: View {
     .padding()
     .cardBackground()
     .padding()
-    .background(Color.appBackground)
+    .background(Color.appGroupedBackground)
 }

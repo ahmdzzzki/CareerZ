@@ -53,7 +53,7 @@ struct NextStepDetailView: View {
         .safeAreaInset(edge: .bottom, spacing: 0) {
             bottomButton
         }
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
         .fullScreenCover(item: $assessmentFlowStep) { step in
             switch step {
             case .questions:

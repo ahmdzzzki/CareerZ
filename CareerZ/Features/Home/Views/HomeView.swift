@@ -33,7 +33,7 @@ struct HomeView: View {
                 .padding(.horizontal, AppSpacing.screenHorizontal)
                 .padding(.vertical, AppSpacing.screenVertical)
             }
-            .background(Color.appSecondaryBackground)
+            .background(Color.appGroupedBackground)
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: HomeRoute.self) { route in
                 destinationView(for: route)

@@ -65,7 +65,7 @@ struct OnboardingIntroView: View {
             .padding(.horizontal, AppSpacing.screenHorizontal)
             .padding(.bottom, AppSpacing.md)
         }
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
     }
 }
 

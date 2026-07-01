@@ -81,7 +81,7 @@ struct AssessmentQuestionView: View {
         .padding(.horizontal, AppSpacing.screenHorizontal)
         .padding(.top, AppSpacing.sm)
         .padding(.bottom, AppSpacing.sm)
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
         .animation(.easeInOut(duration: 0.28), value: viewModel.progress)
         .animation(.easeInOut(duration: 0.22), value: viewModel.currentQuestionIndex)
     }

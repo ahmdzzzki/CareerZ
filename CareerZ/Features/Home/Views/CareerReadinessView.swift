@@ -27,7 +27,7 @@ struct CareerReadinessView: View {
             .padding(.top, AppSpacing.screenVertical)
             .padding(.bottom, AppSpacing.xl)
         }
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
         .navigationTitle("Career Readiness")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)

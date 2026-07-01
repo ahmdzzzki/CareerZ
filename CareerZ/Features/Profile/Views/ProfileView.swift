@@ -35,7 +35,7 @@ struct ProfileView: View {
                 .padding(.horizontal, AppSpacing.screenHorizontal)
                 .padding(.vertical, AppSpacing.screenVertical)
             }
-            .background(Color.appSecondaryBackground)
+            .background(Color.appGroupedBackground)
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

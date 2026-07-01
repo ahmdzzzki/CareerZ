@@ -71,5 +71,5 @@ struct ProfileMenuRow: View {
     .padding()
     .cardBackground()
     .padding()
-    .background(Color.appBackground)
+    .background(Color.appGroupedBackground)
 }

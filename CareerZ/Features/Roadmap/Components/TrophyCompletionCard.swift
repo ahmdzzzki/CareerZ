@@ -67,5 +67,5 @@ struct TrophyCompletionCard: View {
         )
     }
     .padding()
-    .background(Color.appBackground)
+    .background(Color.appGroupedBackground)
 }

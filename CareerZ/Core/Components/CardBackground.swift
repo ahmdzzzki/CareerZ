@@ -23,7 +23,7 @@ struct CardBackground: ViewModifier {
         content
             .background {
                 RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    .fill(Color.appBackground)
+                    .fill(Color.appCardBackground)
             }
             // No shadow by default: Apple's flat content-card guidance
             // and the original sketch both show clean, shadow-free

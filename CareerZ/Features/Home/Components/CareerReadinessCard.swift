@@ -90,5 +90,5 @@ struct CareerReadinessCard: View {
         action: {}
     )
     .padding()
-    .background(Color.appSecondaryBackground)
+    .background(Color.appGroupedBackground)
 }

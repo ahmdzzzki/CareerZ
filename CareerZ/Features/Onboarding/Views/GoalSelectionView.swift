@@ -84,7 +84,7 @@ struct GoalSelectionView: View {
         .padding(.horizontal, AppSpacing.screenHorizontal)
         .padding(.top, AppSpacing.sm)
         .padding(.bottom, AppSpacing.sm)
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
         .onTapGesture {
             isSearchFocused = false
         }

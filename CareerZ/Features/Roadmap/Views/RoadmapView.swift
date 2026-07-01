@@ -27,7 +27,7 @@ struct RoadmapView: View {
                 .padding(.top, AppSpacing.lg)
                 .padding(.bottom, AppSpacing.xxxl)
             }
-            .background(Color.appSecondaryBackground)
+            .background(Color.appGroupedBackground)
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(item: $selectedMilestone) { milestone in
                 RoadmapDetailView(milestone: milestone, stages: viewModel.stages)

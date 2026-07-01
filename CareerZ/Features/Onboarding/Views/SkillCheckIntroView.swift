@@ -52,7 +52,7 @@ struct SkillCheckIntroView: View {
         .padding(.horizontal, AppSpacing.screenHorizontal)
         .padding(.top, AppSpacing.sm)
         .padding(.bottom, AppSpacing.sm)
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
     }
     
     private var selectedGoalCard: some View {
@@ -85,7 +85,7 @@ struct SkillCheckIntroView: View {
         .frame(maxWidth: .infinity, minHeight: 156, alignment: .leading)
         .background {
             RoundedRectangle(cornerRadius: AppRadius.xl, style: .continuous)
-                .fill(Color.appBackground)
+                .fill(Color.appCardBackground)
         }
         .overlay {
             RoundedRectangle(cornerRadius: AppRadius.xl, style: .continuous)

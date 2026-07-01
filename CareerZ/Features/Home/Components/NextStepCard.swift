@@ -98,5 +98,5 @@ struct NextStepCard: View {
 #Preview {
     NextStepCard(nextStep: .sample, action: {})
         .padding()
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
 }

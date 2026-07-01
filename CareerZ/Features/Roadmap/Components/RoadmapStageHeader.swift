@@ -36,5 +36,5 @@ struct RoadmapStageHeader: View {
         RoadmapStageHeader(index: 3, stage: RoadmapStage.sample[2])
     }
     .padding()
-    .background(Color.appBackground)
+    .background(Color.appGroupedBackground)
 }

@@ -19,6 +19,7 @@ extension Color {
     static let appBackground = Color(.systemBackground)
     static let appSecondaryBackground = Color(.secondarySystemBackground)
     static let appGroupedBackground = Color(.systemGroupedBackground)
+    static let appCardBackground = Color(.secondarySystemGroupedBackground)
     
     // MARK: - Text
     static let appTextPrimary = Color(.label)

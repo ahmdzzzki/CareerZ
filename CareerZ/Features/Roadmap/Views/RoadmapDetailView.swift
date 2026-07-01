@@ -67,7 +67,7 @@ struct RoadmapDetailView: View {
             .padding(.top, AppSpacing.lg)
             .padding(.bottom, AppSpacing.xxxl)
         }
-        .background(Color.appSecondaryBackground)
+        .background(Color.appGroupedBackground)
         .navigationBarTitleDisplayMode(.inline)
     }
 
