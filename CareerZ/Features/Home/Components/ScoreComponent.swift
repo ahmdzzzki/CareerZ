@@ -25,28 +25,44 @@ extension ScoreComponent {
             id: "assessment-results",
             title: "Assessment Results",
             percent: 80,
+<<<<<<< HEAD
             systemImage: "doc.text.fill",
+=======
+            systemImage: "checklist",
+>>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
             detail: "Based on your latest PM Assessment, covering product strategy, execution, and stakeholder management questions."
         ),
         ScoreComponent(
             id: "skill-progress",
             title: "Skill Progress",
             percent: 20,
+<<<<<<< HEAD
             systemImage: "doc.text.fill",
+=======
+            systemImage: "chart.line.uptrend.xyaxis",
+>>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
             detail: "Tracks how many roadmap lessons and milestones you've completed so far."
         ),
         ScoreComponent(
             id: "profile-completeness",
             title: "Profile Completeness",
             percent: 28,
+<<<<<<< HEAD
             systemImage: "doc.text.fill",
+=======
+            systemImage: "person.text.rectangle",
+>>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
             detail: "How much of your profile — experience, goals, and portfolio links — is filled in."
         ),
         ScoreComponent(
             id: "experience",
             title: "Experience",
             percent: 50,
+<<<<<<< HEAD
             systemImage: "doc.text.fill",
+=======
+            systemImage: "briefcase",
+>>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
             detail: "Derived from your reported work and project experience relevant to your target role."
         ),
     ]

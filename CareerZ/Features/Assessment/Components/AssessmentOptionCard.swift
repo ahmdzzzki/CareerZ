@@ -14,7 +14,7 @@ struct AssessmentOptionCard: View {
     let action: () -> Void
     
     private var shape: RoundedRectangle {
-        RoundedRectangle(cornerRadius: AppRadius.md, style: .continuous)
+        RoundedRectangle(cornerRadius: AppRadius.lg, style: .continuous)
     }
     
     var body: some View {
@@ -22,34 +22,29 @@ struct AssessmentOptionCard: View {
             HStack(spacing: AppSpacing.md) {
                 Text(title)
                     .font(AppTypography.headline)
-                    .foregroundStyle(.primary)
+                    .fontWeight(.regular)
+                    .foregroundStyle(Color.appTextPrimary)
                     .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
                 
-                Spacer()
+                Spacer(minLength: AppSpacing.sm)
                 
-                ZStack {
-                    Circle()
-                        .stroke(
-                            isSelected ? Color.appPrimary : Color.secondary.opacity(0.35),
-                            lineWidth: 2
-                        )
-                        .frame(width: 22, height: 22)
-                    
-                    if isSelected {
-                        Circle()
-                            .fill(Color.appPrimary)
-                            .frame(width: 10, height: 10)
-                    }
-                }
+                selectionIndicator
             }
             .padding(AppSpacing.md)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, minHeight: 64)
             .background {
-                shape.fill(.regularMaterial)
+                shape.fill(
+                    isSelected
+                    ? Color.appPrimary.opacity(0.08)
+                    : Color.appBackground
+                )
             }
             .overlay {
                 shape.stroke(
-                    isSelected ? Color.appPrimary : Color.secondary.opacity(0.12),
+                    isSelected
+                    ? Color.appPrimary
+                    : Color.appSeparator.opacity(0.35),
                     lineWidth: isSelected ? 2 : 1
                 )
             }
@@ -58,5 +53,26 @@ struct AssessmentOptionCard: View {
         .contentShape(shape)
         .accessibilityLabel(title)
         .accessibilityValue(isSelected ? "Selected" : "Not selected")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+    
+    private var selectionIndicator: some View {
+        ZStack {
+            Circle()
+                .stroke(
+                    isSelected
+                    ? Color.appPrimary
+                    : Color.appTextTertiary.opacity(0.45),
+                    lineWidth: 2
+                )
+                .frame(width: 24, height: 24)
+            
+            if isSelected {
+                Circle()
+                    .fill(Color.appPrimary)
+                    .frame(width: 11, height: 11)
+            }
+        }
+        .accessibilityHidden(true)
     }
 }

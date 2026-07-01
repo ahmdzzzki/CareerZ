@@ -53,7 +53,7 @@ extension FocusArea {
         ),
         FocusArea(
             id: "networking", title: "Networking",
-            systemImage: "person.2.fill", percent: 48,
+            systemImage: "person.2", percent: 48,
             detail: FocusAreaDetailContent(
                 whatThisMeans: "Building stronger professional connections can improve your overall career readiness.",
                 measuredBy: [
@@ -66,7 +66,7 @@ extension FocusArea {
         ),
         FocusArea(
             id: "communication", title: "Communication",
-            systemImage: "bubble.left.and.bubble.right.fill", percent: 62,
+            systemImage: "bubble.left.and.bubble.right", percent: 62,
             detail: FocusAreaDetailContent(
                 whatThisMeans: "You communicate clearly in most situations, with some room to grow in higher-stakes settings.",
                 measuredBy: [
@@ -105,7 +105,7 @@ extension FocusArea {
         ),
         FocusArea(
             id: "career-assets", title: "Career Assets",
-            systemImage: "briefcase.fill", percent: 57,
+            systemImage: "briefcase", percent: 57,
             detail: FocusAreaDetailContent(
                 whatThisMeans: "Your resume and portfolio are partially ready, but could better showcase your strongest work.",
                 measuredBy: [

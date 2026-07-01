@@ -22,10 +22,7 @@ struct AssessmentQuestionView: View {
         onSkip: @escaping () -> Void = {},
         onComplete: @escaping () -> Void = {}
     ) {
-        _viewModel = State(
-            initialValue: AssessmentViewModel(goal: goal)
-        )
-        
+        _viewModel = State(initialValue: AssessmentViewModel(goal: goal))
         self.onBack = onBack
         self.onSkip = onSkip
         self.onComplete = onComplete
@@ -39,49 +36,29 @@ struct AssessmentQuestionView: View {
                     if viewModel.currentQuestionIndex == 0 {
                         onBack()
                     } else {
-                        viewModel.goBack()
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                            viewModel.goBack()
+                        }
                     }
                 },
-                onSkip: {
-                    showSkipAlert = true
-                }
+                onSkip: { showSkipAlert = true }
             )
-            .alert(
-                "Career Profile Setup",
-                isPresented: $showSkipAlert
-            ) {
+            .alert("Career Profile Setup", isPresented: $showSkipAlert) {
                 Button("Continue Setup", role: .cancel) { }
-
-                Button("Skip") {
+                Button("Skip", role: .destructive) {
                     onSkip()
                 }
             } message: {
                 Text("You can complete your career profile later from Settings.")
             }
-                
-            VStack(spacing: AppSpacing.xs) {
-                HStack {
-                    Text(viewModel.questionNumberText)
-                        .font(AppTypography.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.primary)
-                    
-                    Spacer()
-                    
-                    Text(viewModel.progressText)
-                        .font(AppTypography.caption)
-                        .foregroundStyle(.secondary)
-                }
-                
-                ProgressView(value: viewModel.progress)
-                    .tint(.appPrimary)
-            }
+            
+            progressSection
             
             Text(viewModel.currentQuestion.question)
-                .font(AppTypography.title2)
-                .fontWeight(.bold)
-                .foregroundStyle(.primary)
+                .font(AppTypography.title2.bold())
+                .foregroundStyle(Color.appTextPrimary)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
             
             VStack(spacing: AppSpacing.sm) {
                 ForEach(viewModel.currentQuestion.options, id: \.self) { option in
@@ -89,37 +66,71 @@ struct AssessmentQuestionView: View {
                         title: option,
                         isSelected: viewModel.selectedOption == option
                     ) {
-                        viewModel.selectOption(option)
+                        withAnimation(.easeInOut(duration: 0.18)) {
+                            viewModel.selectOption(option)
+                        }
                     }
                 }
             }
+            .padding(.horizontal, 2)
             
             Spacer()
             
-            VStack(spacing: AppSpacing.xs) {
-                AppButton(
-                    title: viewModel.buttonTitle,
-                    action: {
+            bottomAction
+        }
+        .padding(.horizontal, AppSpacing.screenHorizontal)
+        .padding(.top, AppSpacing.sm)
+        .padding(.bottom, AppSpacing.sm)
+        .background(Color.appSecondaryBackground)
+        .animation(.easeInOut(duration: 0.28), value: viewModel.progress)
+        .animation(.easeInOut(duration: 0.22), value: viewModel.currentQuestionIndex)
+    }
+    
+    private var progressSection: some View {
+        VStack(spacing: AppSpacing.xs) {
+            HStack {
+                Text(viewModel.questionNumberText)
+                    .font(AppTypography.headline)
+                    .foregroundStyle(Color.appTextPrimary)
+                
+                Spacer()
+                
+                Text(viewModel.progressText)
+                    .font(AppTypography.subheadline)
+                    .foregroundStyle(Color.appTextSecondary)
+            }
+            
+            ProgressView(value: viewModel.progress)
+                .tint(Color.appPrimary)
+                .animation(.easeInOut(duration: 0.35), value: viewModel.progress)
+                .accessibilityLabel("Assessment progress")
+                .accessibilityValue(viewModel.progressText)
+        }
+    }
+    
+    private var bottomAction: some View {
+        VStack(spacing: AppSpacing.xs) {
+            AppButton(
+                title: viewModel.buttonTitle,
+                action: {
+                    withAnimation(.easeInOut(duration: 0.28)) {
                         if viewModel.isLastQuestion {
                             onComplete()
                         } else {
                             viewModel.goNext()
                         }
-                    },
-                    isEnabled: viewModel.selectedOption != nil
-                )
-                
-                if viewModel.isLastQuestion {
-                    Text("Your career roadmap will be generated instantly.")
-                        .font(AppTypography.caption)
-                        .foregroundStyle(.secondary)
-                }
+                    }
+                },
+                isEnabled: viewModel.selectedOption != nil
+            )
+            
+            if viewModel.isLastQuestion {
+                Text("Your career roadmap will be generated instantly.")
+                    .font(AppTypography.caption)
+                    .foregroundStyle(Color.appTextSecondary)
+                    .multilineTextAlignment(.center)
             }
         }
-        .padding(.horizontal, AppSpacing.screenHorizontal)
-        .padding(.top, AppSpacing.sm)
-        .padding(.bottom, AppSpacing.sm)
-        .background(Color.appBackground)
     }
 }
 

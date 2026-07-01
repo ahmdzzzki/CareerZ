@@ -17,6 +17,7 @@ struct FocusAreaCard: View {
     private let cardWidth: CGFloat = 130
     /// Fixed height keeps every card in the horizontal row visually
     /// aligned regardless of whether the title wraps to 1 or 2 lines.
+    private let cardWidth2: CGFloat = 142
     private let cardHeight: CGFloat = 168
 
     var body: some View {
@@ -33,6 +34,16 @@ struct FocusAreaCard: View {
 
                     Text("\(focusArea.percent)%")
                         .font(AppTypography.headline.bold())
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(focusArea.title)
+                        .font(AppTypography.headline.bold())
+                        .foregroundStyle(Color.appTextPrimary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.72)
+                        .allowsTightening(true)
+
+                    Text("\(focusArea.percent)%")
+                        .font(AppTypography.title3.bold())
                         .foregroundStyle(focusArea.status.color)
                         .monospacedDigit()
 
@@ -47,6 +58,13 @@ struct FocusAreaCard: View {
                 progressBar
             }
             .padding(AppSpacing.sm)
+                        .minimumScaleFactor(0.8)
+                }
+
+                progressBar
+                    .padding(.top, AppSpacing.xs)
+            }
+            .padding(AppSpacing.md)
             .frame(width: cardWidth, height: cardHeight, alignment: .topLeading)
         }
         .buttonStyle(.plain)
@@ -58,14 +76,24 @@ struct FocusAreaCard: View {
 
     private var iconBadge: some View {
         Image(systemName: focusArea.systemImage)
+<<<<<<< HEAD
             .font(AppTypography.subheadline)
             .foregroundStyle(Color.appPrimary)
-            .frame(width: 32, height: 32)
+            .frame(width: 32, height: 32
+=======
+            .font(AppTypography.headline)
+            .foregroundStyle(Color.appPrimary)
+            .frame(width: 36, height: 36)
+>>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
             .background {
                 RoundedRectangle(cornerRadius: AppRadius.sm, style: .continuous)
                     .fill(Color.appPrimary.opacity(0.12))
             }
+<<<<<<< HEAD
             .accessibilityHidden(true) // decorative, info already in label
+=======
+            .accessibilityHidden(true)
+>>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
     }
 
     private var progressBar: some View {
@@ -76,11 +104,21 @@ struct FocusAreaCard: View {
 
                 Capsule()
                     .fill(focusArea.status.color)
+<<<<<<< HEAD
                     .frame(width: geo.size.width * CGFloat(focusArea.percent) / 100)
             }
         }
         .frame(height: 4)
         .accessibilityHidden(true) // percent already announced in label
+=======
+                    .frame(
+                        width: geo.size.width * CGFloat(focusArea.percent) / 100
+                    )
+            }
+        }
+        .frame(height: 5)
+        .accessibilityHidden(true)
+>>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
     }
 }
 
@@ -93,5 +131,9 @@ struct FocusAreaCard: View {
         }
         .padding()
     }
+<<<<<<< HEAD
     .background(Color.appBackground)
+=======
+    .background(Color.appSecondaryBackground)
+>>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
 }

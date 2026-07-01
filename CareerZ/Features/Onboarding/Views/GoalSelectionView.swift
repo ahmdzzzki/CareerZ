@@ -11,6 +11,7 @@ struct GoalSelectionView: View {
     
     @State private var viewModel = GoalSelectionViewModel()
     @State private var showSkipAlert = false
+    @FocusState private var isSearchFocused: Bool
     
     var onBack: () -> Void = {}
     var onSkip: () -> Void = {}
@@ -21,17 +22,11 @@ struct GoalSelectionView: View {
             
             OnboardingTopBar(
                 onBack: onBack,
-                onSkip: {
-                    showSkipAlert = true
-                }
+                onSkip: { showSkipAlert = true }
             )
-            .alert(
-                "Career Profile Setup",
-                isPresented: $showSkipAlert
-            ) {
+            .alert("Career Profile Setup", isPresented: $showSkipAlert) {
                 Button("Continue Setup", role: .cancel) { }
-
-                Button("Skip") {
+                Button("Skip", role: .destructive) {
                     onSkip()
                 }
             } message: {
@@ -42,17 +37,18 @@ struct GoalSelectionView: View {
                 Text("What’s your goal?")
                     .font(AppTypography.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(Color.appTextPrimary)
                 
                 Text("Select your target career path to personalize your roadmap and opportunities.")
                     .font(AppTypography.body)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color.appTextSecondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
             AppSearchField(
                 text: $viewModel.searchText,
-                prompt: "Search"
+                prompt: "Search",
+                isFocused: $isSearchFocused
             )
             
             ScrollView {
@@ -62,17 +58,22 @@ struct GoalSelectionView: View {
                             goal: goal,
                             isSelected: viewModel.selectedGoal == goal
                         ) {
+                            isSearchFocused = false
                             viewModel.selectGoal(goal)
                         }
                     }
                 }
+                .padding(.horizontal, 2)
                 .padding(.vertical, AppSpacing.xs)
                 .padding(.bottom, AppSpacing.md)
             }
+            .scrollDismissesKeyboard(.interactively)
             
             AppButton(
                 title: "Continue",
                 action: {
+                    isSearchFocused = false
+                    
                     if let selectedGoal = viewModel.selectedGoal {
                         onContinue(selectedGoal)
                     }
@@ -83,7 +84,10 @@ struct GoalSelectionView: View {
         .padding(.horizontal, AppSpacing.screenHorizontal)
         .padding(.top, AppSpacing.sm)
         .padding(.bottom, AppSpacing.sm)
-        .background(Color.appBackground)
+        .background(Color.appSecondaryBackground)
+        .onTapGesture {
+            isSearchFocused = false
+        }
     }
 }
 

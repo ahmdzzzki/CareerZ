@@ -13,6 +13,7 @@ enum HomeRoute: Hashable {
     case careerReadiness
     case focusAreaDetail(FocusArea)
     case focusAreaAll
+<<<<<<< HEAD
     case nextStepDetail(NextStep)
 }
 

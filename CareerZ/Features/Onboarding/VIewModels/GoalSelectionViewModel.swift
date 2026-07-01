@@ -17,7 +17,7 @@ final class GoalSelectionViewModel {
         CareerGoalOption(
             title: "Product Manager",
             subtitle: "Strategy, Roadmaps & Delivery",
-            systemImage: "briefcase.fill",
+            systemImage: "briefcase",
             color: .blue,
             imageName: "productManager"
         ),
@@ -31,7 +31,7 @@ final class GoalSelectionViewModel {
         CareerGoalOption(
             title: "UI/UX Designer",
             subtitle: "Visual Design & Research",
-            systemImage: "paintpalette.fill",
+            systemImage: "paintpalette",
             color: .green,
             imageName: "productManager"
         ),
@@ -66,7 +66,7 @@ final class GoalSelectionViewModel {
         CareerGoalOption(
             title: "Digital Marketer",
             subtitle: "Campaigns, Analytics & Growth Strategy",
-            systemImage: "megaphone.fill",
+            systemImage: "megaphone",
             color: .orange,
             imageName: "productManager"
         )

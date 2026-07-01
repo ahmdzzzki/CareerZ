@@ -15,3 +15,17 @@ struct CareerGoalOption: Identifiable, Equatable {
     let color: Color
     let imageName: String
 }
+
+extension CareerGoalOption {
+    /// Placeholder goal used wherever a real persisted user goal
+    /// isn't wired up yet (e.g. NextStepDetailView). Remove once
+    /// UserSession provides the actual onboarding selection.
+    static let sampleProductManager = CareerGoalOption(
+        title: "Product Manager",
+        subtitle: "Strategy, Roadmaps & Delivery",
+        systemImage: "briefcase",
+        color: .blue,
+        imageName: "productManager"
+    )
+}
+ 

@@ -28,15 +28,3 @@ struct MainTabView: View {
 #Preview {
     MainTabView()
 }
-
-struct RoadmapView: View {
-    var body: some View {
-        Text("Roadmap")
-    }
-}
-
-struct ProfileSheetView: View {
-    var body: some View {
-        Text("Profile")
-    }
-}
