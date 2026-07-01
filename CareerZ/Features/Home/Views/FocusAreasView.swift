@@ -12,12 +12,6 @@ struct FocusAreasView: View {
     @State private var viewModel = FocusAreasViewModel()
     @Environment(\.dismiss) private var dismiss
 
-<<<<<<< HEAD
-    /// Called when a card is tapped. The presenting screen owns
-    /// navigation (e.g. appends to its NavigationPath), keeping this
-    /// view decoupled from any specific route type.
-=======
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
     let onSelectArea: (FocusArea) -> Void
 
     private let columns = [
@@ -36,33 +30,15 @@ struct FocusAreasView: View {
                 }
             }
             .padding(.horizontal, AppSpacing.screenHorizontal)
-<<<<<<< HEAD
-            .padding(.vertical, AppSpacing.screenVertical)
-        }
-        .background(Color.appBackground)
-=======
             .padding(.top, AppSpacing.screenVertical)
             .padding(.bottom, AppSpacing.xl)
         }
         .background(Color.appSecondaryBackground)
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
         .navigationTitle("Focus Areas")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-<<<<<<< HEAD
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(Color.appTextPrimary)
-                }
-                .accessibilityLabel("Back")
-            }
-        }
-    }
-=======
                 backButton
             }
         }
@@ -77,7 +53,6 @@ struct FocusAreasView: View {
         }
         .accessibilityLabel("Back")
     }
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
 }
 
 #Preview {

@@ -124,7 +124,7 @@ struct ExpandableInfoRow: View {
     VStack(spacing: 0) {
         ExpandableInfoRow(
             title: "Assessment Results",
-            systemImage: "doc.text.fill",
+            systemImage: "doc.text",
             trailingBadgeText: "80%",
             trailingBadgeColor: .appSuccess,
             detail: "Based on your latest PM Assessment, covering product strategy, execution, and stakeholder management questions.",

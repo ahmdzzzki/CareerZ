@@ -20,24 +20,6 @@ struct FocusAreaDetailView: View {
 
     var body: some View {
         ScrollView {
-<<<<<<< HEAD
-            VStack(alignment: .leading, spacing: AppSpacing.sectionSpacing) {
-                headerCard
-
-                if let detail = area.detail {
-                    whatThisMeansSection(detail.whatThisMeans)
-                    measuredBySection(detail.measuredBy)
-                    ExpandableSection(
-                        title: "Why does \(area.title) matter?",
-                        detail: detail.whyItMatters
-                    )
-                }
-            }
-            .padding(.horizontal, AppSpacing.screenHorizontal)
-            .padding(.vertical, AppSpacing.screenVertical)
-        }
-        .background(Color.appBackground)
-=======
             VStack(alignment: .leading, spacing: AppSpacing.lg) {
                 headerCard
 
@@ -52,44 +34,16 @@ struct FocusAreaDetailView: View {
             .padding(.bottom, AppSpacing.xl)
         }
         .background(Color.appSecondaryBackground)
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
         .navigationTitle(area.title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-<<<<<<< HEAD
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(Color.appTextPrimary)
-                }
-                .accessibilityLabel("Back")
-=======
                 backButton
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
             }
         }
     }
 
-<<<<<<< HEAD
-    // MARK: - Header
-
-    private var headerCard: some View {
-        HStack(spacing: AppSpacing.md) {
-            Image(systemName: area.systemImage)
-                .font(AppTypography.title)
-                .foregroundStyle(area.status.color)
-                .frame(width: 64, height: 64)
-                .background {
-                    RoundedRectangle(cornerRadius: AppRadius.md, style: .continuous)
-                        .fill(area.status.color.opacity(0.12))
-                }
-                .accessibilityHidden(true)
-
-            VStack(alignment: .leading, spacing: AppSpacing.xxs) {
-=======
     private var backButton: some View {
         Button {
             dismiss()
@@ -127,71 +81,10 @@ struct FocusAreaDetailView: View {
 
                 Spacer(minLength: 0)
 
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
                 Text("\(area.percent)%")
                     .font(AppTypography.largeTitle.bold())
                     .foregroundStyle(area.status.color)
                     .monospacedDigit()
-<<<<<<< HEAD
-
-                Text(area.status.label)
-                    .font(AppTypography.subheadline.bold())
-                    .foregroundStyle(Color.appTextPrimary)
-
-                if let whatThisMeans = area.detail?.whatThisMeans {
-                    Text(whatThisMeans)
-                        .font(AppTypography.caption)
-                        .foregroundStyle(Color.appTextSecondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .lineLimit(2)
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(AppSpacing.cardPadding)
-        .cardBackground()
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(area.percent) percent, \(area.status.label)")
-    }
-
-    // MARK: - What this means
-
-    private func whatThisMeansSection(_ text: String) -> some View {
-        VStack(alignment: .leading, spacing: AppSpacing.xs) {
-            Text("WHAT THIS MEANS")
-                .font(AppTypography.caption.bold())
-                .foregroundStyle(Color.appTextSecondary)
-                .accessibilityAddTraits(.isHeader)
-
-            Text(text)
-                .font(AppTypography.subheadline)
-                .foregroundStyle(Color.appTextPrimary)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-    }
-
-    // MARK: - Measured by
-
-    private func measuredBySection(_ metrics: [FocusAreaMetric]) -> some View {
-        VStack(alignment: .leading, spacing: AppSpacing.sectionHeaderBottom) {
-            Text("MEASURED BY")
-                .font(AppTypography.caption.bold())
-                .foregroundStyle(Color.appTextSecondary)
-                .accessibilityAddTraits(.isHeader)
-
-            VStack(spacing: 0) {
-                ForEach(metrics) { metric in
-                    ExpandableInfoRow(
-                        title: metric.title,
-                        summary: metric.summary,
-                        detail: metric.detail,
-                        isExpanded: viewModel.isExpanded(metric),
-                        onToggle: { viewModel.toggleExpanded(metric) }
-                    )
-
-                    if metric.id != metrics.last?.id {
-                        Divider()
-=======
             }
 
             ProgressView(value: Double(area.percent), total: 100)
@@ -239,16 +132,10 @@ struct FocusAreaDetailView: View {
                     if metric.id != metrics.last?.id {
                         Divider()
                             .padding(.leading, 52)
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
                     }
                 }
             }
             .padding(.horizontal, AppSpacing.cardPadding)
-<<<<<<< HEAD
-            .cardBackground()
-        }
-    }
-=======
             .padding(.vertical, AppSpacing.xs)
             .cardBackground(cornerRadius: AppRadius.xl)
         }
@@ -447,15 +334,10 @@ struct FocusAreaDetailView: View {
 
         return "Take one focused action this week."
     }
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
 }
 
 #Preview {
     NavigationStack {
-<<<<<<< HEAD
-        FocusAreaDetailView(focusArea: FocusArea.sample[1]) // Networking
-=======
         FocusAreaDetailView(focusArea: FocusArea.sample[1])
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
     }
 }

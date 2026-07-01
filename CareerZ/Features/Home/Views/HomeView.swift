@@ -11,11 +11,8 @@ struct HomeView: View {
 
     @State private var viewModel = HomeViewModel()
     @State private var path = NavigationPath()
-<<<<<<< HEAD
-=======
     @State private var showProfile = false
     @State private var selectedNextStep: NextStep?
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -36,17 +33,11 @@ struct HomeView: View {
                 .padding(.horizontal, AppSpacing.screenHorizontal)
                 .padding(.vertical, AppSpacing.screenVertical)
             }
-<<<<<<< HEAD
-            .background(Color.appBackground)
-=======
             .background(Color.appSecondaryBackground)
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: HomeRoute.self) { route in
                 destinationView(for: route)
             }
-<<<<<<< HEAD
-=======
             .sheet(isPresented: $showProfile) {
                 ProfileView()
             }
@@ -61,7 +52,6 @@ struct HomeView: View {
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
             }
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
         }
     }
 
@@ -76,33 +66,16 @@ struct HomeView: View {
 
                 HStack(spacing: AppSpacing.xs) {
                     Text(viewModel.userFirstName)
-<<<<<<< HEAD
-                        .font(AppTypography.title2.bold())
-                        .foregroundStyle(Color.appTextPrimary)
-                    Text("👋")
-                        .font(AppTypography.title2)
-=======
                         .font(AppTypography.title.bold())
                         .foregroundStyle(Color.appTextPrimary)
                     Text("👋")
                         .font(AppTypography.title)
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
                         .accessibilityHidden(true)
                 }
             }
 
             Spacer()
 
-<<<<<<< HEAD
-            Circle()
-                .fill(Color.appSecondaryFill)
-                .frame(width: 44, height: 44)
-                .overlay {
-                    Image(systemName: "person.fill")
-                        .foregroundStyle(Color.appTextSecondary)
-                }
-                .accessibilityLabel("Profile")
-=======
             Button {
                 showProfile = true
             } label: {
@@ -118,7 +91,6 @@ struct HomeView: View {
             }
             .accessibilityLabel("Profile")
             .accessibilityHint("Opens your profile")
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(viewModel.greeting), \(viewModel.userFirstName)")
@@ -141,14 +113,6 @@ struct HomeView: View {
                         )
                     }
                 }
-<<<<<<< HEAD
-                .padding(.bottom, AppSpacing.xxs) // room for glass shadow
-            }
-            // Let the scroll view bleed to screen edges while content
-            // still aligns with the rest of the page padding.
-            .padding(.horizontal, -AppSpacing.screenHorizontal)
-            .padding(.horizontal, AppSpacing.screenHorizontal)
-=======
                 .padding(.leading, AppSpacing.screenHorizontal)
                 .padding(.bottom, AppSpacing.xxs)
             }
@@ -156,7 +120,6 @@ struct HomeView: View {
             // still aligns with the rest of the page padding.
             .padding(.leading, -AppSpacing.screenHorizontal)
             .padding(.trailing, -AppSpacing.screenHorizontal)
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
         }
     }
 
@@ -168,11 +131,6 @@ struct HomeView: View {
                 .font(AppTypography.title3.bold())
                 .foregroundStyle(Color.appTextPrimary)
 
-<<<<<<< HEAD
-            NextStepCard(
-                nextStep: viewModel.nextStep,
-                action: { path.append(HomeRoute.nextStepDetail(viewModel.nextStep)) }
-=======
 //            NextStepCard(
 //                nextStep: viewModel.nextStep,
 //                action: { path.append(HomeRoute.nextStepDetail(viewModel.nextStep)) }
@@ -180,7 +138,6 @@ struct HomeView: View {
             NextStepCard(
                 nextStep: viewModel.nextStep,
                 action: { selectedNextStep = viewModel.nextStep }
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
             )
         }
     }
@@ -196,13 +153,6 @@ struct HomeView: View {
             FocusAreaDetailView(focusArea: area)
         case .focusAreaAll:
             FocusAreasView(onSelectArea: { area in path.append(HomeRoute.focusAreaDetail(area)) })
-<<<<<<< HEAD
-        case .nextStepDetail(let step):
-            // TODO: replace with NextStepDetailView once built
-            Text("\(step.title) Detail")
-                .navigationTitle("Next Step")
-=======
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
         }
     }
 }

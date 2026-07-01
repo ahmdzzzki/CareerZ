@@ -40,7 +40,7 @@ extension FocusArea {
     static let sample: [FocusArea] = [
         FocusArea(
             id: "technical-skills", title: "Technical Skills",
-            systemImage: "gearshape.fill", percent: 85,
+            systemImage: "gearshape", percent: 85,
             detail: FocusAreaDetailContent(
                 whatThisMeans: "Your technical foundation is strong, covering the core tools and concepts expected for your target role.",
                 measuredBy: [
@@ -79,7 +79,7 @@ extension FocusArea {
         ),
         FocusArea(
             id: "data-literacy", title: "Data Literacy",
-            systemImage: "chart.bar.fill", percent: 85,
+            systemImage: "chart.bar", percent: 85,
             detail: FocusAreaDetailContent(
                 whatThisMeans: "You're confident reading data and using it to support decisions — a strong asset for your target role.",
                 measuredBy: [
@@ -92,7 +92,7 @@ extension FocusArea {
         ),
         FocusArea(
             id: "execution", title: "Execution",
-            systemImage: "checkmark.circle.fill", percent: 28,
+            systemImage: "checkmark.circle", percent: 28,
             detail: FocusAreaDetailContent(
                 whatThisMeans: "Your track record of completing and shipping work is below the recommended level for your target role.",
                 measuredBy: [
@@ -118,7 +118,7 @@ extension FocusArea {
         ),
         FocusArea(
             id: "leadership", title: "Leadership",
-            systemImage: "person.3.fill", percent: 85,
+            systemImage: "person.3", percent: 85,
             detail: FocusAreaDetailContent(
                 whatThisMeans: "You show strong leadership instincts, including taking initiative and guiding others effectively.",
                 measuredBy: [

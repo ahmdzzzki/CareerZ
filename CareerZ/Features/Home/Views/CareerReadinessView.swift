@@ -12,21 +12,6 @@ struct CareerReadinessView: View {
     @State private var viewModel = CareerReadinessViewModel()
     @Environment(\.dismiss) private var dismiss
 
-<<<<<<< HEAD
-    var body: some View {
-        ScrollView {
-            VStack(spacing: AppSpacing.sectionSpacing) {
-                ringSection
-
-                breakdownSection
-
-                historySection
-            }
-            .padding(.horizontal, AppSpacing.screenHorizontal)
-            .padding(.vertical, AppSpacing.screenVertical)
-        }
-        .background(Color.appBackground)
-=======
     private var progressPercent: Int {
         Int((viewModel.readinessProgress * 100).rounded())
     }
@@ -43,39 +28,16 @@ struct CareerReadinessView: View {
             .padding(.bottom, AppSpacing.xl)
         }
         .background(Color.appSecondaryBackground)
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
         .navigationTitle("Career Readiness")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-<<<<<<< HEAD
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(Color.appTextPrimary)
-                }
-                .accessibilityLabel("Back")
-=======
                 backButton
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
             }
         }
     }
 
-<<<<<<< HEAD
-    // MARK: - Ring
-
-    private var ringSection: some View {
-        VStack(spacing: AppSpacing.sm) {
-            ReadinessRingView(progress: viewModel.readinessProgress, size: 160)
-
-            TrendBadge(text: "+\(viewModel.readinessMonthlyDelta)% this month")
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, AppSpacing.md)
-=======
     // MARK: - Back Button
 
     private var backButton: some View {
@@ -123,42 +85,12 @@ struct CareerReadinessView: View {
         .accessibilityLabel(
             "Career readiness \(progressPercent) percent. \(readinessStatus). Up \(viewModel.readinessMonthlyDelta) percent this month."
         )
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
     }
 
     // MARK: - Breakdown
 
     private var breakdownSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sectionHeaderBottom) {
-<<<<<<< HEAD
-            Text("HOW YOUR SCORE IS CALCULATED")
-                .font(AppTypography.caption.bold())
-                .foregroundStyle(Color.appTextSecondary)
-                .accessibilityAddTraits(.isHeader)
-
-            VStack(spacing: 0) {
-                ForEach(viewModel.scoreComponents) { component in
-                    ExpandableInfoRow(
-                        title: component.title,
-                        systemImage: component.systemImage,
-                        trailingBadgeText: "\(component.percent)%",
-                        trailingBadgeColor: ReadinessStatus(percent: component.percent).color,
-                        detail: component.detail,
-                        isExpanded: viewModel.isExpanded(component),
-                        onToggle: { viewModel.toggleExpanded(component) }
-                    )
-
-                    if component.id != viewModel.scoreComponents.last?.id {
-                        Divider()
-                    }
-                }
-            }
-            .padding(.horizontal, AppSpacing.cardPadding)
-            .cardBackground()
-        }
-    }
-
-=======
             sectionTitle("Score Breakdown")
 
             VStack(spacing: AppSpacing.sm) {
@@ -229,31 +161,10 @@ struct CareerReadinessView: View {
         .accessibilityElement(children: .combine)
     }
 
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
     // MARK: - History
 
     private var historySection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sectionHeaderBottom) {
-<<<<<<< HEAD
-            HStack {
-                Text("YOUR READINESS OVER TIME")
-                    .font(AppTypography.caption.bold())
-                    .foregroundStyle(Color.appTextSecondary)
-                    .accessibilityAddTraits(.isHeader)
-
-                Spacer()
-
-                TrendBadge(text: "+\(viewModel.historyDeltaVsLastMonth)% vs last month")
-            }
-
-            Text("See how you've improved over the past months.")
-                .font(AppTypography.footnote)
-                .foregroundStyle(Color.appTextSecondary)
-
-            ReadinessChart(points: viewModel.history)
-                .padding(AppSpacing.cardPadding)
-                .cardBackground()
-=======
             HStack(alignment: .center) {
                 sectionTitle("Readiness Over Time")
 
@@ -312,7 +223,6 @@ struct CareerReadinessView: View {
             return "Needs attention"
         default:
             return "Needs focus"
->>>>>>> 397fad2f163417689b15a3a88e01ef95be9bcd0a
         }
     }
 }

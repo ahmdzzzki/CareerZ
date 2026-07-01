@@ -13,15 +13,4 @@ enum HomeRoute: Hashable {
     case careerReadiness
     case focusAreaDetail(FocusArea)
     case focusAreaAll
-<<<<<<< HEAD
-    case nextStepDetail(NextStep)
-}
-
-extension NextStep: Hashable {
-    static func == (lhs: NextStep, rhs: NextStep) -> Bool {
-        lhs.id == rhs.id
-    }
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
 }
