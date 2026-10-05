@@ -1,0 +1,16 @@
+# Local secrets and deployment credentials
+.env
+.env.*
+.vercel/
+
+# JavaScript dependencies and build output
+node_modules/
+landing-page/dist/
+
+# Xcode and macOS local state
+.DS_Store
+DerivedData/
+build/
+xcuserdata/
+*.xcuserstate
+.swiftpm/

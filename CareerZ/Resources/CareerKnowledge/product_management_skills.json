@@ -1,0 +1,130 @@
+[
+  {
+    "id": "pm_product_thinking",
+    "domainID": "product_management",
+    "title": "Product Thinking & Problem Framing",
+    "summary": "Connect user problems, context, desired outcomes, and solution assumptions.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3.0,
+    "levelDescriptors": [
+      { "level": 0, "text": "You have not yet distinguished problems, solutions, features, and outcomes." },
+      { "level": 1, "text": "You can explain the user, a general problem, and the desired outcome." },
+      { "level": 2, "text": "You can create a problem statement and identify assumptions with guidance." },
+      { "level": 3, "text": "You can independently frame a problem using evidence, scope, constraints, and outcomes." },
+      { "level": 4, "text": "You have evidence that your framing influenced a product decision and can explain the trade-offs." }
+    ],
+    "evidenceExamples": ["Problem statement", "Opportunity brief", "Decision rationale"]
+  },
+  {
+    "id": "pm_user_discovery",
+    "domainID": "product_management",
+    "title": "User Discovery",
+    "summary": "Collect and synthesize evidence about user needs and behavior.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3.0,
+    "levelDescriptors": [
+      { "level": 0, "text": "You have not yet learned the purpose of user research." },
+      { "level": 1, "text": "You understand interviews, observations, pain points, and insights." },
+      { "level": 2, "text": "You have conducted simple research using a guide or template." },
+      { "level": 3, "text": "You can independently plan, conduct, and synthesize user research." },
+      { "level": 4, "text": "You have research evidence that changed a product priority, design, or decision." }
+    ],
+    "evidenceExamples": ["Interview guide", "Interview notes", "Research synthesis"]
+  },
+  {
+    "id": "pm_product_strategy",
+    "domainID": "product_management",
+    "title": "Product Strategy",
+    "summary": "Define target users, value, outcomes, constraints, and strategic choices.",
+    "importanceWeight": 0.10,
+    "portfolioTarget": 2.0,
+    "levelDescriptors": [
+      { "level": 0, "text": "You have not yet learned how user value, business value, and product direction connect." },
+      { "level": 1, "text": "You can explain vision, target users, value proposition, and outcomes." },
+      { "level": 2, "text": "You can create a simple strategy brief and justify a focus area." },
+      { "level": 3, "text": "You can independently connect insights, positioning, outcomes, constraints, and choices." },
+      { "level": 4, "text": "You have evidence that a strategy was used to select, reject, or change a real initiative." }
+    ],
+    "evidenceExamples": ["Product vision", "Strategy brief", "Strategic choices"]
+  },
+  {
+    "id": "pm_prioritization",
+    "domainID": "product_management",
+    "title": "Prioritization",
+    "summary": "Choose problems and initiatives using impact, evidence, effort, and trade-offs.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3.0,
+    "levelDescriptors": [
+      { "level": 0, "text": "You usually prioritize based on preference or request order." },
+      { "level": 1, "text": "You understand impact, effort, urgency, evidence, and trade-offs." },
+      { "level": 2, "text": "You have used a prioritization framework with guidance." },
+      { "level": 3, "text": "You can independently prioritize and explain trade-offs to a team." },
+      { "level": 4, "text": "You have evidence that a prioritization decision produced learning or a measurable outcome." }
+    ],
+    "evidenceExamples": ["Prioritization matrix", "Trade-off notes", "Decision memo"]
+  },
+  {
+    "id": "pm_requirements_roadmapping",
+    "domainID": "product_management",
+    "title": "Requirements & Roadmapping",
+    "summary": "Translate problems into testable requirements and an outcome-based sequence of work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3.0,
+    "levelDescriptors": [
+      { "level": 0, "text": "You have not yet written requirements or a roadmap." },
+      { "level": 1, "text": "You understand problem statements, user stories, acceptance criteria, milestones, and roadmaps." },
+      { "level": 2, "text": "You can write simple requirements and a roadmap using a template." },
+      { "level": 3, "text": "You can independently create testable requirements and an outcome-based roadmap." },
+      { "level": 4, "text": "You have artifacts used across functions and updated using new evidence or context." }
+    ],
+    "evidenceExamples": ["PRD", "Acceptance criteria", "Outcome-based roadmap"]
+  },
+  {
+    "id": "pm_analytics_experimentation",
+    "domainID": "product_management",
+    "title": "Product Analytics & Experimentation",
+    "summary": "Define success metrics, interpret evidence, and test product assumptions.",
+    "importanceWeight": 0.10,
+    "portfolioTarget": 2.0,
+    "levelDescriptors": [
+      { "level": 0, "text": "You have not yet learned how product success is measured." },
+      { "level": 1, "text": "You understand metrics, baselines, targets, funnels, and hypotheses." },
+      { "level": 2, "text": "You can define a simple metric or experiment plan with guidance." },
+      { "level": 3, "text": "You can independently create a measurement plan, interpret results, and decide what to do next." },
+      { "level": 4, "text": "You have an experiment or analysis that changed a real product decision." }
+    ],
+    "evidenceExamples": ["Metric tree", "Experiment plan", "Result analysis"]
+  },
+  {
+    "id": "pm_stakeholder_communication",
+    "domainID": "product_management",
+    "title": "Stakeholder Communication",
+    "summary": "Align people around context, decisions, risks, and expectations.",
+    "importanceWeight": 0.10,
+    "portfolioTarget": 3.0,
+    "levelDescriptors": [
+      { "level": 0, "text": "You find it difficult to explain context, decisions, or needs to others." },
+      { "level": 1, "text": "You can communicate basic status and ideas in a structured way." },
+      { "level": 2, "text": "You can create updates, presentations, or decision memos with guidance." },
+      { "level": 3, "text": "You can align different perspectives, handle disagreement, and document decisions." },
+      { "level": 4, "text": "You have evidence that your communication resolved conflict or accelerated an important decision." }
+    ],
+    "evidenceExamples": ["Stakeholder update", "Decision memo", "Product presentation"]
+  },
+  {
+    "id": "pm_cross_functional_execution",
+    "domainID": "product_management",
+    "title": "Cross-Functional Execution",
+    "summary": "Coordinate design, engineering, and other partners until a product outcome is delivered.",
+    "importanceWeight": 0.10,
+    "portfolioTarget": 2.0,
+    "levelDescriptors": [
+      { "level": 0, "text": "You have not yet coordinated work across different functions." },
+      { "level": 1, "text": "You understand the roles of product, design, engineering, and delivery rituals." },
+      { "level": 2, "text": "You have worked on a cross-functional project with guidance." },
+      { "level": 3, "text": "You can independently manage dependencies, risks, decisions, and follow-up." },
+      { "level": 4, "text": "You have evidence of a completed cross-functional project with reflection and measurable learning or outcomes." }
+    ],
+    "evidenceExamples": ["Delivery plan", "Decision log", "Shipped product project"]
+  }
+]

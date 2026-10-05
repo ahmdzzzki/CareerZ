@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		8A4584A82FE513EA00082A68 /* CareerZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareerZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AA94D842FE8033D00D5160B /* CareerZ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CareerZ.xcodeproj; path = CareerZ/CareerZ.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -41,6 +42,13 @@
 			isa = PBXGroup;
 			children = (
 				8A4584A82FE513EA00082A68 /* CareerZ.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8AA94D872FE8033D00D5160B /* Products */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +105,12 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8A4584A92FE513EA00082A68 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8AA94D872FE8033D00D5160B /* Products */;
+					ProjectRef = 8AA94D842FE8033D00D5160B /* CareerZ.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8A4584A72FE513EA00082A68 /* CareerZ */,
@@ -251,6 +265,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3NN7487Y49;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -282,6 +297,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3NN7487Y49;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
