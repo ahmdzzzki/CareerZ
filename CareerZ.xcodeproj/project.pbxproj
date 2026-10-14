@@ -5,8 +5,16 @@
 	};
 	objectVersion = 77;
 	objects = {
-		C0142026000000000000000A = {isa = PBXTargetDependency; target = 8A4584A72FE513EA00082A68; targetProxy = C0142026000000000000000B; };
-		C0142026000000000000000B = {isa = PBXContainerItemProxy; containerPortal = 8A4584A02FE513EA00082A68; proxyType = 1; remoteGlobalIDString = 8A4584A72FE513EA00082A68; remoteInfo = CareerZ; };
+
+/* Begin PBXContainerItemProxy section */
+		C0142026000000000000000B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A4584A02FE513EA00082A68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A4584A72FE513EA00082A68;
+			remoteInfo = CareerZ;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8A4584A82FE513EA00082A68 /* CareerZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareerZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,7 +27,11 @@
 			path = CareerZ;
 			sourceTree = "<group>";
 		};
-		C01420260000000000000003 = {isa = PBXFileSystemSynchronizedRootGroup; path = CareerZUITests; sourceTree = "<group>"; };
+		C01420260000000000000003 /* CareerZUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CareerZUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +42,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C01420260000000000000005 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		C01420260000000000000005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -38,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				8A4584AA2FE513EA00082A68 /* CareerZ */,
-				C01420260000000000000003,
+				C01420260000000000000003 /* CareerZUITests */,
 				8A4584A92FE513EA00082A68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,12 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				8A4584A82FE513EA00082A68 /* CareerZ.app */,
-				C01420260000000000000002,
+				C01420260000000000000002 /* CareerZUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,7 +95,27 @@
 			productReference = 8A4584A82FE513EA00082A68 /* CareerZ.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C01420260000000000000001 = {isa = PBXNativeTarget; buildConfigurationList = C01420260000000000000007; buildPhases = (C01420260000000000000004, C01420260000000000000005, C01420260000000000000006); buildRules = (); dependencies = (C0142026000000000000000A); fileSystemSynchronizedGroups = (C01420260000000000000003); name = CareerZUITests; productName = CareerZUITests; productReference = C01420260000000000000002; productType = "com.apple.product-type.bundle.ui-testing"; };
+		C01420260000000000000001 /* CareerZUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01420260000000000000007 /* Build configuration list for PBXNativeTarget "CareerZUITests" */;
+			buildPhases = (
+				C01420260000000000000004 /* Sources */,
+				C01420260000000000000005 /* Frameworks */,
+				C01420260000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0142026000000000000000A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C01420260000000000000003 /* CareerZUITests */,
+			);
+			name = CareerZUITests;
+			productName = CareerZUITests;
+			productReference = C01420260000000000000002 /* CareerZUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -106,10 +143,9 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8A4584A92FE513EA00082A68 /* Products */;
 			projectDirPath = "";
-
 			projectRoot = "";
 			targets = (
-				C01420260000000000000001,
+				C01420260000000000000001 /* CareerZUITests */,
 				8A4584A72FE513EA00082A68 /* CareerZ */,
 			);
 		};
@@ -123,7 +159,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C01420260000000000000006 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		C01420260000000000000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -134,8 +176,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C01420260000000000000004 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		C01420260000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0142026000000000000000A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A4584A72FE513EA00082A68 /* CareerZ */;
+			targetProxy = C0142026000000000000000B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8A4584B12FE513EB00082A68 /* Debug */ = {
@@ -321,8 +377,34 @@
 			};
 			name = Release;
 		};
-		C01420260000000000000008 = {isa = XCBuildConfiguration; buildSettings = {GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 26.5; PRODUCT_BUNDLE_IDENTIFIER = com.academy.CareerZ.UITests; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; TEST_TARGET_NAME = CareerZ;}; name = Debug; };
-		C01420260000000000000009 = {isa = XCBuildConfiguration; buildSettings = {GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 26.5; PRODUCT_BUNDLE_IDENTIFIER = com.academy.CareerZ.UITests; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; TEST_TARGET_NAME = CareerZ;}; name = Release; };
+		C01420260000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.academy.CareerZ.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CareerZ;
+			};
+			name = Debug;
+		};
+		C01420260000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.academy.CareerZ.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CareerZ;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -344,7 +426,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01420260000000000000007 = {isa = XCConfigurationList; buildConfigurations = (C01420260000000000000008, C01420260000000000000009); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		C01420260000000000000007 /* Build configuration list for PBXNativeTarget "CareerZUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01420260000000000000008 /* Debug */,
+				C01420260000000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 	};
 	rootObject = 8A4584A02FE513EA00082A68 /* Project object */;

@@ -3,81 +3,140 @@ import SwiftUI
 struct DevelopmentView: View {
     @Bindable var store: JourneyStore
     @State private var assessment = false
+    @State private var profile = false
+    @AppStorage("hasCompletedOnboarding") private var onboarded = false
+    private var nextMission: MissionPlan? { store.roadmap.first { !store.completedIDs.contains($0.id) && store.isUnlocked($0.mission) } }
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                    if let domain = store.selectedDomain {
-                        Text(domain.title).font(AppTypography.largeTitle.bold())
-                        if domain == .productManagement {
-                            pmJourney
-                        } else {
-                            Text("Try a small experiment.").font(AppTypography.title2.bold())
-                            Text(JourneyCopy.experiment(domain)).padding(AppSpacing.cardPadding).cardBackground()
-                            Text("The skill journey for this direction is still in development. You can explore and compare other directions in Discover; Product Management is the first complete pilot.")
-                                .foregroundStyle(Color.appTextSecondary)
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                            Text(store.selectedDomain == .productManagement ? "Product Manager Roadmap" : "Your Career Roadmap").font(AppTypography.title2.bold())
+                            Text("Your personalized growth path").foregroundStyle(Color.appTextSecondary)
                         }
-                    } else {
-                        ContentUnavailableView("Choose a direction first", systemImage: "safari", description: Text("Take Compass or explore the career directions in Discover. You decide where to start."))
+                        Spacer(minLength: AppSpacing.sm)
+                        Button { profile = true } label: { Image(systemName: "person.crop.circle.fill").font(.system(size: 42)).foregroundStyle(Color.appPrimary) }.accessibilityLabel("Profile")
                     }
-                }.padding(AppSpacing.screenHorizontal)
-            }.background(Color.appGroupedBackground).navigationTitle("Develop")
+                    if store.selectedDomain == .productManagement {
+                        pmJourney
+                    } else {
+                        VStack(alignment: .leading, spacing: AppSpacing.md) {
+                            HStack {
+                                VStack(alignment: .leading, spacing: AppSpacing.sm) {
+                                    Text(store.selectedDomain?.title ?? "Choose your direction").font(AppTypography.title2.bold())
+                                    Text(store.selectedDomain.map { JourneyCopy.experiment($0) } ?? "Explore your career options and choose a path to begin.").foregroundStyle(Color.appTextSecondary)
+                                }
+                                Image("productManager").resizable().scaledToFit().frame(width: 90).accessibilityHidden(true)
+                            }
+                            NavigationLink("Explore Product Management") { CareerDirectionView(store: store, domain: .productManagement, match: nil, onDevelop: {}) }.frame(minHeight: 44)
+                        }.padding(AppSpacing.xl).journeyCard()
+                        Text("Foundation → Practice → Portfolio").font(AppTypography.title3.bold())
+                        Text("The PM pilot is ready to explore. Other domain skill journeys are still in development.").font(AppTypography.callout).foregroundStyle(Color.appTextSecondary)
+                        curriculum
+                    }
+                }.padding(.horizontal, AppSpacing.screenHorizontal).padding(.vertical, AppSpacing.md)
+            }.background(Color.appGroupedBackground).toolbar(.hidden, for: .navigationBar)
                 .sheet(isPresented: $assessment) { JourneyAssessmentView(store: store, kind: .skills) }
+                .sheet(isPresented: $profile) { JourneySettingsView(store: store, onDelete: { profile = false; onboarded = false }) }
         }
     }
     @ViewBuilder private var pmJourney: some View {
-        if let latest = store.latestSkillSession {
-            Text("Your skill snapshot").font(AppTypography.title2.bold())
-            Text("Assessed \(latest.assessedAt.formatted(date: .abbreviated, time: .omitted)). These are self-reported proficiency levels, not an employability score.")
-                .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
-            NavigationLink("View skill breakdown & history") { SkillHistoryView(store: store) }.frame(minHeight: 44)
-            if store.priorityGaps.isEmpty {
-                Text("You meet the current portfolio targets. Validate your evidence with the missions—this does not automatically complete them.")
-                    .padding(AppSpacing.cardPadding).cardBackground()
-            } else {
-                Text("Work on these next").font(AppTypography.headline)
-                ForEach(store.priorityGaps) { gap in
-                    VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                        Text(gap.skill.title).font(AppTypography.headline)
-                        Text("Current \(gap.currentScore.formatted(.number.precision(.fractionLength(1)))) / 4 · Portfolio target \(gap.skill.portfolioTarget.formatted(.number.precision(.fractionLength(0))))")
-                            .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
-                        Text(JourneyEngine().recommendation(for: gap)).font(AppTypography.callout)
-                    }.padding(AppSpacing.cardPadding).cardBackground()
+        if store.latestSkillSession != nil {
+            HStack(spacing: AppSpacing.md) {
+                JourneyIcon(name: "person.badge.key", size: 52)
+                VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                    Text("Current Stage").font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
+                    Text(nextMission?.mission.stage.rawValue.capitalized ?? "Portfolio").font(AppTypography.title3.bold()).foregroundStyle(Color.appPrimary)
                 }
+                Spacer()
+                VStack(alignment: .trailing, spacing: AppSpacing.xs) {
+                    Text("\(store.completedIDs.count) of \(store.missions.count)").font(AppTypography.title2.bold()).foregroundStyle(Color.appPrimary)
+                    Text("Completed").font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
+                }
+            }.padding(AppSpacing.lg).journeyCard()
+            if let nextMission {
+                NavigationLink { MissionActivityView(store: store, item: nextMission) } label: {
+                    HStack(spacing: AppSpacing.md) {
+                        JourneyIcon(name: "sparkles", size: 54)
+                        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                            Text("Recommended Next Step").font(AppTypography.footnote).foregroundStyle(Color.appPrimary)
+                            Text(nextMission.mission.title).font(AppTypography.headline).foregroundStyle(Color.appTextPrimary)
+                            Text(nextMission.classification.rawValue).font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
+                        }
+                        Spacer(minLength: 0); Image(systemName: "arrow.right").font(AppTypography.title3).foregroundStyle(Color.appPrimary)
+                    }.padding(AppSpacing.lg).background(Color.appPrimary.opacity(0.12), in: RoundedRectangle(cornerRadius: AppRadius.xxl))
+                }.buttonStyle(.plain)
+            } else {
+                Label("Every mission completed. Reflect on your work and reassess your skills.", systemImage: "trophy.fill")
+                    .foregroundStyle(Color.appSuccess).padding(AppSpacing.lg).journeyCard()
+            }
+            HStack { Text("Roadmap Progress").font(AppTypography.headline).foregroundStyle(Color.appTextSecondary); Spacer(); Text("\(Int((store.progress * 100).rounded()))%").font(AppTypography.headline).foregroundStyle(Color.appPrimary) }
+            Text("\(store.completedIDs.count) of \(store.missions.count) missions completed · \(Int((store.progress * 100).rounded()))%")
+                .font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
+            ForEach(Array(RoadmapStageID.allCases.enumerated()), id: \.element.rawValue) { index, stage in
+                let items = store.roadmap.filter { $0.mission.stage == stage }
+                let completed = items.allSatisfy { store.completedIDs.contains($0.id) }
+                Label("\(index + 1). \(stage.rawValue.capitalized)", systemImage: completed ? "checkmark.circle.fill" : items.contains { store.isUnlocked($0.mission) } ? "circle.fill" : "lock.fill")
+                    .font(AppTypography.title3.bold()).foregroundStyle(completed ? Color.appSuccess : Color.appTextPrimary)
+                VStack(spacing: 0) {
+                    ForEach(Array(items.enumerated()), id: \.element.id) { offset, item in
+                        NavigationLink { MissionActivityView(store: store, item: item) } label: {
+                            HStack(spacing: AppSpacing.sm) {
+                                Image(systemName: store.completedIDs.contains(item.id) ? "checkmark.circle.fill" : store.isUnlocked(item.mission) ? "circle.fill" : "lock.fill")
+                                    .foregroundStyle(store.completedIDs.contains(item.id) ? Color.appSuccess : store.isUnlocked(item.mission) ? Color.appInfo : Color.appTextTertiary)
+                                VStack(alignment: .leading, spacing: AppSpacing.xxs) {
+                                    Text(item.mission.title).font(AppTypography.body).foregroundStyle(Color.appTextPrimary)
+                                    Text(store.completedIDs.contains(item.id) ? "Completed" : store.isUnlocked(item.mission) ? item.classification.rawValue : "Complete prerequisites first")
+                                        .font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
+                                }
+                                Spacer(minLength: 0); Image(systemName: "chevron.right").font(AppTypography.caption).foregroundStyle(Color.appTextTertiary)
+                            }.padding(.vertical, AppSpacing.md)
+                        }.buttonStyle(.plain)
+                        if offset < items.count - 1 { Divider().padding(.leading, 30) }
+                    }
+                }.padding(.horizontal, AppSpacing.lg).journeyCard()
             }
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                Text("Your roadmap").font(AppTypography.title2.bold())
-                Text("\(store.completedIDs.intersection(Set(store.missions.map(\.id))).count) of \(store.missions.count) missions completed · \(Int((store.progress * 100).rounded()))%")
-                ProgressView(value: store.progress).accessibilityLabel("Roadmap completion")
-                Text("High scores turn missions into optional validation, not automatic completion. Finish prerequisites to unlock the next activity.")
-                    .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
-            }
-            ForEach(RoadmapStageID.allCases, id: \.rawValue) { stage in
-                Text(stage.rawValue.capitalized).font(AppTypography.title3.bold())
-                ForEach(store.roadmap.filter { $0.mission.stage == stage }) { item in
-                    NavigationLink { MissionActivityView(store: store, item: item) } label: {
-                        HStack(alignment: .top, spacing: AppSpacing.sm) {
-                            Image(systemName: store.completedIDs.contains(item.id) ? "checkmark.circle.fill" : store.isUnlocked(item.mission) ? "circle" : "lock")
-                                .foregroundStyle(Color.appPrimary).accessibilityHidden(true)
-                            VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                                Text(item.mission.title).font(AppTypography.headline)
-                                Text(store.completedIDs.contains(item.id) ? "Completed" : store.isUnlocked(item.mission) ? item.classification.rawValue : "Complete prerequisites first")
-                                    .font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
-                            }
-                            Spacer(); Image(systemName: "chevron.right")
-                        }.padding(AppSpacing.cardPadding).cardBackground()
-                    }
-                }
-            }
+                Label("Your skill snapshot", systemImage: "chart.bar").font(AppTypography.headline)
+                NavigationLink("View skill breakdown & history") { SkillHistoryView(store: store) }.frame(minHeight: 44)
+                Text("Mission completion records your work. Reassessment updates your proficiency scores.").font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
+            }.padding(AppSpacing.lg).journeyCard()
         } else {
-            Text("Start with an honest baseline.").font(AppTypography.title2.bold())
-            Text("Eight skills. Two answers for each: what you can do and what evidence you have. Your results prioritize the gaps that matter most.")
-            Text("No assessment yet. Your roadmap begins after your first skill assessment.")
-                .padding(AppSpacing.cardPadding).cardBackground()
+            HStack(spacing: AppSpacing.lg) {
+                VStack(alignment: .leading, spacing: AppSpacing.sm) {
+                    Text("You chose").foregroundStyle(Color.appTextSecondary)
+                    Text("Product Manager").font(AppTypography.title.bold())
+                    Label("Goal Confirmed", systemImage: "checkmark.circle").font(AppTypography.subheadline.bold()).foregroundStyle(Color.appSuccess)
+                }
+                Spacer(minLength: 0)
+                Image("productManager").resizable().scaledToFit().frame(width: 112).accessibilityHidden(true)
+            }.padding(AppSpacing.xl).journeyCard()
+            Text("Build your starting point").font(AppTypography.title2.bold())
+            HStack(spacing: AppSpacing.md) {
+                JourneyIcon(name: "checklist")
+                VStack(alignment: .leading, spacing: AppSpacing.xs) { Text("PM Skill Check").font(AppTypography.headline); Text("Eight skills. Capability and evidence. A roadmap based on your answers.").foregroundStyle(Color.appTextSecondary) }
+            }
+            AppButton(title: "Assess my PM skills", action: { assessment = true }, systemImage: "arrow.right")
+            Text("What you’ll build").font(AppTypography.title2.bold())
+            curriculum
         }
-        AppButton(title: store.latestSkillSession == nil ? "Assess my PM skills" : "Reassess my PM skills", action: { assessment = true }, systemImage: "checklist")
+        if store.latestSkillSession != nil {
+            AppButton(title: "Reassess my PM skills", action: { assessment = true }, systemImage: "checklist")
+        }
     }
-
+    private var curriculum: some View {
+        VStack(spacing: 0) {
+            ForEach(Array(store.missions.prefix(3).enumerated()), id: \.element.id) { index, mission in
+                HStack(spacing: AppSpacing.md) {
+                    JourneyIcon(name: ["briefcase", "scope", "triangle"][index], size: 40)
+                    VStack(alignment: .leading, spacing: AppSpacing.xxs) { Text(mission.title).font(AppTypography.headline); Text(mission.evidence).font(AppTypography.caption).foregroundStyle(Color.appTextSecondary) }
+                    Spacer(minLength: 0)
+                }.padding(.vertical, AppSpacing.md)
+                if index < 2 { Divider() }
+            }
+        }.padding(.horizontal, AppSpacing.lg).journeyCard()
+    }
 }
 
 struct MissionActivityView: View {
@@ -101,7 +160,7 @@ struct MissionActivityView: View {
                 if !store.isUnlocked(item.mission) {
                     section("Before you start", item.mission.prerequisiteMissionIDs.compactMap { id in store.missions.first { $0.id == id }?.title }.joined(separator: "\n"))
                 }
-                Text("Your evidence").font(AppTypography.headline)
+                Text("Your Evidence").font(AppTypography.title3.bold())
                 Text("Describe what you made and where you keep it. Avoid personal or sensitive details; CareerZ stores these notes locally and does not verify external artifacts.")
                     .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
                 TextField("Artifact description or link", text: $evidence, axis: .vertical).lineLimit(3...8)
@@ -130,6 +189,10 @@ struct MissionActivityView: View {
         } message: { Text("Your evidence and reflection will be kept. Completed dependent missions must be undone first.") }
     }
     private func section(_ title: String, _ text: String) -> some View {
-        VStack(alignment: .leading, spacing: AppSpacing.sm) { Text(title).font(AppTypography.headline); Text(text).foregroundStyle(Color.appTextSecondary) }
+        VStack(alignment: .leading, spacing: AppSpacing.md) {
+            Label(title, systemImage: title == "Activity" ? "hammer" : title == "Evidence to create" ? "doc.text" : title == "Reflection prompt" ? "bubble.left" : "lightbulb")
+                .font(AppTypography.headline).foregroundStyle(Color.appPrimary)
+            Text(text).foregroundStyle(Color.appTextSecondary)
+        }.frame(maxWidth: .infinity, alignment: .leading).padding(AppSpacing.lg).journeyCard()
     }
 }

@@ -15,12 +15,14 @@ struct JourneyRootView: View {
                 JourneyWelcomeView { onboarded = true }
             } else {
                 TabView(selection: $selectedTab) {
-                    DiscoveryView(store: store, onDevelop: { selectedTab = 1 })
-                        .tabItem { Label("Discover", systemImage: "safari") }.tag(0)
+                    JourneyDashboardView(store: store, onDiscover: { selectedTab = 1 }, onRoadmap: { selectedTab = 2 })
+                        .tabItem { Label("Home", systemImage: "house.fill") }.tag(0)
+                    DiscoveryView(store: store, onDevelop: { selectedTab = 2 })
+                        .tabItem { Label("Discover", systemImage: "safari") }.tag(1)
                     DevelopmentView(store: store)
-                        .tabItem { Label("Develop", systemImage: "map") }.tag(1)
+                        .tabItem { Label("Roadmap", systemImage: "map.fill") }.tag(2)
                     JourneySettingsView(store: store, onDelete: { onboarded = false; selectedTab = 0 })
-                        .tabItem { Label("Profile", systemImage: "person.crop.circle") }.tag(2)
+                        .tabItem { Label("Profile", systemImage: "person.crop.circle") }.tag(3)
                 }
             }
         }
@@ -34,21 +36,7 @@ struct JourneyRootView: View {
 struct JourneyWelcomeView: View {
     let onStart: () -> Void
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                Image("LogoCareerZWarna").resizable().scaledToFit().frame(width: 64, height: 64).accessibilityHidden(true)
-                Text("Many possibilities.\nA direction worth exploring.").font(AppTypography.largeTitle.bold())
-                Text("Start with your interests and strengths. Choose a direction, build evidence, and learn from the progress you actually make.")
-                    .foregroundStyle(Color.appTextSecondary)
-                ForEach([("safari", "Discover", "Compass helps you explore six technology career directions."), ("arrow.up.right", "Decide", "A suggestion is a starting point. You choose your direction."), ("map", "Develop", "The first complete development journey focuses on Product Management.")], id: \.1) { icon, title, detail in
-                    Label { VStack(alignment: .leading, spacing: AppSpacing.xs) { Text(title).font(AppTypography.headline); Text(detail).foregroundStyle(Color.appTextSecondary) } }
-                    icon: { Image(systemName: icon).foregroundStyle(Color.appPrimary) }
-                }
-                Text("Your answers and progress stay on this device. No account, cloud sync, or tracking.").font(AppTypography.footnote)
-                Text(JourneyCopy.disclaimer).font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
-                AppButton(title: "Start exploring", action: onStart, systemImage: "arrow.right")
-            }.padding(AppSpacing.screenHorizontal)
-        }.background(Color.appGroupedBackground)
+        OnboardingIntroView(onGetStarted: onStart)
     }
 }
 

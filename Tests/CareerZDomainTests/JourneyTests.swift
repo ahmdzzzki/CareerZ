@@ -138,3 +138,20 @@ extension JourneyTests {
         }
     }
 }
+
+
+extension JourneyTests {
+    func testDashboardProficiencyUsesWeightsAndRejectsMissingSkills() throws {
+        let items = try skills()
+        let answers = Dictionary(uniqueKeysWithValues: items.enumerated().map {
+            ($0.element.id, SkillResponse(capability: $0.offset % 5, evidence: 2))
+        })
+        let session = try JourneyEngine().assess(skills: items, answers: answers)
+        let expected = items.reduce(0.0) { total, skill in
+            total + session.results.first { $0.skillID == skill.id }!.calculatedScore * skill.importanceWeight
+        }
+        XCTAssertEqual(try XCTUnwrap(SkillHistoryService().weightedProficiency(skills: items, session: session)), expected, accuracy: 0.0001)
+        XCTAssertNil(SkillHistoryService().weightedProficiency(skills: Array(items.dropLast()), session: session))
+        XCTAssertNil(SkillHistoryService().weightedProficiency(skills: [], session: session))
+    }
+}

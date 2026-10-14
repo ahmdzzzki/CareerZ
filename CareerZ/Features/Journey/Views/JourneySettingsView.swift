@@ -3,11 +3,21 @@ import SwiftUI
 struct JourneySettingsView: View {
     @Bindable var store: JourneyStore
     let onDelete: () -> Void
+    @AppStorage("displayName") private var displayName = ""
     @State private var resetKind: JourneyStore.ResetKind?
     @State private var confirmation = false
     var body: some View {
         NavigationStack {
             List {
+                Section {
+                    HStack(spacing: AppSpacing.md) {
+                        JourneyIcon(name: "person.crop.circle", size: 64)
+                        VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                            Text("Your Profile").font(AppTypography.title2.bold())
+                            TextField("Your name (optional)", text: $displayName).textContentType(.givenName)
+                        }
+                    }.padding(.vertical, AppSpacing.sm)
+                }
                 Section("Your direction") {
                     Text(store.selectedDomain?.title ?? "No direction selected")
                     Text("Change your direction in Discover. Your previous assessments and mission evidence are retained.")
@@ -31,7 +41,7 @@ struct JourneySettingsView: View {
             }.navigationTitle("Profile")
                 .confirmationDialog(resetTitle, isPresented: $confirmation, titleVisibility: .visible) {
                     Button("Delete permanently", role: .destructive) {
-                        if let kind = resetKind, store.reset(kind), kind == .all { onDelete() }
+                        if let kind = resetKind, store.reset(kind), kind == .all { displayName = ""; onDelete() }
                         resetKind = nil
                     }
                     Button("Cancel", role: .cancel) { resetKind = nil }

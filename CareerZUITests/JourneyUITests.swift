@@ -15,24 +15,26 @@ final class JourneyUITests: XCTestCase {
 
     private func begin(_ app: XCUIApplication) {
         app.launch()
-        let welcome = app.buttons["Start exploring"]
-        if welcome.waitForExistence(timeout: 3) { tap(welcome, in: app); return }
+        let welcome = app.buttons["Get Started"]
+        if welcome.waitForExistence(timeout: 3) { tap(welcome, in: app); app.tabBars.buttons["Discover"].tap(); return }
         app.tabBars.buttons["Profile"].tap()
         tap(app.buttons["Delete all local data"], in: app)
         app.buttons["Delete permanently"].tap()
         tap(welcome, in: app)
+        app.tabBars.buttons["Discover"].tap()
     }
 
     func testPMJourneyPersistsAfterRelaunch() {
         let app = XCUIApplication()
         begin(app)
-        tap(app.buttons["Product Management"], in: app)
+        tap(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Product Management")).firstMatch, in: app)
         tap(app.buttons["Choose this direction"], in: app)
         app.buttons["Choose direction"].tap()
         tap(app.buttons["Assess my PM skills"], in: app)
         for index in 0..<8 {
             let capability = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "2 · Guided Practice")).firstMatch
             tap(capability, in: app)
+            tap(app.buttons["Continue"], in: app)
             tap(app.buttons["2 · A guided exercise or project"], in: app)
             tap(app.buttons[index == 7 ? "Save my assessment" : "Continue"], in: app)
         }
@@ -47,12 +49,27 @@ final class JourneyUITests: XCTestCase {
         tap(app.buttons["Complete this mission"], in: app)
         XCTAssertTrue(app.staticTexts["Saved on this device"].waitForExistence(timeout: 5))
         app.terminate(); app.launch()
-        app.tabBars.buttons["Develop"].tap()
+        app.tabBars.buttons["Roadmap"].tap()
         XCTAssertTrue(app.staticTexts["Your skill snapshot"].waitForExistence(timeout: 10))
         tap(app.buttons["View skill breakdown & history"], in: app)
         XCTAssertTrue(app.staticTexts["Your first skill assessment. This is your baseline—there is no trend to show yet."].waitForExistence(timeout: 5))
         app.navigationBars.buttons.firstMatch.tap()
-        tap(app.staticTexts["1 of 10 missions completed · 10%"], in: app)
+        XCTAssertTrue(app.staticTexts["1 of 10 missions completed · 10%"].exists)
+    }
+
+    func testRefinedDashboardAndRoadmapNavigation() {
+        let app = XCUIApplication()
+        app.launch()
+        app.tabBars.buttons["Home"].tap()
+        XCTAssertTrue(app.staticTexts["PM Skill Snapshot"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Next Step"].exists)
+        let home = XCTAttachment(screenshot: app.screenshot())
+        home.name = "Refined Home"; home.lifetime = .keepAlways; add(home)
+        app.tabBars.buttons["Roadmap"].tap()
+        XCTAssertTrue(app.staticTexts["Product Manager Roadmap"].waitForExistence(timeout: 5))
+        let roadmap = XCTAttachment(screenshot: app.screenshot())
+        roadmap.name = "Refined Roadmap"; roadmap.lifetime = .keepAlways; add(roadmap)
+        app.tabBars.buttons["Home"].tap()
     }
 
     func testCompassShowsExplainableMatchesAndPersists() {
@@ -68,6 +85,7 @@ final class JourneyUITests: XCTestCase {
         tap(app.buttons["Compare leading directions"], in: app)
         XCTAssertTrue(app.staticTexts["A match is an invitation, not a verdict."].waitForExistence(timeout: 5))
         app.terminate(); app.launch()
+        app.tabBars.buttons["Discover"].tap()
         XCTAssertTrue(app.staticTexts["Your Compass"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.buttons["Retake Compass"].exists)
     }

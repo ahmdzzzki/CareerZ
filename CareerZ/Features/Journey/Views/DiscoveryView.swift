@@ -8,9 +8,15 @@ struct DiscoveryView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                    Text("Find a direction.\nKeep your options open.").font(AppTypography.largeTitle.bold())
-                    Text("Compass reflects your answers about interests and tendencies. It suggests experiments—not a fixed career label.")
-                        .foregroundStyle(Color.appTextSecondary)
+                    Text("What’s your direction?").font(AppTypography.largeTitle.bold())
+                    Text("Explore the paths that interest you. Choose a direction to build your own roadmap.").foregroundStyle(Color.appTextSecondary)
+                    HStack(spacing: AppSpacing.md) {
+                        Image("OnboardingIntro").resizable().scaledToFill().frame(width: 90, height: 106).clipShape(RoundedRectangle(cornerRadius: AppRadius.lg)).accessibilityHidden(true)
+                        VStack(alignment: .leading, spacing: AppSpacing.sm) {
+                            Text("CareerZ Compass").font(AppTypography.title3.bold())
+                            Text("Not sure where to start? Let your interests point you toward a few paths to explore.").font(AppTypography.callout).foregroundStyle(Color.appTextSecondary)
+                        }
+                    }.padding(AppSpacing.lg).journeyCard()
                     if let latest = store.compassHistory.first {
                         HStack { Label("Your Compass", systemImage: "safari"); Spacer(); Text(latest.assessedAt, style: .date).font(AppTypography.caption) }
                         if latest.hasCloseLeaders {
@@ -28,7 +34,7 @@ struct DiscoveryView: View {
                                     Text("\(contribution.trait.title): \(contribution.score.formatted(.number.precision(.fractionLength(0)))) / 100")
                                         .font(AppTypography.caption)
                                 }
-                            }.padding(AppSpacing.cardPadding).cardBackground()
+                            }.padding(AppSpacing.lg).journeyCard()
                         }
                         NavigationLink("Compare leading directions") {
                             CareerComparisonView(matches: Array(latest.matches.prefix(2)))
@@ -47,8 +53,16 @@ struct DiscoveryView: View {
                         NavigationLink {
                             CareerDirectionView(store: store, domain: domain, match: store.compassHistory.first?.matches.first { $0.domain == domain }, onDevelop: onDevelop)
                         } label: {
-                            HStack { Text(domain.title); Spacer(); if store.selectedDomain == domain { Image(systemName: "checkmark.circle.fill") }; Image(systemName: "chevron.right") }
-                                .padding(AppSpacing.md).cardBackground()
+                            HStack(spacing: AppSpacing.md) {
+                                JourneyIcon(name: JourneyAppearance.icon(domain), color: JourneyAppearance.color(domain))
+                                VStack(alignment: .leading, spacing: AppSpacing.xxs) {
+                                    Text(domain.title).font(AppTypography.headline).foregroundStyle(Color.appTextPrimary)
+                                    Text(JourneyAppearance.subtitle(domain)).font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
+                                }
+                                Spacer(minLength: 0)
+                                Image(systemName: store.selectedDomain == domain ? "largecircle.fill.circle" : "circle")
+                                    .font(AppTypography.title2).foregroundStyle(store.selectedDomain == domain ? Color.appPrimary : Color.appSeparator)
+                            }.padding(AppSpacing.lg).journeyCard()
                         }
                     }
                 }.padding(AppSpacing.screenHorizontal)
@@ -64,11 +78,21 @@ struct CareerDirectionView: View {
     let domain: CareerDomainID
     let match: CompassMatch?
     let onDevelop: () -> Void
+    @Environment(\.dismiss) private var dismiss
     @State private var showConfirmation = false
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                Text(domain.title).font(AppTypography.largeTitle.bold())
+                HStack(spacing: AppSpacing.md) {
+                    VStack(alignment: .leading, spacing: AppSpacing.sm) {
+                        Text("Explore this direction").font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
+                        Text(domain.title).font(AppTypography.title.bold())
+                        Text(JourneyAppearance.subtitle(domain)).font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
+                    }
+                    Spacer(minLength: 0)
+                    if domain == .productManagement { Image("productManager").resizable().scaledToFit().frame(width: 100).accessibilityHidden(true) }
+                    else { JourneyIcon(name: JourneyAppearance.icon(domain), color: JourneyAppearance.color(domain), size: 64) }
+                }.padding(AppSpacing.lg).journeyCard()
                 Text("A direction worth exploring. You can change your mind as you learn.").foregroundStyle(Color.appTextSecondary)
                 if let match {
                     Text("Compass Match: \(match.score.formatted(.number.precision(.fractionLength(0)))) / 100").font(AppTypography.headline)
@@ -84,7 +108,7 @@ struct CareerDirectionView: View {
                         .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
                 }
                 Text("Try this direction").font(AppTypography.title2.bold())
-                Text(JourneyCopy.experiment(domain)).padding(AppSpacing.cardPadding).cardBackground()
+                Text(JourneyCopy.experiment(domain)).padding(AppSpacing.lg).journeyCard()
                 if domain != .productManagement {
                     Text("You can explore this direction now. Its skill-development content is not available yet; Product Management is the first pilot.")
                         .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
@@ -93,7 +117,7 @@ struct CareerDirectionView: View {
             }.padding(AppSpacing.screenHorizontal)
         }.background(Color.appGroupedBackground)
         .confirmationDialog("Explore \(domain.title)?", isPresented: $showConfirmation, titleVisibility: .visible) {
-            Button("Choose direction") { if store.choose(domain) { onDevelop() } }
+            Button("Choose direction") { if store.choose(domain) { onDevelop(); dismiss() } }
         } message: { Text("Your assessment history and existing Product Management mission evidence will be kept.") }
     }
 }
@@ -119,7 +143,7 @@ struct CareerComparisonView: View {
                             }.font(AppTypography.footnote)
                         }
                         Text("Try: \(JourneyCopy.experiment(match.domain))").font(AppTypography.callout)
-                    }.padding(AppSpacing.cardPadding).cardBackground()
+                    }.padding(AppSpacing.lg).journeyCard()
                 }
                 Text("Consider what felt energizing, what you wanted to learn more about, and what feedback you received. Your experience can matter more than a small difference in match scores.")
                     .foregroundStyle(Color.appTextSecondary)

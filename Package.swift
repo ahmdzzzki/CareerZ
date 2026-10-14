@@ -8,7 +8,7 @@ let package = Package(
     targets: [
         .target(
             name: "CareerZDomain", path: "CareerZ",
-            exclude: ["App", "Features/Assessment", "Features/Home", "Features/Onboarding", "Features/Profile", "Features/Roadmap", "Features/Journey/Views", "Navigation", "Core/Components", "Core/Models", "Core/Theme", "Resources/ContentView.swift", "Resources/Assets.xcassets", "Resources/PrivacyInfo.xcprivacy"],
+            exclude: ["App", "Features/Assessment", "Features/Home", "Features/Onboarding", "Features/Profile", "Features/Roadmap", "Features/Journey/Views", "Features/Journey/Components", "Navigation", "Core/Components", "Core/Models", "Core/Theme", "Resources/ContentView.swift", "Resources/Assets.xcassets", "Resources/PrivacyInfo.xcprivacy"],
             sources: ["Core/Domain", "Core/Services", "Core/Data", "Features/Journey/ViewModels"],
             resources: [.copy("Resources/CareerKnowledge")]
         ),

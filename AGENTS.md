@@ -7,7 +7,7 @@ Berlaku untuk seluruh proyek dalam direktori ini. Baca `docs/PRODUCT_DIRECTION.m
 - `CareerZ.xcodeproj`: proyek Xcode, target dan scheme `CareerZ`, konfigurasi Debug/Release. Folder `CareerZ` memakai `PBXFileSystemSynchronizedRootGroup`; periksa keanggotaan target sebelum mengedit referensi proyek secara manual.
 - `CareerZ/App/CareerZApp.swift`: entry point `@main`, membuka `ContentView`.
 - `CareerZ/Resources/ContentView.swift`: memilih onboarding atau tab utama berdasarkan `@AppStorage("hasCompletedOnboarding")`. Jangan mengembalikan reset onboarding otomatis yang telah dihapus pada Step 01.
-- Alur aktif: `CareerZApp` → `ContentView` → `Features/Journey/Views/JourneyRootView`. Tab aktif Discover, Develop, dan Profile memakai `JourneyStore`. `Navigation/MainTabView` dan fitur Home/Roadmap/Assessment lama tetap merupakan prototype yang belum tersambung ke data nyata; jangan mengaktifkan jalur sample untuk pengguna.
+- Alur aktif: `CareerZApp` → `ContentView` → `Features/Journey/Views/JourneyRootView`. Tab aktif Home, Discover, Roadmap, dan Profile memakai `JourneyStore`. `Navigation/MainTabView` dan fitur Home/Roadmap/Assessment lama tetap merupakan prototype yang belum tersambung ke data nyata; jangan mengaktifkan jalur sample untuk pengguna.
 - `CareerZ/Features/{Onboarding,Assessment,Home,Roadmap,Profile}`: layar di `Views`, komponen khusus fitur di `Components`, state/logika presentasi di `ViewModels`, dan model khusus fitur di `Models` bila tersedia. Folder ViewModel onboarding saat ini bernama `VIewModels`; gunakan path yang ada dan hindari penggantian nama di luar cakupan tugas.
 - `CareerZ/Core/Models`: model UI lintas fitur, termasuk `HomeRoute`, `FocusArea`, `NextStep`, dan `AssessmentQuestion`.
 - `CareerZ/Core/Domain`: kontrak domain bersama seperti `CareerDomainID`, `SkillLevel`, `SkillDefinition`, `SkillAssessmentResult`, dan `MissionDefinition`.
@@ -74,3 +74,12 @@ xcodebuild -project CareerZ.xcodeproj -scheme CareerZ -configuration Debug \
 - `JourneySchemaV1` dan `JourneyMigrationPlan` menyimpan snapshot versioned, arah terpilih, bukti/refleksi, serta tanggal completion. Perubahan schema berikutnya memerlukan migration stage. Jangan mengganti identifier mission/skill tanpa strategi migrasi.
 - `JourneyEngine.roadmap` memakai topological ordering dan prioritas gap. Skill yang mencapai target menjadi Optional Validation; completion tetap membutuhkan tindakan pengguna. Undo harus menjaga prasyarat, dan reset permanen memerlukan dialog konfirmasi di aplikasi.
 - Pertanyaan/content harus direview dengan target users sebelum release. Jangan menyebut Compass sebagai assessment ilmiah. UI dan copy v1 menggunakan bahasa Inggris.
+
+
+## Identitas visual CareerZ
+
+- Pertahankan palet biru brand dari asset, latar grouped abu-abu, kartu putih adaptif beradius besar, heading tebal, ikon pastel, dan tombol utama kapsul.
+- Gunakan aset asli `OnboardingIntro`, `Assessment`, dan `productManager`; gunakan `JourneyVisuals` untuk kartu, ring, dan tile lintas layar journey.
+- Home berisi snapshot, arah terpilih, carousel skill, Next Step, dan ringkasan roadmap. Pengguna baru tetap mendapat konten yang bisa ditindaklanjuti tanpa skor atau progress palsu.
+- Assessment PM memiliki 16 langkah: capability lalu evidence untuk masing-masing delapan skill. CTA tetap di safe-area bawah. Compass tetap 40 pertanyaan.
+- Ring proficiency adalah rata-rata berbobot skor skill dibagi empat, bukan kesiapan diterima kerja. Tren hanya ditampilkan bila ada dua assessment yang dapat dibandingkan.
