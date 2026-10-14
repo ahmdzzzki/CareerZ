@@ -1,0 +1,242 @@
+[
+  {
+    "id": "problemSolving_1",
+    "trait": "problemSolving",
+    "text": "When something goes wrong, I enjoy working out what caused it.",
+    "reversed": false
+  },
+  {
+    "id": "technicalCuriosity_1",
+    "trait": "technicalCuriosity",
+    "text": "I am curious about how digital tools work behind the scenes.",
+    "reversed": false
+  },
+  {
+    "id": "creativity_1",
+    "trait": "creativity",
+    "text": "I enjoy finding more than one way to approach a task.",
+    "reversed": false
+  },
+  {
+    "id": "visualThinking_1",
+    "trait": "visualThinking",
+    "text": "Sketching helps me explain an idea.",
+    "reversed": false
+  },
+  {
+    "id": "communication_1",
+    "trait": "communication",
+    "text": "I adjust how I explain something to the person listening.",
+    "reversed": false
+  },
+  {
+    "id": "empathy_1",
+    "trait": "empathy",
+    "text": "I ask people about their experience before assuming what they need.",
+    "reversed": false
+  },
+  {
+    "id": "analyticalThinking_1",
+    "trait": "analyticalThinking",
+    "text": "I look for patterns in information before drawing a conclusion.",
+    "reversed": false
+  },
+  {
+    "id": "ownership_1",
+    "trait": "ownership",
+    "text": "I take responsibility for following through on a shared task.",
+    "reversed": false
+  },
+  {
+    "id": "problemSolving_2",
+    "trait": "problemSolving",
+    "text": "I break a complicated problem into smaller parts.",
+    "reversed": false
+  },
+  {
+    "id": "technicalCuriosity_2",
+    "trait": "technicalCuriosity",
+    "text": "I enjoy exploring an unfamiliar technology even when it takes effort.",
+    "reversed": false
+  },
+  {
+    "id": "creativity_2",
+    "trait": "creativity",
+    "text": "I suggest new possibilities when a group feels stuck.",
+    "reversed": false
+  },
+  {
+    "id": "visualThinking_2",
+    "trait": "visualThinking",
+    "text": "I notice when an interface is confusing to look at.",
+    "reversed": false
+  },
+  {
+    "id": "communication_2",
+    "trait": "communication",
+    "text": "I ask questions to check that a discussion is understood.",
+    "reversed": false
+  },
+  {
+    "id": "empathy_2",
+    "trait": "empathy",
+    "text": "I notice when someone sees a situation differently from me.",
+    "reversed": false
+  },
+  {
+    "id": "analyticalThinking_2",
+    "trait": "analyticalThinking",
+    "text": "I question whether evidence supports a claim.",
+    "reversed": false
+  },
+  {
+    "id": "ownership_2",
+    "trait": "ownership",
+    "text": "I help a team decide what matters most when time is limited.",
+    "reversed": false
+  },
+  {
+    "id": "problemSolving_3",
+    "trait": "problemSolving",
+    "text": "I try a different approach when my first attempt fails.",
+    "reversed": false
+  },
+  {
+    "id": "technicalCuriosity_3",
+    "trait": "technicalCuriosity",
+    "text": "I look for explanations of how a system works.",
+    "reversed": false
+  },
+  {
+    "id": "creativity_3",
+    "trait": "creativity",
+    "text": "I connect ideas from different subjects.",
+    "reversed": false
+  },
+  {
+    "id": "visualThinking_3",
+    "trait": "visualThinking",
+    "text": "I use diagrams to organize information.",
+    "reversed": false
+  },
+  {
+    "id": "communication_3",
+    "trait": "communication",
+    "text": "I can summarize a complicated discussion in a few clear points.",
+    "reversed": false
+  },
+  {
+    "id": "empathy_3",
+    "trait": "empathy",
+    "text": "I consider who could be excluded by a solution.",
+    "reversed": false
+  },
+  {
+    "id": "analyticalThinking_3",
+    "trait": "analyticalThinking",
+    "text": "I enjoy comparing numbers to understand what changed.",
+    "reversed": false
+  },
+  {
+    "id": "ownership_3",
+    "trait": "ownership",
+    "text": "I raise risks early rather than hoping someone else notices.",
+    "reversed": false
+  },
+  {
+    "id": "problemSolving_4",
+    "trait": "problemSolving",
+    "text": "I prefer someone else to figure out why a problem happened.",
+    "reversed": true
+  },
+  {
+    "id": "technicalCuriosity_4",
+    "trait": "technicalCuriosity",
+    "text": "Learning how technology works rarely interests me.",
+    "reversed": true
+  },
+  {
+    "id": "creativity_4",
+    "trait": "creativity",
+    "text": "I avoid tasks that ask me to imagine a new approach.",
+    "reversed": true
+  },
+  {
+    "id": "visualThinking_4",
+    "trait": "visualThinking",
+    "text": "Visual details rarely affect how I understand something.",
+    "reversed": true
+  },
+  {
+    "id": "communication_4",
+    "trait": "communication",
+    "text": "I avoid explaining my reasoning to other people.",
+    "reversed": true
+  },
+  {
+    "id": "empathy_4",
+    "trait": "empathy",
+    "text": "I usually trust my assumptions without asking the people affected.",
+    "reversed": true
+  },
+  {
+    "id": "analyticalThinking_4",
+    "trait": "analyticalThinking",
+    "text": "I prefer not to examine evidence when deciding what to do.",
+    "reversed": true
+  },
+  {
+    "id": "ownership_4",
+    "trait": "ownership",
+    "text": "I avoid taking responsibility when a task has no clear owner.",
+    "reversed": true
+  },
+  {
+    "id": "problemSolving_5",
+    "trait": "problemSolving",
+    "text": "I compare possible solutions before choosing one.",
+    "reversed": false
+  },
+  {
+    "id": "technicalCuriosity_5",
+    "trait": "technicalCuriosity",
+    "text": "I experiment with new tools to understand what they can do.",
+    "reversed": false
+  },
+  {
+    "id": "creativity_5",
+    "trait": "creativity",
+    "text": "I enjoy turning a rough idea into something people can try.",
+    "reversed": false
+  },
+  {
+    "id": "visualThinking_5",
+    "trait": "visualThinking",
+    "text": "I enjoy arranging information so it is easier to follow.",
+    "reversed": false
+  },
+  {
+    "id": "communication_5",
+    "trait": "communication",
+    "text": "I enjoy helping a group reach a shared understanding.",
+    "reversed": false
+  },
+  {
+    "id": "empathy_5",
+    "trait": "empathy",
+    "text": "I try to understand the context behind someone’s frustration.",
+    "reversed": false
+  },
+  {
+    "id": "analyticalThinking_5",
+    "trait": "analyticalThinking",
+    "text": "I distinguish what I know from what I am assuming.",
+    "reversed": false
+  },
+  {
+    "id": "ownership_5",
+    "trait": "ownership",
+    "text": "I can make a decision and explain its trade-offs.",
+    "reversed": false
+  }
+]

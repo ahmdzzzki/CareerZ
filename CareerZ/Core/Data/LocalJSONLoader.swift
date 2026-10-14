@@ -27,7 +27,7 @@ struct LocalJSONLoader {
     }
 
     func decode<T: Decodable>(_ type: T.Type, from resourceName: String) throws -> T {
-        guard let url = bundle.url(forResource: resourceName, withExtension: "json") else {
+        guard let url = bundle.url(forResource: resourceName, withExtension: "json") ?? bundle.url(forResource: resourceName, withExtension: "json", subdirectory: "CareerKnowledge") else {
             throw LocalJSONLoaderError.fileNotFound(resourceName)
         }
 

@@ -124,10 +124,9 @@ private extension Array where Element == ReadinessHistoryPoint {
         ]
     }
 }
-#endif // DEBUG
-
 #Preview {
     ReadinessChart(points: .previewSample)
         .padding()
         .background(Color.appGroupedBackground)
 }
+#endif // DEBUG

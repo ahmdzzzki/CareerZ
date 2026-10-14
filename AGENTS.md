@@ -1,13 +1,13 @@
 # Panduan kerja CareerZ
 
-Berlaku untuk seluruh proyek dalam direktori ini. Baca `START_HERE_STEP_01.md` sebelum mengerjakan fitur. Ikuti cakupan permintaan pengguna; jangan melakukan redesign, refactor massal, atau menambahkan dependensi tanpa kebutuhan tugas.
+Berlaku untuk seluruh proyek dalam direktori ini. Baca `docs/PRODUCT_DIRECTION.md` dan `docs/IMPLEMENTATION_AUDIT.md` sebelum mengerjakan fitur. `START_HERE_STEP_01.md` merupakan catatan historis, bukan urutan implementasi terbaru. Ikuti cakupan permintaan pengguna; jangan melakukan redesign, refactor massal, atau menambahkan dependensi tanpa kebutuhan tugas.
 
 ## Struktur proyek
 
 - `CareerZ.xcodeproj`: proyek Xcode, target dan scheme `CareerZ`, konfigurasi Debug/Release. Folder `CareerZ` memakai `PBXFileSystemSynchronizedRootGroup`; periksa keanggotaan target sebelum mengedit referensi proyek secara manual.
 - `CareerZ/App/CareerZApp.swift`: entry point `@main`, membuka `ContentView`.
 - `CareerZ/Resources/ContentView.swift`: memilih onboarding atau tab utama berdasarkan `@AppStorage("hasCompletedOnboarding")`. Jangan mengembalikan reset onboarding otomatis yang telah dihapus pada Step 01.
-- `CareerZ/Navigation/MainTabView.swift`: tab Home dan Roadmap; Profile dibuka sebagai sheet dari fitur.
+- Alur aktif: `CareerZApp` → `ContentView` → `Features/Journey/Views/JourneyRootView`. Tab aktif Discover, Develop, dan Profile memakai `JourneyStore`. `Navigation/MainTabView` dan fitur Home/Roadmap/Assessment lama tetap merupakan prototype yang belum tersambung ke data nyata; jangan mengaktifkan jalur sample untuk pengguna.
 - `CareerZ/Features/{Onboarding,Assessment,Home,Roadmap,Profile}`: layar di `Views`, komponen khusus fitur di `Components`, state/logika presentasi di `ViewModels`, dan model khusus fitur di `Models` bila tersedia. Folder ViewModel onboarding saat ini bernama `VIewModels`; gunakan path yang ada dan hindari penggantian nama di luar cakupan tugas.
 - `CareerZ/Core/Models`: model UI lintas fitur, termasuk `HomeRoute`, `FocusArea`, `NextStep`, dan `AssessmentQuestion`.
 - `CareerZ/Core/Domain`: kontrak domain bersama seperti `CareerDomainID`, `SkillLevel`, `SkillDefinition`, `SkillAssessmentResult`, dan `MissionDefinition`.
@@ -35,18 +35,18 @@ Berlaku untuk seluruh proyek dalam direktori ini. Baca `START_HERE_STEP_01.md` s
 - Ikuti aksesibilitas yang sudah ada: label/hint tombol, ikon dekoratif `accessibilityHidden`, teks yang dapat membungkus, serta Reduce Motion untuk animasi komponen. Periksa light/dark mode dan ukuran teks besar saat mengubah UI.
 - Pertahankan `#Preview` yang relevan dan gunakan sample atau wrapper state lokal untuk preview komponen interaktif.
 
-## Fondasi produk Step 01
+## Catatan historis Step 01
 
 - Engine scoring sudah ada dan tidak melakukan I/O: capability/evidence dibatasi 0–4, skor berbobot 60%/40%, gap tidak negatif, dan prioritas berdasarkan gap × importance weight. Jangan menduplikasi rumus di View.
-- `rankedGaps` mengurutkan prioritas menurun dengan judul sebagai pemecah seri; input hasil harus memiliki `skillID` unik karena memakai `Dictionary(uniqueKeysWithValues:)`.
+- `rankedGaps` mengurutkan prioritas menurun dengan judul sebagai pemecah seri; hasil berulang untuk satu skill memakai timestamp terbaru tanpa crash.
 - JSON PM merupakan array `SkillDefinition` berisi delapan skill. Untuk integrasi berikutnya, gunakan `LocalJSONLoader.decode([SkillDefinition].self, from: "product_management_skills")`, tangani error, dan pastikan JSON tersalin ke bundle aplikasi.
 - Assessment yang ada memakai `AssessmentQuestionFactory`; UI ini belum merupakan integrasi assessment PM berbasis taxonomy/scoring Step 01.
-- SwiftData persistence, Compass assessment UI, integrasi PM assessment UI, UI generasi roadmap, dan metadata App Store belum ditambahkan oleh Step 01. Model mission tidak berarti generator roadmap sudah tersedia.
-- Langkah berikutnya dalam dokumen awal: muat taxonomy PM, tampilkan delapan skill melalui ViewModel assessment PM, lalu tambahkan target unit test engine. Kerjakan hanya bila diminta.
+- Step 01 belum menyertakan persistence/UI/generator roadmap. Implementasi terbaru menambahkan `JourneySchemaV1`, Compass, assessment PM, dan roadmap mission di `Features/Journey`. Metadata App Store masih merupakan pekerjaan release.
+- Urutan sumber utama: foundation → Compass/Discovery → alur PM → accessibility/release. Assessment readiness lima dimensi lama ditunda; jangan dicampur dengan Compass atau proficiency skill 0–4.
 
 ## Build dan verifikasi
 
-Jalankan dari root proyek. Gunakan Xcode dengan SDK yang mendukung deployment target iOS **26.5** dan API `.glassEffect`; proyek dibuat dengan Xcode 26.5 dan menargetkan iPhone serta iPad. Tidak ada `Package.swift` maupun dependensi package target saat ini.
+Jalankan dari root proyek. Gunakan Xcode dengan SDK yang mendukung deployment target iOS **26.5** dan API `.glassEffect`; proyek dibuat dengan Xcode 26.5 dan menargetkan iPhone serta iPad. `Package.swift` menguji source domain/data/store yang sama pada macOS; target iOS tidak memakai dependensi package eksternal.
 
 ```sh
 xcodebuild -version
@@ -62,6 +62,15 @@ xcodebuild -project CareerZ.xcodeproj -scheme CareerZ -configuration Debug \
 - Saat mengubah UI, periksa alur yang terdampak: onboarding baru (back/skip/continue dan pilihan jawaban), masuk Home setelah completion, relaunch tanpa reset onboarding, tab Roadmap, detail Home/Roadmap, sheet Profile/Next Step, serta penutupan assessment.
 - Untuk menguji onboarding ulang, gunakan instalasi simulator yang bersih atau reset data simulator khusus pengujian; jangan menambahkan reset ke kode aplikasi.
 - Saat mengubah resource, verifikasi decode JSON dan keberadaannya di bundle, bukan hanya validitas sintaks JSON.
-- Saat ini hanya ada target aplikasi; tidak ada target unit/UI test. Jangan mengklaim `xcodebuild test` atau `swift test` sudah dapat digunakan. Jika target tes ditambahkan untuk engine, cakup clamp 0–4, bobot skor, gap, prioritas, hasil kosong, dan pengurutan seri; gunakan tanggal tetap untuk hasil deterministik.
+- Jalankan `swift test --scratch-path /tmp/CareerZ-domain-build` untuk tes domain dan persistence. Target `CareerZUITests` ada pada shared scheme CareerZ; jalankan `xcodebuild test` dengan destination simulator kompatibel dari `-showdestinations`. Tes UI mereset data melalui UI; gunakan simulator khusus pengujian, bukan simulator dengan progress pribadi.
 - Untuk perubahan dokumentasi saja, cukup cocokkan panduan dengan kode dan konfigurasi proyek; build aplikasi tidak wajib. Laporkan pemeriksaan yang benar-benar dijalankan dan batasannya. Error akses cache/CoreSimulator dalam sandbox tidak membuktikan error kode.
 - Tinjau hanya perubahan dalam direktori proyek. Jika Git ternyata berakar di direktori induk, gunakan pathspec proyek (`git status --short -- .`) dan jangan menyertakan file pribadi di luar proyek.
+
+## State pengguna dan integritas
+
+- Compass memakai 40 pertanyaan bundled JSON, delapan trait, reverse scoring 1–5, dan enam match yang dijelaskan melalui kontribusi berbobot. Match bukan probabilitas sukses atau diagnosis.
+- Assessment PM memakai delapan skill, capability/evidence 0–4, bobot 60/40, dan target portfolio. Tampilkan proficiency, bukan klaim employability.
+- `JourneyStore` adalah state `@MainActor @Observable`, dengan `ModelContext` yang disuntikkan. Selalu `save()` secara eksplisit; jika gagal, rollback dan tampilkan error. Jangan mengganti storage gagal dengan store in-memory kosong.
+- `JourneySchemaV1` dan `JourneyMigrationPlan` menyimpan snapshot versioned, arah terpilih, bukti/refleksi, serta tanggal completion. Perubahan schema berikutnya memerlukan migration stage. Jangan mengganti identifier mission/skill tanpa strategi migrasi.
+- `JourneyEngine.roadmap` memakai topological ordering dan prioritas gap. Skill yang mencapai target menjadi Optional Validation; completion tetap membutuhkan tindakan pengguna. Undo harus menjaga prasyarat, dan reset permanen memerlukan dialog konfirmasi di aplikasi.
+- Pertanyaan/content harus direview dengan target users sebelum release. Jangan menyebut Compass sebagai assessment ilmiah. UI dan copy v1 menggunakan bahasa Inggris.

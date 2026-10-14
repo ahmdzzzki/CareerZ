@@ -31,7 +31,8 @@ struct AppButton: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 52)
+            .padding(.vertical, AppSpacing.sm)
+            .frame(minHeight: AppSpacing.buttonHeight)
             .foregroundStyle(isEnabled ? .white : .secondary)
             .background {
                 Capsule()

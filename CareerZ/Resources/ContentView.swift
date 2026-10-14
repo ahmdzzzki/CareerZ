@@ -1,30 +1,19 @@
-//
-//  ContentView.swift
-//  CareerZ
-//
-//  Created by Ahmad Zaki on 19/06/26.
-//
-
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    
-    @AppStorage("hasCompletedOnboarding")
-    private var hasCompletedOnboarding = false
-    
+    @Environment(\.modelContext) private var context
+    @State private var store: JourneyStore?
     var body: some View {
         Group {
-            if hasCompletedOnboarding {
-                MainTabView()
-            } else {
-                OnboardingView {
-                    hasCompletedOnboarding = true
-                }
-            }
+            if let store { JourneyRootView(store: store) }
+            else { ProgressView("Opening your career journey…") }
+        }
+        .task {
+            guard store == nil else { return }
+            let created = JourneyStore(context: context)
+            created.reload()
+            store = created
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

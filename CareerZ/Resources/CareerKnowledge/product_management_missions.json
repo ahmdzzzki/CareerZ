@@ -1,0 +1,177 @@
+[
+  {
+    "id": "pm_mission_01",
+    "domainID": "product_management",
+    "stage": "foundation",
+    "title": "Understand Product Work",
+    "primarySkillID": "pm_product_thinking",
+    "supportingSkillIDs": [
+      "pm_cross_functional_execution"
+    ],
+    "prerequisiteMissionIDs": [],
+    "why": "Product work connects decisions to user and business outcomes.",
+    "activity": "Choose a product you use. Compare the responsibilities of a PM, Project Manager, and Product Owner using its context.",
+    "evidence": "A one-page role comparison with examples.",
+    "reflection": "Which responsibility interests you, and which assumption do you need to check?"
+  },
+  {
+    "id": "pm_mission_02",
+    "domainID": "product_management",
+    "stage": "foundation",
+    "title": "Frame the Right Problem",
+    "primarySkillID": "pm_product_thinking",
+    "supportingSkillIDs": [
+      "pm_user_discovery"
+    ],
+    "prerequisiteMissionIDs": [
+      "pm_mission_01"
+    ],
+    "why": "A clear problem stops a team from treating a feature idea as a user need.",
+    "activity": "Describe one real user, their context, the evidence for a problem, and a desired outcome. Separate observations from assumptions.",
+    "evidence": "A problem statement with user, context, evidence, and outcome.",
+    "reflection": "What would make you change your problem statement?"
+  },
+  {
+    "id": "pm_mission_03",
+    "domainID": "product_management",
+    "stage": "foundation",
+    "title": "Connect User, Business, and Technology",
+    "primarySkillID": "pm_product_strategy",
+    "supportingSkillIDs": [
+      "pm_product_thinking"
+    ],
+    "prerequisiteMissionIDs": [
+      "pm_mission_02"
+    ],
+    "why": "Product decisions need to balance value, viability, and feasibility.",
+    "activity": "Map your problem across user needs, business goals, and technical constraints. Explain one strategic choice and its trade-off.",
+    "evidence": "A product triangle analysis and a strategic choice.",
+    "reflection": "Which side of the triangle has the weakest evidence?"
+  },
+  {
+    "id": "pm_mission_04",
+    "domainID": "product_management",
+    "stage": "practice",
+    "title": "Conduct User Interviews",
+    "primarySkillID": "pm_user_discovery",
+    "supportingSkillIDs": [
+      "pm_stakeholder_communication"
+    ],
+    "prerequisiteMissionIDs": [
+      "pm_mission_02"
+    ],
+    "why": "Listening helps challenge assumptions before you invest in a solution.",
+    "activity": "Write neutral interview questions. Talk to at least three potential users with their consent. Avoid collecting identifying or sensitive details in your notes.",
+    "evidence": "An interview guide and at least three anonymized interview notes.",
+    "reflection": "Which answer surprised you, and what did you ask that might have led the participant?"
+  },
+  {
+    "id": "pm_mission_05",
+    "domainID": "product_management",
+    "stage": "practice",
+    "title": "Synthesize Insights",
+    "primarySkillID": "pm_user_discovery",
+    "supportingSkillIDs": [
+      "pm_product_thinking"
+    ],
+    "prerequisiteMissionIDs": [
+      "pm_mission_04"
+    ],
+    "why": "Individual observations become useful when you explain the pattern and its limits.",
+    "activity": "Group observations from your interviews, identify patterns, and write opportunity statements. Keep contradictory findings.",
+    "evidence": "Affinity groups, insights, and opportunity statements.",
+    "reflection": "Which insight is supported by multiple observations?"
+  },
+  {
+    "id": "pm_mission_06",
+    "domainID": "product_management",
+    "stage": "practice",
+    "title": "Prioritize Opportunities",
+    "primarySkillID": "pm_prioritization",
+    "supportingSkillIDs": [
+      "pm_product_strategy"
+    ],
+    "prerequisiteMissionIDs": [
+      "pm_mission_03",
+      "pm_mission_05"
+    ],
+    "why": "Limited time makes prioritization a decision with consequences.",
+    "activity": "Compare at least three opportunities with a simple impact/effort matrix. Explain assumptions, confidence, and what you will defer.",
+    "evidence": "A prioritization matrix and written rationale.",
+    "reflection": "What evidence could reverse your priority order?"
+  },
+  {
+    "id": "pm_mission_07",
+    "domainID": "product_management",
+    "stage": "practice",
+    "title": "Write Requirements and Metrics",
+    "primarySkillID": "pm_requirements_roadmapping",
+    "supportingSkillIDs": [
+      "pm_analytics_experimentation"
+    ],
+    "prerequisiteMissionIDs": [
+      "pm_mission_06"
+    ],
+    "why": "Clear requirements connect a proposed change to a measurable outcome.",
+    "activity": "Write a mini PRD with problem, scope, non-goals, acceptance criteria, and success metrics. Include a baseline and a measurement plan.",
+    "evidence": "A mini PRD, acceptance criteria, and success metrics.",
+    "reflection": "Could a teammate understand what success looks like without asking you?"
+  },
+  {
+    "id": "pm_mission_08",
+    "domainID": "product_management",
+    "stage": "portfolio",
+    "title": "Build an Outcome Roadmap",
+    "primarySkillID": "pm_requirements_roadmapping",
+    "supportingSkillIDs": [
+      "pm_product_strategy"
+    ],
+    "prerequisiteMissionIDs": [
+      "pm_mission_07"
+    ],
+    "why": "A roadmap explains the outcomes you seek and the uncertainty between them.",
+    "activity": "Create an outcome roadmap for your chosen problem. Include assumptions, dependencies, and a way to revisit priorities.",
+    "evidence": "An outcome roadmap with assumptions and dependencies.",
+    "reflection": "Which dependency could change your plan most?"
+  },
+  {
+    "id": "pm_mission_09",
+    "domainID": "product_management",
+    "stage": "portfolio",
+    "title": "Align a Cross-Functional Team",
+    "primarySkillID": "pm_cross_functional_execution",
+    "supportingSkillIDs": [
+      "pm_stakeholder_communication"
+    ],
+    "prerequisiteMissionIDs": [
+      "pm_mission_08"
+    ],
+    "why": "Shared decisions and visible risks make collaboration easier.",
+    "activity": "Prepare a kickoff plan for a small team. Include responsibilities, a decision log, risks, and a concise stakeholder update. Ask a peer for feedback.",
+    "evidence": "A kickoff plan, decision log, risk list, and stakeholder update.",
+    "reflection": "What feedback changed your plan?"
+  },
+  {
+    "id": "pm_mission_10",
+    "domainID": "product_management",
+    "stage": "portfolio",
+    "title": "Create a Product Case Study",
+    "primarySkillID": "pm_product_thinking",
+    "supportingSkillIDs": [
+      "pm_user_discovery",
+      "pm_product_strategy",
+      "pm_prioritization",
+      "pm_requirements_roadmapping",
+      "pm_analytics_experimentation",
+      "pm_stakeholder_communication",
+      "pm_cross_functional_execution"
+    ],
+    "prerequisiteMissionIDs": [
+      "pm_mission_09"
+    ],
+    "why": "A case study makes your reasoning reviewable rather than claiming expertise.",
+    "activity": "Connect your problem, research, priorities, requirements, measurement plan, and reflection. Explain limits and decisions. Request feedback and document one improvement.",
+    "evidence": "An end-to-end product case study and feedback reflection.",
+    "reflection": "What did you learn, what remains unproven, and what would you do next?"
+  }
+]

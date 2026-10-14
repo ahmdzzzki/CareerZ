@@ -5,10 +5,12 @@
 	};
 	objectVersion = 77;
 	objects = {
+		C0142026000000000000000A = {isa = PBXTargetDependency; target = 8A4584A72FE513EA00082A68; targetProxy = C0142026000000000000000B; };
+		C0142026000000000000000B = {isa = PBXContainerItemProxy; containerPortal = 8A4584A02FE513EA00082A68; proxyType = 1; remoteGlobalIDString = 8A4584A72FE513EA00082A68; remoteInfo = CareerZ; };
 
 /* Begin PBXFileReference section */
 		8A4584A82FE513EA00082A68 /* CareerZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareerZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AA94D842FE8033D00D5160B /* CareerZ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CareerZ.xcodeproj; path = CareerZ/CareerZ.xcodeproj; sourceTree = SOURCE_ROOT; };
+		C01420260000000000000002 /* CareerZUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = CareerZUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -17,6 +19,7 @@
 			path = CareerZ;
 			sourceTree = "<group>";
 		};
+		C01420260000000000000003 = {isa = PBXFileSystemSynchronizedRootGroup; path = CareerZUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +30,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C01420260000000000000005 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -34,6 +38,7 @@
 			isa = PBXGroup;
 			children = (
 				8A4584AA2FE513EA00082A68 /* CareerZ */,
+				C01420260000000000000003,
 				8A4584A92FE513EA00082A68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -42,17 +47,12 @@
 			isa = PBXGroup;
 			children = (
 				8A4584A82FE513EA00082A68 /* CareerZ.app */,
+				C01420260000000000000002,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8AA94D872FE8033D00D5160B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
+
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,6 +78,7 @@
 			productReference = 8A4584A82FE513EA00082A68 /* CareerZ.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C01420260000000000000001 = {isa = PBXNativeTarget; buildConfigurationList = C01420260000000000000007; buildPhases = (C01420260000000000000004, C01420260000000000000005, C01420260000000000000006); buildRules = (); dependencies = (C0142026000000000000000A); fileSystemSynchronizedGroups = (C01420260000000000000003); name = CareerZUITests; productName = CareerZUITests; productReference = C01420260000000000000002; productType = "com.apple.product-type.bundle.ui-testing"; };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -105,14 +106,10 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8A4584A92FE513EA00082A68 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8AA94D872FE8033D00D5160B /* Products */;
-					ProjectRef = 8AA94D842FE8033D00D5160B /* CareerZ.xcodeproj */;
-				},
-			);
+
 			projectRoot = "";
 			targets = (
+				C01420260000000000000001,
 				8A4584A72FE513EA00082A68 /* CareerZ */,
 			);
 		};
@@ -126,6 +123,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C01420260000000000000006 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -136,6 +134,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C01420260000000000000004 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
@@ -322,6 +321,8 @@
 			};
 			name = Release;
 		};
+		C01420260000000000000008 = {isa = XCBuildConfiguration; buildSettings = {GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 26.5; PRODUCT_BUNDLE_IDENTIFIER = com.academy.CareerZ.UITests; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; TEST_TARGET_NAME = CareerZ;}; name = Debug; };
+		C01420260000000000000009 = {isa = XCBuildConfiguration; buildSettings = {GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 26.5; PRODUCT_BUNDLE_IDENTIFIER = com.academy.CareerZ.UITests; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; TEST_TARGET_NAME = CareerZ;}; name = Release; };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -343,6 +344,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		C01420260000000000000007 = {isa = XCConfigurationList; buildConfigurations = (C01420260000000000000008, C01420260000000000000009); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 /* End XCConfigurationList section */
 	};
 	rootObject = 8A4584A02FE513EA00082A68 /* Project object */;

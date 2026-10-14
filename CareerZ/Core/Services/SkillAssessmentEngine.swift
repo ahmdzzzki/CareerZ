@@ -45,9 +45,13 @@ struct SkillAssessmentEngine: Sendable {
         skills: [SkillDefinition],
         results: [SkillAssessmentResult]
     ) -> [SkillGapResult] {
-        let resultBySkillID = Dictionary(
-            uniqueKeysWithValues: results.map { ($0.skillID, $0) }
-        )
+        // History can contain several results for one skill. Keep the latest
+        // rather than trapping when a repeated assessment is passed in.
+        var resultBySkillID: [String: SkillAssessmentResult] = [:]
+        for result in results {
+            if let previous = resultBySkillID[result.skillID], previous.assessedAt >= result.assessedAt { continue }
+            resultBySkillID[result.skillID] = result
+        }
 
         return skills
             .map { skill in
