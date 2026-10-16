@@ -32,11 +32,43 @@ enum JourneySchemaV1: VersionedSchema {
     }
 }
 
-enum JourneyMigrationPlan: SchemaMigrationPlan {
-    static var schemas: [any VersionedSchema.Type] { [JourneySchemaV1.self] }
-    static var stages: [MigrationStage] { [] }
+enum JourneySchemaV2: VersionedSchema {
+    static var versionIdentifier = Schema.Version(2, 0, 0)
+    static var models: [any PersistentModel.Type] { [AssessmentRecord.self, MissionEvidenceRecord.self, DirectionRecord.self] }
+
+    @Model final class AssessmentRecord {
+        var id: UUID = UUID()
+        var kind: String = ""
+        var date: Date = Date()
+        var payload: Data = Data()
+        init(kind: String, date: Date, payload: Data) {
+            id = UUID(); self.kind = kind; self.date = date; self.payload = payload
+        }
+    }
+    @Model final class MissionEvidenceRecord {
+        var missionID: String = ""
+        var updatedAt: Date = Date()
+        var evidence: String = ""
+        var reflection: String = ""
+        var completedAt: Date? = nil
+        init(missionID: String, evidence: String, reflection: String, completedAt: Date?) {
+            self.missionID = missionID; self.evidence = evidence
+            self.reflection = reflection; self.completedAt = completedAt
+        }
+    }
+    @Model final class DirectionRecord {
+        var id: String = "selected-direction"
+        var updatedAt: Date = Date()
+        var domainID: String = ""
+        init(domainID: String) { id = "selected-direction"; self.domainID = domainID }
+    }
 }
 
-typealias AssessmentRecord = JourneySchemaV1.AssessmentRecord
-typealias MissionEvidenceRecord = JourneySchemaV1.MissionEvidenceRecord
-typealias DirectionRecord = JourneySchemaV1.DirectionRecord
+enum JourneyMigrationPlan: SchemaMigrationPlan {
+    static var schemas: [any VersionedSchema.Type] { [JourneySchemaV1.self, JourneySchemaV2.self] }
+    static var stages: [MigrationStage] { [.lightweight(fromVersion: JourneySchemaV1.self, toVersion: JourneySchemaV2.self)] }
+}
+
+typealias AssessmentRecord = JourneySchemaV2.AssessmentRecord
+typealias MissionEvidenceRecord = JourneySchemaV2.MissionEvidenceRecord
+typealias DirectionRecord = JourneySchemaV2.DirectionRecord

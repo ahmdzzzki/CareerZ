@@ -1,9 +1,12 @@
 import SwiftUI
+import CoreData
+import Combine
 
 struct JourneyRootView: View {
     @Bindable var store: JourneyStore
     @AppStorage("hasCompletedOnboarding") private var onboarded = false
     @State private var selectedTab = 0
+    @Environment(\.scenePhase) private var phase
     var body: some View {
         Group {
             if !store.isLoaded {
@@ -27,6 +30,16 @@ struct JourneyRootView: View {
             }
         }
         .tint(.appPrimary)
+        .onChange(of: phase) { _, value in if value == .active { store.reload() } }
+        .onReceive(NotificationCenter.default.publisher(for: NSPersistentCloudKitContainer.eventChangedNotification).receive(on: RunLoop.main)) { note in
+            guard let event = note.userInfo?[NSPersistentCloudKitContainer.eventNotificationUserInfoKey] as? NSPersistentCloudKitContainer.Event else { return }
+            if event.endDate == nil { CloudSyncMonitor.shared.detail = "Syncing with iCloud…" }
+            else if !event.succeeded { CloudSyncMonitor.shared.detail = "Sync is paused. Your changes are saved locally; iCloud will retry when available." }
+            else {
+                CloudSyncMonitor.shared.detail = "Last iCloud activity: \(event.endDate!.formatted(date: .abbreviated, time: .shortened))"
+                if event.type == .import { store.reload() }
+            }
+        }
         .alert("Couldn’t complete that action", isPresented: Binding(get: { store.isLoaded && store.errorMessage != nil }, set: { if !$0 { store.errorMessage = nil } })) {
             Button("OK") { store.errorMessage = nil }
         } message: { Text(store.errorMessage ?? "Please try again.") }

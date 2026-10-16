@@ -4,7 +4,7 @@ This is an engineering development pilot, not a claim of App Store readiness.
 
 ## Implemented scope
 
-- Native Discover/Develop/Profile entry path; legacy sample dashboards are not shown to users.
+- Native Home/Discover/Roadmap/Profile entry path; legacy sample dashboards are not shown to users.
 - Forty Compass statements, six domain matches, trait explanations, close-result copy, selectable directions.
 - Eight-skill PM capability/evidence assessment; score breakdown, top-three gaps and rule-based next actions.
 - Ten PM missions, prerequisites, optional validation, evidence/reflection notes, explicit completion, undo, retained dates.
@@ -31,6 +31,8 @@ Manifest structure follows [Apple TN3183](https://developer.apple.com/documentat
 - Product name/subtitle/description/keywords/category and age rating.
 - Real device screenshots from the released flow; no illustrative scores presented as user activity.
 - Public support URL/contact and privacy policy URL. No invented contact addresses.
-- Review notes describing offline-only storage and the PM development pilot.
+- Review notes describing offline storage, optional Apple sign-in/private iCloud sync and the PM development pilot.
 - Reconcile marketing landing page with available app features; do not claim all six development journeys are complete.
 - App icon already exists; review sizes/appearance and branding before submission.
+
+- Apple services are now in scope: complete every physical-device and Production-schema check in [APPLE_SERVICES.md](APPLE_SERVICES.md). Review all privacy/marketing claims that still describe the earlier local-only scope before publishing.

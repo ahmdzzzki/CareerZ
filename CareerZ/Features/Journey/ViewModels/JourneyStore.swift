@@ -36,18 +36,21 @@ import SwiftData
             // Validate content before letting a user invest time in an assessment.
             _ = try CompassEngine().assess(questions: questions, answers: Dictionary(uniqueKeysWithValues: questions.map { ($0.id, 3) }))
             _ = try JourneyEngine().assess(skills: skills, answers: Dictionary(uniqueKeysWithValues: skills.map { ($0.id, SkillResponse(capability: 0, evidence: 0)) }))
-            let records = try context.fetch(FetchDescriptor<AssessmentRecord>(sortBy: [SortDescriptor(\.date, order: .reverse)]))
+            let fetched = try context.fetch(FetchDescriptor<AssessmentRecord>(sortBy: [SortDescriptor(\.date, order: .reverse)]))
+            var seen = Set<UUID>()
+            let records = fetched.filter { seen.insert($0.id).inserted }
             let decoder = JSONDecoder()
             let compass = try records.filter { $0.kind == "compass" }.map { try decoder.decode(CompassSnapshot.self, from: $0.payload) }
             let history = try records.filter { $0.kind == "skills" }.map { try decoder.decode(SkillSessionSnapshot.self, from: $0.payload) }
             guard records.allSatisfy({ ["compass", "skills"].contains($0.kind) }), compass.allSatisfy({ $0.contentVersion == 1 }), history.allSatisfy({ $0.contentVersion == 1 && $0.domain == .productManagement }) else {
                 throw JourneyValidationError.invalidContent
             }
-            let direction = try context.fetch(FetchDescriptor<DirectionRecord>()).first
+            let direction = try context.fetch(FetchDescriptor<DirectionRecord>(sortBy: [SortDescriptor(\.updatedAt, order: .reverse)])).first
             if let direction, CareerDomainID(rawValue: direction.domainID) == nil { throw JourneyValidationError.invalidContent }
             self.questions = questions; self.skills = skills; self.missions = missions
             self.compassHistory = compass; self.skillHistory = history
-            evidenceRecords = try context.fetch(FetchDescriptor<MissionEvidenceRecord>())
+            var missionIDs = Set<String>()
+            evidenceRecords = try context.fetch(FetchDescriptor<MissionEvidenceRecord>(sortBy: [SortDescriptor(\.updatedAt, order: .reverse)])).filter { missionIDs.insert($0.missionID).inserted }
             selectedDomain = direction.flatMap { CareerDomainID(rawValue: $0.domainID) }
             roadmap = try JourneyEngine().roadmap(missions: missions, skills: skills, results: history.first?.results ?? [])
             isLoaded = true
@@ -57,7 +60,7 @@ import SwiftData
 
     func choose(_ domain: CareerDomainID) -> Bool {
         transact {
-            if let record = try context.fetch(FetchDescriptor<DirectionRecord>()).first { record.domainID = domain.rawValue }
+            if let record = try context.fetch(FetchDescriptor<DirectionRecord>(sortBy: [SortDescriptor(\.updatedAt, order: .reverse)])).first { record.domainID = domain.rawValue; record.updatedAt = Date() }
             else { context.insert(DirectionRecord(domainID: domain.rawValue)) }
         }
     }
@@ -91,7 +94,7 @@ import SwiftData
             }
             let record = self.evidence(for: mission.id) ?? MissionEvidenceRecord(missionID: mission.id, evidence: "", reflection: "", completedAt: nil)
             if self.evidence(for: mission.id) == nil { context.insert(record) }
-            record.evidence = evidence; record.reflection = reflection
+            record.evidence = evidence; record.reflection = reflection; record.updatedAt = Date()
             record.completedAt = complete ? (record.completedAt ?? Date()) : nil
         }
     }

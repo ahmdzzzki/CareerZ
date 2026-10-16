@@ -116,8 +116,9 @@ struct CareerDirectionView: View {
                 AppButton(title: "Choose this direction", action: { showConfirmation = true }, systemImage: "arrow.right")
             }.padding(AppSpacing.screenHorizontal)
         }.background(Color.appGroupedBackground)
-        .confirmationDialog("Explore \(domain.title)?", isPresented: $showConfirmation, titleVisibility: .visible) {
+        .alert("Explore \(domain.title)?", isPresented: $showConfirmation) {
             Button("Choose direction") { if store.choose(domain) { onDevelop(); dismiss() } }
+            Button("Cancel", role: .cancel) {}
         } message: { Text("Your assessment history and existing Product Management mission evidence will be kept.") }
     }
 }

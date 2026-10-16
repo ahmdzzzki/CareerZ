@@ -4,7 +4,7 @@ import SwiftData
 
 final class PersistenceTests: XCTestCase {
     @MainActor private func container(url: URL) throws -> ModelContainer {
-        let schema = Schema(versionedSchema: JourneySchemaV1.self)
+        let schema = Schema(versionedSchema: JourneySchemaV2.self)
         return try ModelContainer(for: schema, migrationPlan: JourneyMigrationPlan.self, configurations: [ModelConfiguration(schema: schema, url: url, cloudKitDatabase: .none)])
     }
     @MainActor private func answers(_ store: JourneyStore, level: Int) -> [String: SkillResponse] {
@@ -97,4 +97,48 @@ final class PersistenceTests: XCTestCase {
         XCTAssertEqual(store.priorityGaps[2].priorityScore, 0.20, accuracy: 0.0001)
     }
 
+}
+
+extension PersistenceTests {
+    @MainActor func testV1StoreMigratesWithoutLosingHistoryOrEvidence() throws {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("CareerZ-migration-\(UUID()).sqlite")
+        let payload = Data("legacy assessment payload".utf8)
+        let date = Date(timeIntervalSince1970: 12345)
+        do {
+            let schema = Schema(versionedSchema: JourneySchemaV1.self)
+            let old = try ModelContainer(for: schema, configurations: [ModelConfiguration(schema: schema, url: url, cloudKitDatabase: .none)])
+            let context = ModelContext(old)
+            context.insert(JourneySchemaV1.AssessmentRecord(kind: "skills", date: date, payload: payload))
+            context.insert(JourneySchemaV1.MissionEvidenceRecord(missionID: "mission", evidence: "Original artifact", reflection: "Original reflection", completedAt: date))
+            context.insert(JourneySchemaV1.DirectionRecord(domainID: CareerDomainID.productManagement.rawValue))
+            try context.save()
+        }
+        let migrated = try container(url: url)
+        let context = ModelContext(migrated)
+        let assessment = try XCTUnwrap(context.fetch(FetchDescriptor<AssessmentRecord>()).first)
+        XCTAssertEqual(assessment.payload, payload)
+        XCTAssertEqual(assessment.date, date)
+        let evidence = try XCTUnwrap(context.fetch(FetchDescriptor<MissionEvidenceRecord>()).first)
+        XCTAssertEqual(evidence.evidence, "Original artifact")
+        XCTAssertEqual(evidence.reflection, "Original reflection")
+        XCTAssertEqual(evidence.completedAt, date)
+        XCTAssertEqual(try context.fetch(FetchDescriptor<DirectionRecord>()).first?.domainID, CareerDomainID.productManagement.rawValue)
+    }
+
+    @MainActor func testConcurrentMissionCopiesUseLatestWithoutDoubleCounting() throws {
+        let db = try container(url: FileManager.default.temporaryDirectory.appendingPathComponent("CareerZ-conflict-\(UUID()).sqlite"))
+        let context = ModelContext(db)
+        let store = JourneyStore(context: context, bundle: .module)
+        store.reload()
+        let id = try XCTUnwrap(store.missions.first).id
+        let old = MissionEvidenceRecord(missionID: id, evidence: "Old", reflection: "Old", completedAt: Date())
+        old.updatedAt = Date(timeIntervalSince1970: 1)
+        let new = MissionEvidenceRecord(missionID: id, evidence: "Revised", reflection: "Revised", completedAt: nil)
+        new.updatedAt = Date(timeIntervalSince1970: 2)
+        context.insert(old); context.insert(new); try context.save()
+        store.reload()
+        XCTAssertEqual(store.evidenceRecords.count, 1)
+        XCTAssertEqual(store.evidence(for: id)?.evidence, "Revised")
+        XCTAssertEqual(store.progress, 0)
+    }
 }

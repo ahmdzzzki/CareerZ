@@ -66,9 +66,9 @@ struct JourneyAssessmentView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: goBack) { Image(systemName: "chevron.left").fontWeight(.semibold) }
-                        .accessibilityLabel("Back").buttonStyle(.glass).buttonBorderShape(.circle)
+                        .accessibilityLabel("Back")
                 }
-                ToolbarItem(placement: .confirmationAction) { Button("Close") { discard = true }.buttonStyle(.glass).buttonBorderShape(.capsule) }
+                ToolbarItem(placement: .confirmationAction) { Button("Close") { discard = true } }
             }
             .safeAreaInset(edge: .bottom) {
                 AppButton(title: index == count - 1 && (kind == .compass || evidencePhase) ? "Save my assessment" : "Continue", action: advance, isEnabled: ready)
@@ -79,8 +79,9 @@ struct JourneyAssessmentView: View {
             .alert("Assessment wasn’t saved", isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })) {
                 Button("OK") { failure = nil }
             } message: { Text(failure ?? "Please try again.") }
-            .confirmationDialog("Discard these unsaved answers?", isPresented: $discard, titleVisibility: .visible) {
+            .alert("Discard these unsaved answers?", isPresented: $discard) {
                 Button("Discard answers", role: .destructive) { dismiss() }
+                Button("Keep answering", role: .cancel) {}
             }
         }
     }

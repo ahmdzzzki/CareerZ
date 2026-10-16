@@ -1,5 +1,7 @@
 # CareerZ implementation audit — 14 October 2026
 
+Update 16 October: the user explicitly added optional Sign in with Apple and private CloudKit sync. The no-accounts/no-cloud statements below describe the earlier baseline. Active schema is now V2 with a tested migration; see `APPLE_SERVICES.md` for configuration and remaining live verification.
+
 The master handoff governs the product: Discover → Decide → Develop; Compass and domain skill proficiency are separate systems. The previous five-dimension readiness assessment is deferred. Product Management is the first development vertical slice. No backend, accounts, analytics, or AI services are introduced.
 
 ## Baseline

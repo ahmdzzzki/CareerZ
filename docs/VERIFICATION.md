@@ -24,3 +24,14 @@ Restored the existing brand palette, original onboarding and assessment artwork,
 - Reference Home screenshots in `docs/screenshots` contain assessment values entered on the dedicated test simulator, not seeded user activity.
 
 - Final standalone Compass UI run: passed (40 answers, explanation/comparison, and persisted results after relaunch). Final unsigned Release archive: succeeded.
+
+## 16 October 2026 — interaction fixes and Apple services
+
+- Removed explicit glass button styles from assessment toolbar controls (native toolbars supply their own surface) and the extra glass overlay from the solid brand CTA.
+- Reset, direction selection, assessment discard and mission undo now use native centered alerts with an explicit cancel action. A geometry regression test verified the delete alert is centered and Cancel retains the screen/data; inspected its exported screenshot.
+- Added original artwork to mission/About, removed the repeated Home Compass promotion and duplicate roadmap percentage.
+- Domain/persistence suite: **20 tests passed**, including disk migration V1 → V2 preserving assessment payload/date and mission evidence/reflection/completion, and duplicate mission resolution without inflated progress.
+- Signed device build and signed Release archive succeeded with the existing development identity/provisioning profile. Inspected effective entitlements: Sign in with Apple, private CloudKit container, Production environment for Release and push notifications. Confirmed built Info.plist contains the remote-notification background-mode array. These are development-signed artifacts, not an App Store distribution/upload.
+- Native Apple sign-in, Keychain identity, credential revalidation/revocation handling and private CloudKit-backed device storage are implemented. Simulator storage is explicitly local-only. Real authentication, two-device cloud round trips, deletion propagation and Production schema deployment remain unverified; follow `APPLE_SERVICES.md` before shipping.
+
+- Final simulator UI run: **3 tests passed**, zero failures: optional Apple connection/disclosed local simulator mode, centered delete alert with Cancel, and complete PM assessment → evidence/reflection → completion → relaunch/history/progress. A transient progress-label accessibility regression during refinement was corrected before this passing run.

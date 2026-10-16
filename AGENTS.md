@@ -71,7 +71,7 @@ xcodebuild -project CareerZ.xcodeproj -scheme CareerZ -configuration Debug \
 - Compass memakai 40 pertanyaan bundled JSON, delapan trait, reverse scoring 1–5, dan enam match yang dijelaskan melalui kontribusi berbobot. Match bukan probabilitas sukses atau diagnosis.
 - Assessment PM memakai delapan skill, capability/evidence 0–4, bobot 60/40, dan target portfolio. Tampilkan proficiency, bukan klaim employability.
 - `JourneyStore` adalah state `@MainActor @Observable`, dengan `ModelContext` yang disuntikkan. Selalu `save()` secara eksplisit; jika gagal, rollback dan tampilkan error. Jangan mengganti storage gagal dengan store in-memory kosong.
-- `JourneySchemaV1` dan `JourneyMigrationPlan` menyimpan snapshot versioned, arah terpilih, bukti/refleksi, serta tanggal completion. Perubahan schema berikutnya memerlukan migration stage. Jangan mengganti identifier mission/skill tanpa strategi migrasi.
+- `JourneySchemaV1/V2` dan `JourneyMigrationPlan` menyimpan snapshot versioned, arah terpilih, bukti/refleksi, serta tanggal completion. Perubahan schema berikutnya memerlukan migration stage. Jangan mengganti identifier mission/skill tanpa strategi migrasi.
 - `JourneyEngine.roadmap` memakai topological ordering dan prioritas gap. Skill yang mencapai target menjadi Optional Validation; completion tetap membutuhkan tindakan pengguna. Undo harus menjaga prasyarat, dan reset permanen memerlukan dialog konfirmasi di aplikasi.
 - Pertanyaan/content harus direview dengan target users sebelum release. Jangan menyebut Compass sebagai assessment ilmiah. UI dan copy v1 menggunakan bahasa Inggris.
 
@@ -83,3 +83,12 @@ xcodebuild -project CareerZ.xcodeproj -scheme CareerZ -configuration Debug \
 - Home berisi snapshot, arah terpilih, carousel skill, Next Step, dan ringkasan roadmap. Pengguna baru tetap mendapat konten yang bisa ditindaklanjuti tanpa skor atau progress palsu.
 - Assessment PM memiliki 16 langkah: capability lalu evidence untuk masing-masing delapan skill. CTA tetap di safe-area bawah. Compass tetap 40 pertanyaan.
 - Ring proficiency adalah rata-rata berbobot skor skill dibagi empat, bukan kesiapan diterima kerja. Tren hanya ditampilkan bila ada dua assessment yang dapat dibandingkan.
+
+
+## Apple dan interaksi native
+
+- Permintaan pengguna 16 Oktober mengizinkan Sign in with Apple dan CloudKit; baca `docs/APPLE_SERVICES.md`. Simpan identifier Apple di Keychain, jangan meminta email/nama tanpa kebutuhan.
+- Schema aktif V2 kompatibel CloudKit, V1 tetap untuk migrasi. Jangan mengubah V1. Simulator memakai `.none`; build perangkat memakai private iCloud container.
+- Jangan menyamakan credential Apple dengan akun iCloud perangkat. Jangan menampilkan account availability sebagai bukti sync berhasil.
+- Toolbar iOS sudah memiliki glass native: jangan menambah `.buttonStyle(.glass)` atau `.glassEffect` lagi di dalam toolbar. AppButton memakai kapsul solid brand.
+- Gunakan alert native untuk konfirmasi penting agar berada di tengah pada iPhone/iPad, dengan Cancel eksplisit. Reset progress juga menghapus record cloud; jelaskan konsekuensinya.

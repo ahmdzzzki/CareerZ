@@ -38,10 +38,6 @@ struct AppButton: View {
                 Capsule()
                     .fill(isEnabled ? Color.appPrimary : Color.appSecondaryFill)
             }
-            .glassEffect(
-                .clear,
-                in: Capsule()
-            )
         }
         .buttonStyle(.plain)
         .disabled(!isEnabled)

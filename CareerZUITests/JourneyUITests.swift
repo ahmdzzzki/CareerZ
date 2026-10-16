@@ -18,10 +18,40 @@ final class JourneyUITests: XCTestCase {
         let welcome = app.buttons["Get Started"]
         if welcome.waitForExistence(timeout: 3) { tap(welcome, in: app); app.tabBars.buttons["Discover"].tap(); return }
         app.tabBars.buttons["Profile"].tap()
-        tap(app.buttons["Delete all local data"], in: app)
+        tap(app.buttons["Delete all progress"], in: app)
         app.buttons["Delete permanently"].tap()
         tap(welcome, in: app)
         app.tabBars.buttons["Discover"].tap()
+    }
+
+    func testAppleConnectionIsOptionalAndSimulatorSyncIsDisclosed() {
+        let app = XCUIApplication()
+        app.launch()
+        if app.buttons["Get Started"].waitForExistence(timeout: 3) { app.buttons["Get Started"].tap() }
+        app.tabBars.buttons["Profile"].tap()
+        XCTAssertTrue(app.buttons["apple-sign-in"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Sync is available in a signed device build. Simulator progress stays local."].exists)
+        let capture = XCTAttachment(screenshot: app.screenshot())
+        capture.name = "Optional Apple connection"; capture.lifetime = .keepAlways; add(capture)
+        app.tabBars.buttons["Home"].tap()
+        XCTAssertTrue(app.staticTexts["PM Skill Snapshot"].waitForExistence(timeout: 5))
+    }
+
+    func testDeleteConfirmationIsCenteredAndCancelKeepsData() {
+        let app = XCUIApplication()
+        app.launch()
+        if app.buttons["Get Started"].waitForExistence(timeout: 3) { app.buttons["Get Started"].tap() }
+        app.tabBars.buttons["Profile"].tap()
+        tap(app.buttons["Delete all progress"], in: app)
+        let alert = app.alerts["Delete all CareerZ progress?"]
+        XCTAssertTrue(alert.waitForExistence(timeout: 5))
+        XCTAssertEqual(alert.frame.midX, app.frame.midX, accuracy: 20)
+        XCTAssertEqual(alert.frame.midY, app.frame.midY, accuracy: 120)
+        let capture = XCTAttachment(screenshot: app.screenshot())
+        capture.name = "Centered delete confirmation"; capture.lifetime = .keepAlways; add(capture)
+        alert.buttons["Cancel"].tap()
+        XCTAssertFalse(alert.exists)
+        XCTAssertTrue(app.tabBars.buttons["Profile"].isSelected)
     }
 
     func testPMJourneyPersistsAfterRelaunch() {

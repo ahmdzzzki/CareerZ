@@ -71,7 +71,7 @@ struct DevelopmentView: View {
                 Label("Every mission completed. Reflect on your work and reassess your skills.", systemImage: "trophy.fill")
                     .foregroundStyle(Color.appSuccess).padding(AppSpacing.lg).journeyCard()
             }
-            HStack { Text("Roadmap Progress").font(AppTypography.headline).foregroundStyle(Color.appTextSecondary); Spacer(); Text("\(Int((store.progress * 100).rounded()))%").font(AppTypography.headline).foregroundStyle(Color.appPrimary) }
+            Text("Roadmap Progress").font(AppTypography.headline).foregroundStyle(Color.appTextSecondary)
             Text("\(store.completedIDs.count) of \(store.missions.count) missions completed · \(Int((store.progress * 100).rounded()))%")
                 .font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
             ForEach(Array(RoadmapStageID.allCases.enumerated()), id: \.element.rawValue) { index, stage in
@@ -152,6 +152,7 @@ struct MissionActivityView: View {
                 Text(item.mission.title).font(AppTypography.largeTitle.bold())
                 Text("\(item.mission.stage.rawValue.capitalized) · \(item.classification.rawValue)").foregroundStyle(Color.appTextSecondary)
                 section("Why this matters", item.mission.why)
+                Image(item.mission.stage == .portfolio ? "productManager" : "Assessment").resizable().scaledToFit().frame(maxWidth: .infinity).frame(height: 110).accessibilityHidden(true)
                 section("Activity", item.classification == .validation
                     ? "Use an existing artifact that demonstrates this mission’s objective. Check it against the evidence requirements below, ask a peer for one piece of feedback, and record what the artifact proves and what remains untested. You do not need to repeat a full project."
                     : item.mission.activity)
@@ -184,8 +185,9 @@ struct MissionActivityView: View {
         .onAppear { evidence = store.evidence(for: item.id)?.evidence ?? ""; reflection = store.evidence(for: item.id)?.reflection ?? "" }
         .onChange(of: evidence) { _, _ in saved = false }
         .onChange(of: reflection) { _, _ in saved = false }
-        .confirmationDialog("Undo this completion?", isPresented: $undo, titleVisibility: .visible) {
+        .alert("Undo this completion?", isPresented: $undo) {
             Button("Undo completion", role: .destructive) { saved = store.saveMission(item.mission, evidence: evidence, reflection: reflection, complete: false) }
+            Button("Cancel", role: .cancel) {}
         } message: { Text("Your evidence and reflection will be kept. Completed dependent missions must be undone first.") }
     }
     private func section(_ title: String, _ text: String) -> some View {

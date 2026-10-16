@@ -83,17 +83,7 @@ struct JourneyDashboardView: View {
                         if store.latestSkillSession != nil { ProgressView(value: store.progress).tint(.appPrimary).accessibilityLabel("Roadmap completion") }
                         Button(store.latestSkillSession == nil ? "Explore your roadmap" : "Continue your journey") { onRoadmap() }.frame(minHeight: 44)
                     }.padding(AppSpacing.lg).journeyCard()
-                    Button { onDiscover() } label: {
-                        HStack(spacing: AppSpacing.md) {
-                            JourneyIcon(name: "safari")
-                            VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                                Text("CareerZ Compass").font(AppTypography.headline)
-                                Text(store.compassHistory.isEmpty ? "Still exploring? Find a direction worth trying." : "Revisit your matches and compare directions.")
-                                    .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
-                            }
-                            Spacer(minLength: 0); Image(systemName: "arrow.right")
-                        }.padding(AppSpacing.lg).background(Color.appPrimary.opacity(0.10), in: RoundedRectangle(cornerRadius: AppRadius.xxl))
-                    }.buttonStyle(.plain)
+
                 }.padding(.horizontal, AppSpacing.screenHorizontal).padding(.vertical, AppSpacing.md)
             }.background(Color.appGroupedBackground).toolbar(.hidden, for: .navigationBar)
                 .sheet(isPresented: $assessment) { JourneyAssessmentView(store: store, kind: .skills) }

@@ -6,8 +6,12 @@ struct CareerZApp: App {
     private let storage: Result<ModelContainer, Error>
     init() {
         storage = Result {
-            let schema = Schema(versionedSchema: JourneySchemaV1.self)
+            let schema = Schema(versionedSchema: JourneySchemaV2.self)
+            #if targetEnvironment(simulator)
             let configuration = ModelConfiguration(schema: schema, cloudKitDatabase: .none)
+            #else
+            let configuration = ModelConfiguration(schema: schema, cloudKitDatabase: .private("iCloud.com.academy.CareerZ"))
+            #endif
             return try ModelContainer(for: schema, migrationPlan: JourneyMigrationPlan.self, configurations: [configuration])
         }
     }

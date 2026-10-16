@@ -18,6 +18,7 @@ struct JourneySettingsView: View {
                         }
                     }.padding(.vertical, AppSpacing.sm)
                 }
+                AppleAccountSection()
                 Section("Your direction") {
                     Text(store.selectedDomain?.title ?? "No direction selected")
                     Text("Change your direction in Discover. Your previous assessments and mission evidence are retained.")
@@ -27,19 +28,19 @@ struct JourneySettingsView: View {
                     LabeledContent("Compass assessments", value: "\(store.compassHistory.count)")
                     LabeledContent("PM assessments", value: "\(store.skillHistory.count)")
                     LabeledContent("Completed missions", value: "\(store.completedIDs.count)")
-                    Text("No account, tracking, cloud sync, or external data transmission. Deleting the app can delete its local data. Device backups are managed by iOS; CareerZ does not operate a backup service.")
+                    Text("Progress is saved on this device and syncs through your private iCloud database on supported signed builds. No tracking or analytics.")
                         .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
                 }
                 Section {
                     NavigationLink("About CareerZ & assessment") { about }
                 }
-                Section("Manage local data") {
+                Section("Manage progress") {
                     Button("Reset assessment history", role: .destructive) { ask(.assessments) }
                     Button("Reset roadmap progress & notes", role: .destructive) { ask(.progress) }
-                    Button("Delete all local data", role: .destructive) { ask(.all) }
+                    Button("Delete all progress", role: .destructive) { ask(.all) }
                 }
             }.navigationTitle("Profile")
-                .confirmationDialog(resetTitle, isPresented: $confirmation, titleVisibility: .visible) {
+                .alert(resetTitle, isPresented: $confirmation) {
                     Button("Delete permanently", role: .destructive) {
                         if let kind = resetKind, store.reset(kind), kind == .all { displayName = ""; onDelete() }
                         resetKind = nil
@@ -53,21 +54,22 @@ struct JourneySettingsView: View {
         switch resetKind {
         case .assessments: "Delete all assessment history?"
         case .progress: "Delete all mission progress and notes?"
-        case .all: "Delete all CareerZ data on this device?"
+        case .all: "Delete all CareerZ progress?"
         case nil: "Manage local data"
         }
     }
     private var resetMessage: String {
         switch resetKind {
-        case .assessments: "Compass and PM assessments will be deleted. Direction and mission evidence stay. Take a new skill assessment to generate a new roadmap. This cannot be undone."
-        case .progress: "Mission completion, evidence notes, and reflections will be deleted. Assessment history and your direction stay. This cannot be undone."
-        case .all: "Assessments, direction, mission notes, and completion will be deleted, and onboarding will restart. This cannot be undone."
+        case .assessments: "Compass and PM assessments will be deleted. Direction and mission evidence stay. Take a new skill assessment to generate a new roadmap. This cannot be undone. With iCloud sync, these deletions also apply to your other devices."
+        case .progress: "Mission completion, evidence notes, and reflections will be deleted. Assessment history and your direction stay. This cannot be undone. With iCloud sync, these deletions also apply to your other devices."
+        case .all: "Assessments, direction, mission notes, and completion will be deleted, and onboarding will restart. Your Apple connection is kept. This cannot be undone. With iCloud sync, these deletions also apply to your other devices."
         case nil: ""
         }
     }
     private var about: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.xl) {
+                Image("LogoCareerZWarna").resizable().scaledToFit().frame(height: 48).frame(maxWidth: .infinity).accessibilityLabel("CareerZ")
                 Text("Discover → Decide → Develop").font(AppTypography.title.bold())
                 Text("CareerZ helps students and fresh graduates explore technology career directions and develop skills with practical, reviewable work. Product Management is the first development pilot.")
                 Text("How Compass works").font(AppTypography.title2.bold())
@@ -77,7 +79,7 @@ struct JourneySettingsView: View {
                 Text("How PM assessment works").font(AppTypography.title2.bold())
                 Text("Each skill combines capability × 0.6 and evidence × 0.4 on a 0–4 scale. Gap is max(target − score, 0). Priority is gap × skill importance. Portfolio targets guide practice; they are not employment requirements. Completing a mission requires your own evidence and reflection and does not increase skill scores automatically.")
                 Text("Your privacy").font(AppTypography.title2.bold())
-                Text("Answers, selected direction, and mission notes are stored locally with SwiftData. No analytics SDK, advertising, login, or networking service is used by the app. Reset controls are available in Profile.")
+                Text("Answers, direction, and mission notes are stored locally with SwiftData and synced privately through Apple iCloud on supported builds. Sign in with Apple is optional. CareerZ uses no advertising or analytics SDK. Resetting synced progress also deletes it from iCloud and other connected devices once sync completes.")
                 Text(JourneyCopy.disclaimer).font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
                 Text("Version \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0")")
                     .font(AppTypography.caption)

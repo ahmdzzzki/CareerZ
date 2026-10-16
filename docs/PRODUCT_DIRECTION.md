@@ -2,7 +2,7 @@
 
 The master context supplied by Ahmad is the primary product source. Its newer Discover → Decide → Develop model supersedes the original five-dimension readiness prototype, which is deferred.
 
-CareerZ is for university students and fresh graduates exploring technology career directions. It recommends directions worth trying; it does not prescribe a future. v1 is native SwiftUI, English, offline-first, SwiftData-backed, with bundled career knowledge and deterministic rule-based services. No account, backend, cloud sync, AI recommendations, payments, analytics, or advertising.
+CareerZ is for university students and fresh graduates exploring technology career directions. It recommends directions worth trying; it does not prescribe a future. v1 is native SwiftUI, English, offline-first, SwiftData-backed, with bundled career knowledge and deterministic rule-based services. Optional Sign in with Apple and native private CloudKit synchronization were explicitly requested on 16 October 2026. Local offline use remains available without login. No custom backend, AI recommendations, payments, analytics, or advertising. See APPLE_SERVICES.md for live verification requirements.
 
 Implementation order: foundation → CareerZ Compass / Career Discovery → Product Management vertical slice → testing/accessibility/content refinement → TestFlight → App Store.
 
