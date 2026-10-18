@@ -47,7 +47,7 @@ struct DiscoveryView: View {
                     }
                     AppButton(title: store.compassHistory.isEmpty ? "Take CareerZ Compass" : "Retake Compass", action: { showAssessment = true }, systemImage: "safari")
                     Text("Explore all directions").font(AppTypography.title2.bold())
-                    Text("Already curious about a path? You can choose it directly. Selecting a direction keeps your past assessments and PM progress.")
+                    Text("Already curious about a path? You can choose it directly. Selecting a direction keeps your past assessments and progress in every direction.")
                         .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
                     ForEach(CareerDomainID.allCases) { domain in
                         NavigationLink {
@@ -109,17 +109,13 @@ struct CareerDirectionView: View {
                 }
                 Text("Try this direction").font(AppTypography.title2.bold())
                 Text(JourneyCopy.experiment(domain)).padding(AppSpacing.lg).journeyCard()
-                if domain != .productManagement {
-                    Text("You can explore this direction now. Its skill-development content is not available yet; Product Management is the first pilot.")
-                        .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
-                }
                 AppButton(title: "Choose this direction", action: { showConfirmation = true }, systemImage: "arrow.right")
             }.padding(AppSpacing.screenHorizontal)
         }.background(Color.appGroupedBackground)
         .alert("Explore \(domain.title)?", isPresented: $showConfirmation) {
             Button("Choose direction") { if store.choose(domain) { onDevelop(); dismiss() } }
             Button("Cancel", role: .cancel) {}
-        } message: { Text("Your assessment history and existing Product Management mission evidence will be kept.") }
+        } message: { Text("Your assessment history and existing mission evidence in every direction will be kept.") }
     }
 }
 

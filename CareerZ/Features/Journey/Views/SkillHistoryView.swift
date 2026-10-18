@@ -53,7 +53,7 @@ struct SkillHistoryView: View {
                     VStack(spacing: AppSpacing.lg) {
                         Image("Assessment").resizable().scaledToFit().frame(height: 130).accessibilityHidden(true)
                         Text("Your starting point is waiting").font(AppTypography.title2.bold())
-                        Text("Complete the PM assessment from Home or Roadmap. Your scores, focus areas, and history will appear here.").multilineTextAlignment(.center).foregroundStyle(Color.appTextSecondary)
+                        Text("Complete your selected career assessment from Home or Roadmap. Your scores, focus areas, and history will appear here.").multilineTextAlignment(.center).foregroundStyle(Color.appTextSecondary)
                     }.frame(maxWidth: .infinity).padding(AppSpacing.xl).journeyCard()
                 }
                 Text("Assessment history").font(AppTypography.title2.bold())

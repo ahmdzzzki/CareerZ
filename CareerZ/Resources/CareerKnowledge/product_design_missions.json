@@ -1,0 +1,200 @@
+[
+  {
+    "id": "design_mission_01",
+    "domainID": "product_design",
+    "stage": "foundation",
+    "title": "Observe a User Problem",
+    "primarySkillID": "design_skill_01",
+    "supportingSkillIDs": [
+      "design_skill_02"
+    ],
+    "prerequisiteMissionIDs": [],
+    "why": "Observed context keeps a design problem grounded in an actual user need.",
+    "activity": "Choose an everyday task. Observe its context with consent and list evidence, assumptions, constraints, and a desired outcome.",
+    "evidence": "An anonymized context map and problem brief.",
+    "reflection": "Which observation supports your problem statement?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  },
+  {
+    "id": "design_mission_02",
+    "domainID": "product_design",
+    "stage": "foundation",
+    "title": "Plan and Conduct Research",
+    "primarySkillID": "design_skill_02",
+    "supportingSkillIDs": [
+      "design_skill_01"
+    ],
+    "prerequisiteMissionIDs": [
+      "design_mission_01"
+    ],
+    "why": "A clear research question makes it easier to choose a useful method.",
+    "activity": "Define a research question and method. Speak with at least three consenting people, avoid identifying notes, and distinguish observations from interpretations.",
+    "evidence": "A research plan, discussion guide, and anonymized observations.",
+    "reflection": "Which finding challenged your original assumption?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  },
+  {
+    "id": "design_mission_03",
+    "domainID": "product_design",
+    "stage": "foundation",
+    "title": "Organize the Experience",
+    "primarySkillID": "design_skill_03",
+    "supportingSkillIDs": [
+      "design_skill_01"
+    ],
+    "prerequisiteMissionIDs": [
+      "design_mission_02"
+    ],
+    "why": "Content organization determines whether users can find what they need.",
+    "activity": "Inventory the content needed for the task. Propose grouping and navigation, then ask someone to find key information.",
+    "evidence": "A content hierarchy, navigation map, and findability findings.",
+    "reflection": "Which label or grouping confused the person evaluating it?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  },
+  {
+    "id": "design_mission_04",
+    "domainID": "product_design",
+    "stage": "practice",
+    "title": "Design the Full Interaction",
+    "primarySkillID": "design_skill_04",
+    "supportingSkillIDs": [
+      "design_skill_03"
+    ],
+    "prerequisiteMissionIDs": [
+      "design_mission_03"
+    ],
+    "why": "A usable interaction includes errors, feedback, and recovery as well as success.",
+    "activity": "Map the happy path, empty state, error, cancellation, and recovery. Explain the feedback users receive at each transition.",
+    "evidence": "A task flow and state-by-state wireframes.",
+    "reflection": "Which failure state required a different interaction?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  },
+  {
+    "id": "design_mission_05",
+    "domainID": "product_design",
+    "stage": "practice",
+    "title": "Establish Visual Foundations",
+    "primarySkillID": "design_skill_05",
+    "supportingSkillIDs": [
+      "design_skill_04"
+    ],
+    "prerequisiteMissionIDs": [
+      "design_mission_04"
+    ],
+    "why": "Shared visual rules improve consistency and help prevent inaccessible states.",
+    "activity": "Define typography, spacing, color roles, and reusable controls. Check contrast and demonstrate focus, selected, disabled, and error states.",
+    "evidence": "A small token system and accessible component/state sheet.",
+    "reflection": "Which component state was hardest to make clear without color alone?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  },
+  {
+    "id": "design_mission_06",
+    "domainID": "product_design",
+    "stage": "practice",
+    "title": "Prototype a Testable Task",
+    "primarySkillID": "design_skill_06",
+    "supportingSkillIDs": [
+      "design_skill_04",
+      "design_skill_05"
+    ],
+    "prerequisiteMissionIDs": [
+      "design_mission_05"
+    ],
+    "why": "A prototype should answer a question before it becomes a polished presentation.",
+    "activity": "Connect the main flow in an interactive prototype. Choose fidelity based on your research question and make key failures testable.",
+    "evidence": "A runnable prototype and clearly stated assumptions to test.",
+    "reflection": "What can this prototype test, and what can it not test?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  },
+  {
+    "id": "design_mission_07",
+    "domainID": "product_design",
+    "stage": "practice",
+    "title": "Evaluate Usability",
+    "primarySkillID": "design_skill_07",
+    "supportingSkillIDs": [
+      "design_skill_02",
+      "design_skill_06"
+    ],
+    "prerequisiteMissionIDs": [
+      "design_mission_06"
+    ],
+    "why": "Task observations reveal where a design prevents people from reaching their goal.",
+    "activity": "Run task-based sessions with at least three consenting people. Record completion observations and issue severity without inventing metrics or generalizing the sample.",
+    "evidence": "Anonymized task findings and a prioritized issue list.",
+    "reflection": "Which issue had the strongest evidence of user impact?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  },
+  {
+    "id": "design_mission_08",
+    "domainID": "product_design",
+    "stage": "portfolio",
+    "title": "Iterate From Evidence",
+    "primarySkillID": "design_skill_04",
+    "supportingSkillIDs": [
+      "design_skill_05",
+      "design_skill_07"
+    ],
+    "prerequisiteMissionIDs": [
+      "design_mission_07"
+    ],
+    "why": "Iteration connects design changes to observed problems rather than personal preference.",
+    "activity": "Address the highest-impact observed issues and compare before/after interactions. Recheck contrast, labels, and recovery behavior.",
+    "evidence": "An iteration comparison linked to research evidence.",
+    "reflection": "What evidence supports the change you made?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  },
+  {
+    "id": "design_mission_09",
+    "domainID": "product_design",
+    "stage": "portfolio",
+    "title": "Prepare a Useful Handoff",
+    "primarySkillID": "design_skill_08",
+    "supportingSkillIDs": [
+      "design_skill_03",
+      "design_skill_06"
+    ],
+    "prerequisiteMissionIDs": [
+      "design_mission_08"
+    ],
+    "why": "Handoff succeeds when collaborators can implement behavior without guessing.",
+    "activity": "Specify components, layout behavior, states, content, accessibility, and open questions. Ask a developer or peer to identify unclear decisions.",
+    "evidence": "A handoff specification with feedback and resolved questions.",
+    "reflection": "Which question from the reviewer exposed a missing specification?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  },
+  {
+    "id": "design_mission_10",
+    "domainID": "product_design",
+    "stage": "portfolio",
+    "title": "Tell the Design Story",
+    "primarySkillID": "design_skill_08",
+    "supportingSkillIDs": [
+      "design_skill_01",
+      "design_skill_02",
+      "design_skill_03",
+      "design_skill_04",
+      "design_skill_05",
+      "design_skill_06",
+      "design_skill_07"
+    ],
+    "prerequisiteMissionIDs": [
+      "design_mission_09"
+    ],
+    "why": "A design case study should make the reasoning visible alongside the final screens.",
+    "activity": "Create a case study connecting the problem, research, interaction choices, visual system, test findings, and limitations. Separate your contribution from team work.",
+    "evidence": "A design case study with prototype, evidence, iterations, and reflection.",
+    "reflection": "Which decision would you revisit with more research?",
+    "resourceTitle": "GOV.UK: user research",
+    "resourceURL": "https://www.gov.uk/service-manual/user-research"
+  }
+]

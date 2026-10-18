@@ -1,0 +1,200 @@
+[
+  {
+    "id": "mobile_mission_01",
+    "domainID": "mobile_development",
+    "stage": "foundation",
+    "title": "Scope a Useful Mobile Flow",
+    "primarySkillID": "mobile_skill_01",
+    "supportingSkillIDs": [
+      "mobile_skill_05"
+    ],
+    "prerequisiteMissionIDs": [],
+    "why": "Mobile tasks are shaped by small screens, interruptions, and platform conventions.",
+    "activity": "Choose one task for a mobile app. Define platform, audience, lifecycle assumptions, and three acceptance examples.",
+    "evidence": "A one-page app brief and flow sketch.",
+    "reflection": "Which part of this task benefits from a mobile experience?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  },
+  {
+    "id": "mobile_mission_02",
+    "domainID": "mobile_development",
+    "stage": "foundation",
+    "title": "Build an Accessible Screen",
+    "primarySkillID": "mobile_skill_02",
+    "supportingSkillIDs": [
+      "mobile_skill_01"
+    ],
+    "prerequisiteMissionIDs": [
+      "mobile_mission_01"
+    ],
+    "why": "An interface must remain usable when text, vision, or input needs change.",
+    "activity": "Implement the main screen with native controls. Check larger text, contrast, touch targets, and screen-reader order.",
+    "evidence": "A working screen and accessibility findings with fixes.",
+    "reflection": "Which accessibility issue changed your layout?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  },
+  {
+    "id": "mobile_mission_03",
+    "domainID": "mobile_development",
+    "stage": "foundation",
+    "title": "Connect Navigation and State",
+    "primarySkillID": "mobile_skill_03",
+    "supportingSkillIDs": [
+      "mobile_skill_05"
+    ],
+    "prerequisiteMissionIDs": [
+      "mobile_mission_02"
+    ],
+    "why": "A flow can look correct while losing user state during navigation or interruptions.",
+    "activity": "Build a three-screen task. Define state ownership and verify back, cancellation, backgrounding, and returning to the task.",
+    "evidence": "A state map and recorded navigation/lifecycle checks.",
+    "reflection": "Where does each piece of state live, and when should it reset?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  },
+  {
+    "id": "mobile_mission_04",
+    "domainID": "mobile_development",
+    "stage": "practice",
+    "title": "Keep Progress Offline",
+    "primarySkillID": "mobile_skill_04",
+    "supportingSkillIDs": [
+      "mobile_skill_03"
+    ],
+    "prerequisiteMissionIDs": [
+      "mobile_mission_03"
+    ],
+    "why": "Users should not lose meaningful work when an app closes or connectivity changes.",
+    "activity": "Persist meaningful user input locally. Kill and relaunch the app, test missing data and storage errors, and keep a local fixture if you use networking.",
+    "evidence": "Persistence implementation and kill/relaunch/offline verification.",
+    "reflection": "Which persisted value survived relaunch, and how did you verify it?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  },
+  {
+    "id": "mobile_mission_05",
+    "domainID": "mobile_development",
+    "stage": "practice",
+    "title": "Extract Testable Logic",
+    "primarySkillID": "mobile_skill_05",
+    "supportingSkillIDs": [
+      "mobile_skill_01"
+    ],
+    "prerequisiteMissionIDs": [
+      "mobile_mission_03"
+    ],
+    "why": "Separating business rules from views makes behavior easier to verify and change.",
+    "activity": "Move one business rule out of views. Inject its dependencies and verify it without launching the UI.",
+    "evidence": "A domain service, architecture note, and focused unit tests.",
+    "reflection": "Which rule can you now test without launching the app?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  },
+  {
+    "id": "mobile_mission_06",
+    "domainID": "mobile_development",
+    "stage": "practice",
+    "title": "Exercise the Complete Flow",
+    "primarySkillID": "mobile_skill_06",
+    "supportingSkillIDs": [
+      "mobile_skill_03",
+      "mobile_skill_04"
+    ],
+    "prerequisiteMissionIDs": [
+      "mobile_mission_04",
+      "mobile_mission_05"
+    ],
+    "why": "Mobile defects often appear at lifecycle or device boundaries rather than the happy path.",
+    "activity": "Test the primary journey and one interrupted or invalid path. Reproduce a defect and verify the fix on a simulator and, when available, a physical device.",
+    "evidence": "Test cases, regression evidence, and a stated device-testing limit.",
+    "reflection": "Which interrupted flow revealed a defect?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  },
+  {
+    "id": "mobile_mission_07",
+    "domainID": "mobile_development",
+    "stage": "practice",
+    "title": "Profile and Handle Permissions",
+    "primarySkillID": "mobile_skill_07",
+    "supportingSkillIDs": [
+      "mobile_skill_02"
+    ],
+    "prerequisiteMissionIDs": [
+      "mobile_mission_06"
+    ],
+    "why": "Profiling replaces guesses about performance with measurements.",
+    "activity": "Profile a slow interaction. Improve a measured bottleneck; if a device API is needed, explain the permission request and test denial. If none is needed, document why.",
+    "evidence": "Before/after profiling evidence and permission/fallback decisions.",
+    "reflection": "What improved measurably, and what was the cost of that change?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  },
+  {
+    "id": "mobile_mission_08",
+    "domainID": "mobile_development",
+    "stage": "portfolio",
+    "title": "Prepare an Installable Build",
+    "primarySkillID": "mobile_skill_08",
+    "supportingSkillIDs": [
+      "mobile_skill_04",
+      "mobile_skill_06"
+    ],
+    "prerequisiteMissionIDs": [
+      "mobile_mission_07"
+    ],
+    "why": "An installable build reveals release, signing, and privacy issues hidden by previews.",
+    "activity": "Create an installable development build. Review signing, app icon, privacy behavior, offline use, and release configuration without claiming store approval.",
+    "evidence": "An installable build and a release/privacy checklist.",
+    "reflection": "Which release requirement still needs a device or distribution test?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  },
+  {
+    "id": "mobile_mission_09",
+    "domainID": "mobile_development",
+    "stage": "portfolio",
+    "title": "Run a Usability Session",
+    "primarySkillID": "mobile_skill_02",
+    "supportingSkillIDs": [
+      "mobile_skill_06",
+      "mobile_skill_07"
+    ],
+    "prerequisiteMissionIDs": [
+      "mobile_mission_08"
+    ],
+    "why": "Watching someone complete a task reveals confusing interactions.",
+    "activity": "Ask a consenting person to perform the core task. Record anonymized observations, fix one interaction, and recheck accessibility.",
+    "evidence": "Task observations, UI changes, and accessibility recheck results.",
+    "reflection": "Which observed difficulty did your UI change address?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  },
+  {
+    "id": "mobile_mission_10",
+    "domainID": "mobile_development",
+    "stage": "portfolio",
+    "title": "Create a Mobile Case Study",
+    "primarySkillID": "mobile_skill_08",
+    "supportingSkillIDs": [
+      "mobile_skill_01",
+      "mobile_skill_02",
+      "mobile_skill_03",
+      "mobile_skill_04",
+      "mobile_skill_05",
+      "mobile_skill_06",
+      "mobile_skill_07"
+    ],
+    "prerequisiteMissionIDs": [
+      "mobile_mission_09"
+    ],
+    "why": "A mobile portfolio should show how the app behaves beyond a polished screenshot.",
+    "activity": "Explain the task, platform decisions, state, offline behavior, accessibility, performance, and release evidence. State which devices you tested.",
+    "evidence": "A case study with build instructions, recordings, tests, and limitations.",
+    "reflection": "What device, accessibility, or offline limitation must a reviewer know?",
+    "resourceTitle": "Apple: accessibility guidance",
+    "resourceURL": "https://developer.apple.com/documentation/accessibility"
+  }
+]

@@ -3,7 +3,7 @@ import Foundation
 struct JourneyEngine: Sendable {
     func assess(skills: [SkillDefinition], answers: [String: SkillResponse], at date: Date = Date()) throws -> SkillSessionSnapshot {
         guard !skills.isEmpty, Set(skills.map(\.id)).count == skills.count,
-              skills.allSatisfy({ $0.domainID == .productManagement && $0.importanceWeight > 0 && $0.importanceWeight.isFinite && $0.portfolioTarget.isFinite && (0...4).contains($0.portfolioTarget) }),
+              skills.allSatisfy({ $0.domainID == skills.first?.domainID && $0.importanceWeight > 0 && $0.importanceWeight.isFinite && $0.portfolioTarget.isFinite && (0...4).contains($0.portfolioTarget) }),
               abs(skills.reduce(0) { $0 + $1.importanceWeight } - 1) < 0.00001 else {
             throw JourneyValidationError.invalidContent
         }
@@ -16,13 +16,16 @@ struct JourneyEngine: Sendable {
             let answer = answers[skill.id]!
             return engine.assess(skill: skill, capabilityLevel: answer.capability, evidenceLevel: answer.evidence, assessedAt: date)
         }
-        return SkillSessionSnapshot(contentVersion: 1, domain: .productManagement, assessedAt: date, results: results)
+        return SkillSessionSnapshot(contentVersion: 1, domain: skills[0].domainID, assessedAt: date, results: results)
     }
 
     func roadmap(missions: [JourneyMission], skills: [SkillDefinition], results: [SkillAssessmentResult]) throws -> [MissionPlan] {
         let skillIDs = Set(skills.map(\.id))
-        guard !missions.isEmpty, Set(missions.map(\.id)).count == missions.count,
-              missions.allSatisfy({ $0.domainID == .productManagement && skillIDs.contains($0.primarySkillID) && Set($0.supportingSkillIDs).isSubset(of: skillIDs) }) else {
+        guard !skills.isEmpty, Set(skills.map(\.id)).count == skills.count,
+              skills.allSatisfy({ $0.domainID == skills.first?.domainID }),
+              Set(results.map(\.skillID)).isSubset(of: skillIDs),
+              !missions.isEmpty, Set(missions.map(\.id)).count == missions.count,
+              missions.allSatisfy({ $0.domainID == skills.first?.domainID && skillIDs.contains($0.primarySkillID) && Set($0.supportingSkillIDs).isSubset(of: skillIDs) }) else {
             throw JourneyValidationError.invalidContent
         }
         let gaps = SkillAssessmentEngine().rankedGaps(skills: skills, results: results)
@@ -34,6 +37,10 @@ struct JourneyEngine: Sendable {
         while !remaining.isEmpty {
             let available = remaining.filter { Set($0.prerequisiteMissionIDs).isSubset(of: emitted) }
             guard let mission = available.sorted(by: {
+                let stages = RoadmapStageID.allCases
+                let leftStage = stages.firstIndex(of: $0.stage) ?? 0
+                let rightStage = stages.firstIndex(of: $1.stage) ?? 0
+                if leftStage != rightStage { return leftStage < rightStage }
                 let lhs = byID[$0.primarySkillID]?.priorityScore ?? 0
                 let rhs = byID[$1.primarySkillID]?.priorityScore ?? 0
                 if lhs == rhs { return $0.id < $1.id }
@@ -49,7 +56,7 @@ struct JourneyEngine: Sendable {
     }
 
     func recommendation(for gap: SkillGapResult) -> String {
-        if gap.currentScore < 1 { return "Start with the fundamentals of \(gap.skill.title.lowercased()). Pick one concept and explain it using a real product." }
+        if gap.currentScore < 1 { return "Start with the fundamentals of \(gap.skill.title.lowercased()). Pick one concept and explain it using a real example." }
         if gap.currentScore < 2.5 { return "Practice \(gap.skill.title.lowercased()) with a small project. Keep an artifact that someone else can review." }
         return "Strengthen your evidence for \(gap.skill.title.lowercased()). Ask for feedback and document your decisions and limits."
     }

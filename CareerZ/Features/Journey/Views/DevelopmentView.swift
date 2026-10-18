@@ -2,6 +2,7 @@ import SwiftUI
 
 struct DevelopmentView: View {
     @Bindable var store: JourneyStore
+    var onDiscover: () -> Void = {}
     @State private var assessment = false
     @State private var profile = false
     @AppStorage("hasCompletedOnboarding") private var onboarded = false
@@ -12,36 +13,29 @@ struct DevelopmentView: View {
                 VStack(alignment: .leading, spacing: AppSpacing.xl) {
                     HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                            Text(store.selectedDomain == .productManagement ? "Product Manager Roadmap" : "Your Career Roadmap").font(AppTypography.title2.bold())
+                            Text(store.selectedDomain?.roadmapTitle ?? "Your Career Roadmap").font(AppTypography.title2.bold())
                             Text("Your personalized growth path").foregroundStyle(Color.appTextSecondary)
                         }
                         Spacer(minLength: AppSpacing.sm)
                         Button { profile = true } label: { Image(systemName: "person.crop.circle.fill").font(.system(size: 42)).foregroundStyle(Color.appPrimary) }.accessibilityLabel("Profile")
                     }
-                    if store.selectedDomain == .productManagement {
-                        pmJourney
+                    if store.selectedDomain != nil {
+                        domainJourney
                     } else {
-                        VStack(alignment: .leading, spacing: AppSpacing.md) {
-                            HStack {
-                                VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                                    Text(store.selectedDomain?.title ?? "Choose your direction").font(AppTypography.title2.bold())
-                                    Text(store.selectedDomain.map { JourneyCopy.experiment($0) } ?? "Explore your career options and choose a path to begin.").foregroundStyle(Color.appTextSecondary)
-                                }
-                                Image("productManager").resizable().scaledToFit().frame(width: 90).accessibilityHidden(true)
-                            }
-                            NavigationLink("Explore Product Management") { CareerDirectionView(store: store, domain: .productManagement, match: nil, onDevelop: {}) }.frame(minHeight: 44)
+                        VStack(spacing: AppSpacing.lg) {
+                            Image("OnboardingIntro").resizable().scaledToFit().frame(height: 170).accessibilityHidden(true)
+                            Text("Choose your direction").font(AppTypography.title2.bold())
+                            Text("Six career paths. A practical roadmap for the skills you want to develop.").foregroundStyle(Color.appTextSecondary)
+                            AppButton(title: "Explore career directions", action: onDiscover)
                         }.padding(AppSpacing.xl).journeyCard()
-                        Text("Foundation → Practice → Portfolio").font(AppTypography.title3.bold())
-                        Text("The PM pilot is ready to explore. Other domain skill journeys are still in development.").font(AppTypography.callout).foregroundStyle(Color.appTextSecondary)
-                        curriculum
                     }
                 }.padding(.horizontal, AppSpacing.screenHorizontal).padding(.vertical, AppSpacing.md)
-            }.background(Color.appGroupedBackground).toolbar(.hidden, for: .navigationBar)
+            }.id(store.selectedDomain).background(Color.appGroupedBackground).toolbar(.hidden, for: .navigationBar)
                 .sheet(isPresented: $assessment) { JourneyAssessmentView(store: store, kind: .skills) }
                 .sheet(isPresented: $profile) { JourneySettingsView(store: store, onDelete: { profile = false; onboarded = false }) }
         }
     }
-    @ViewBuilder private var pmJourney: some View {
+    @ViewBuilder private var domainJourney: some View {
         if store.latestSkillSession != nil {
             HStack(spacing: AppSpacing.md) {
                 JourneyIcon(name: "person.badge.key", size: 52)
@@ -106,23 +100,26 @@ struct DevelopmentView: View {
             HStack(spacing: AppSpacing.lg) {
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
                     Text("You chose").foregroundStyle(Color.appTextSecondary)
-                    Text("Product Manager").font(AppTypography.title.bold())
+                    Text(store.activeDomain.title).font(AppTypography.title.bold())
                     Label("Goal Confirmed", systemImage: "checkmark.circle").font(AppTypography.subheadline.bold()).foregroundStyle(Color.appSuccess)
                 }
                 Spacer(minLength: 0)
-                Image("productManager").resizable().scaledToFit().frame(width: 112).accessibilityHidden(true)
+                Group {
+                    if store.activeDomain == .productManagement { Image("productManager").resizable().scaledToFit().frame(width: 112).accessibilityHidden(true) }
+                    else { JourneyIcon(name: JourneyAppearance.icon(store.activeDomain), color: JourneyAppearance.color(store.activeDomain), size: 80) }
+                }
             }.padding(AppSpacing.xl).journeyCard()
             Text("Build your starting point").font(AppTypography.title2.bold())
             HStack(spacing: AppSpacing.md) {
                 JourneyIcon(name: "checklist")
-                VStack(alignment: .leading, spacing: AppSpacing.xs) { Text("PM Skill Check").font(AppTypography.headline); Text("Eight skills. Capability and evidence. A roadmap based on your answers.").foregroundStyle(Color.appTextSecondary) }
+                VStack(alignment: .leading, spacing: AppSpacing.xs) { Text("\(store.activeDomain.shortTitle) Skill Check").font(AppTypography.headline); Text("Eight skills. Capability and evidence. A roadmap based on your answers.").foregroundStyle(Color.appTextSecondary) }
             }
-            AppButton(title: "Assess my PM skills", action: { assessment = true }, systemImage: "arrow.right")
+            AppButton(title: "Assess my \(store.activeDomain.shortTitle) skills", action: { assessment = true }, systemImage: "arrow.right")
             Text("What you’ll build").font(AppTypography.title2.bold())
             curriculum
         }
         if store.latestSkillSession != nil {
-            AppButton(title: "Reassess my PM skills", action: { assessment = true }, systemImage: "checklist")
+            AppButton(title: "Reassess my \(store.activeDomain.shortTitle) skills", action: { assessment = true }, systemImage: "checklist")
         }
     }
     private var curriculum: some View {
@@ -152,11 +149,17 @@ struct MissionActivityView: View {
                 Text(item.mission.title).font(AppTypography.largeTitle.bold())
                 Text("\(item.mission.stage.rawValue.capitalized) · \(item.classification.rawValue)").foregroundStyle(Color.appTextSecondary)
                 section("Why this matters", item.mission.why)
-                Image(item.mission.stage == .portfolio ? "productManager" : "Assessment").resizable().scaledToFit().frame(maxWidth: .infinity).frame(height: 110).accessibilityHidden(true)
+                Image(item.mission.domainID == .productManagement && item.mission.stage == .portfolio ? "productManager" : "Assessment").resizable().scaledToFit().frame(maxWidth: .infinity).frame(height: 110).accessibilityHidden(true)
                 section("Activity", item.classification == .validation
                     ? "Use an existing artifact that demonstrates this mission’s objective. Check it against the evidence requirements below, ask a peer for one piece of feedback, and record what the artifact proves and what remains untested. You do not need to repeat a full project."
                     : item.mission.activity)
                 section("Evidence to create", item.mission.evidence)
+                if let address = item.mission.resourceURL, let url = URL(string: address), url.scheme == "https", let title = item.mission.resourceTitle {
+                    VStack(alignment: .leading, spacing: AppSpacing.sm) {
+                        Link(destination: url) { Label(title, systemImage: "arrow.up.right.square") }.frame(minHeight: 44)
+                        Text("Optional further reading. Opens in your browser and requires internet. All mission instructions are available offline.").font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
+                    }.padding(AppSpacing.lg).journeyCard()
+                }
                 section("Reflection prompt", item.mission.reflection)
                 if !store.isUnlocked(item.mission) {
                     section("Before you start", item.mission.prerequisiteMissionIDs.compactMap { id in store.missions.first { $0.id == id }?.title }.joined(separator: "\n"))

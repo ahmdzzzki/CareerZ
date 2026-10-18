@@ -58,9 +58,13 @@ struct JourneyDashboardView: View {
                         }
                     }
                     HStack {
-                        Text(store.latestSkillSession == nil ? "Skills to Explore" : "Focus Areas").font(AppTypography.title2.bold())
+                        Text(store.selectedDomain == nil ? "Explore Career Paths" : store.latestSkillSession == nil ? "Skills to Explore" : "Focus Areas").font(AppTypography.title2.bold())
                         Spacer()
-                        NavigationLink { SkillHistoryView(store: store) } label: { Image(systemName: "chevron.right") }.accessibilityLabel("View all skills")
+                        if store.selectedDomain == nil {
+                            Button(action: onDiscover) { Image(systemName: "chevron.right") }.accessibilityLabel("Explore all careers")
+                        } else {
+                            NavigationLink { SkillHistoryView(store: store) } label: { Image(systemName: "chevron.right") }.accessibilityLabel("View all skills")
+                        }
                     }
                     skillCarousel
                     Text("Next Step").font(AppTypography.title2.bold())
@@ -93,7 +97,7 @@ struct JourneyDashboardView: View {
     private var snapshotRing: some View { JourneyRing(progress: proficiency, color: proficiency == nil ? .appPrimary : .appSuccess) }
     private var snapshotCopy: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("PM Skill Snapshot").font(AppTypography.title3.bold()).foregroundStyle(Color.appTextPrimary)
+            Text(store.selectedDomain.map { "\($0.shortTitle) Skill Snapshot" } ?? "Skill Snapshot").font(AppTypography.title3.bold()).foregroundStyle(Color.appTextPrimary)
             Text(proficiency == nil ? "Find your starting point" : "Self-assessed proficiency").font(AppTypography.subheadline).foregroundStyle(Color.appTextSecondary)
             if let latest = store.latestSkillSession, store.skillHistory.count > 1,
                latest.contentVersion == store.skillHistory[1].contentVersion, latest.domain == store.skillHistory[1].domain,
@@ -113,18 +117,30 @@ struct JourneyDashboardView: View {
     private var skillCarousel: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: AppSpacing.sm) {
-                ForEach(store.priorityGaps.isEmpty ? Array(store.skills.prefix(3)) : store.priorityGaps.map(\.skill)) { skill in
-                    NavigationLink { JourneySkillDetailView(store: store, skill: skill) } label: {
-                        JourneySkillTile(skill: skill, result: store.latestSkillSession?.results.first { $0.skillID == skill.id })
-                            .frame(width: typeSize.isAccessibilitySize ? 260 : 176)
-                    }.buttonStyle(.plain)
+                if store.selectedDomain == nil {
+                    ForEach(CareerDomainID.allCases) { domain in
+                        NavigationLink { CareerDirectionView(store: store, domain: domain, match: nil, onDevelop: onRoadmap) } label: {
+                            VStack(alignment: .leading, spacing: AppSpacing.md) {
+                                JourneyIcon(name: JourneyAppearance.icon(domain), color: JourneyAppearance.color(domain))
+                                Text(domain.title).font(AppTypography.headline).foregroundStyle(Color.appTextPrimary)
+                                Text("Explore this direction").font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
+                            }.padding(AppSpacing.md).frame(width: typeSize.isAccessibilitySize ? 260 : 176, alignment: .leading).frame(minHeight: 210, alignment: .top).journeyCard()
+                        }.buttonStyle(.plain)
+                    }
+                } else {
+                    ForEach(store.priorityGaps.isEmpty ? Array(store.skills.prefix(3)) : store.priorityGaps.map(\.skill)) { skill in
+                        NavigationLink { JourneySkillDetailView(store: store, skill: skill) } label: {
+                            JourneySkillTile(skill: skill, result: store.latestSkillSession?.results.first { $0.skillID == skill.id })
+                                .frame(width: typeSize.isAccessibilitySize ? 260 : 176)
+                        }.buttonStyle(.plain)
+                    }
                 }
             }.padding(.bottom, AppSpacing.xxs)
         }
     }
     private var nextStep: some View {
         Button {
-            if store.selectedDomain == .productManagement {
+            if store.selectedDomain != nil {
                 if store.latestSkillSession == nil { assessment = true } else { onRoadmap() }
             } else { onDiscover() }
         } label: {
@@ -132,16 +148,16 @@ struct JourneyDashboardView: View {
                 HStack(spacing: AppSpacing.md) {
                     Image("Assessment").resizable().scaledToFit().frame(width: 76, height: 90).accessibilityHidden(true)
                     VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                        Text(store.selectedDomain == .productManagement ? (store.latestSkillSession == nil ? "PM Assessment" : "Your Next Mission") : "Find Your Direction")
+                        Text(store.selectedDomain != nil ? (store.latestSkillSession == nil ? "\(store.activeDomain.shortTitle) Assessment" : "Your Next Mission") : "Find Your Direction")
                             .font(AppTypography.title3.bold())
-                        Text(store.selectedDomain == .productManagement ? (store.latestSkillSession == nil ? "Check your PM skills and build your personal roadmap." : "Turn your next priority into a reviewable piece of work.") : "Explore your interests, compare careers, and choose where to start.")
+                        Text(store.selectedDomain != nil ? (store.latestSkillSession == nil ? "Check your skills and build your personal roadmap." : "Turn your next priority into a reviewable piece of work.") : "Explore your interests, compare careers, and choose where to start.")
                             .font(AppTypography.callout).foregroundStyle(Color.appTextSecondary)
                     }
                     Spacer(minLength: 0)
                 }
                 Divider()
                 HStack(spacing: AppSpacing.lg) {
-                    Label(store.selectedDomain == .productManagement ? "8 skills" : "6 directions", systemImage: "list.bullet")
+                    Label(store.selectedDomain != nil ? "8 skills" : "6 directions", systemImage: "list.bullet")
                     Label("On-device", systemImage: "iphone")
                     Spacer(); Image(systemName: "arrow.right").foregroundStyle(Color.appPrimary)
                 }.font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
@@ -190,7 +206,7 @@ struct JourneySkillDetailView: View {
                     Text(skill.summary).foregroundStyle(Color.appTextSecondary)
                     if let result {
                         Text(JourneyEngine().recommendation(for: SkillGapResult(skill: skill, currentScore: result.calculatedScore, gap: max(skill.portfolioTarget - result.calculatedScore, 0), priorityScore: 0)))
-                    } else { Text("Complete your PM assessment to see an insight based on your answers.") }
+                    } else { Text("Complete your skill assessment to see an insight based on your answers.") }
                 }.padding(AppSpacing.lg).journeyCard()
                 Text("Measured By").font(AppTypography.title2.bold())
                 VStack {

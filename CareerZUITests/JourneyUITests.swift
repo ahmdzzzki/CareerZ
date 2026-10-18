@@ -34,7 +34,7 @@ final class JourneyUITests: XCTestCase {
         let capture = XCTAttachment(screenshot: app.screenshot())
         capture.name = "Optional Apple connection"; capture.lifetime = .keepAlways; add(capture)
         app.tabBars.buttons["Home"].tap()
-        XCTAssertTrue(app.staticTexts["PM Skill Snapshot"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "Skill Snapshot")).firstMatch.waitForExistence(timeout: 5))
     }
 
     func testDeleteConfirmationIsCenteredAndCancelKeepsData() {
@@ -55,12 +55,37 @@ final class JourneyUITests: XCTestCase {
     }
 
     func testPMJourneyPersistsAfterRelaunch() {
+        verifyJourney(domain: "Product Management", shortTitle: "PM", firstMission: "Understand Product Work")
+    }
+
+    func testSoftwareJourneyPersistsAfterRelaunch() {
+        verifyJourney(domain: "Software Engineering", shortTitle: "Software", firstMission: "Define a Small Software Problem")
+    }
+
+    func testAllSixCareerDirectionsOpenTheirOwnSkillCheck() {
         let app = XCUIApplication()
         begin(app)
-        tap(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Product Management")).firstMatch, in: app)
+        let domains = [("Software Engineering", "Software"), ("Mobile Development", "Mobile"), ("Product Design", "Design"), ("Product Management", "PM"), ("Data & Analytics", "Data"), ("AI & Machine Learning", "AI & ML")]
+        for (name, short) in domains {
+            app.tabBars.buttons["Discover"].tap()
+            let option = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", name)).firstMatch
+            tap(option, in: app)
+            tap(app.buttons["Choose this direction"], in: app)
+            app.alerts.buttons["Choose direction"].tap()
+            XCTAssertTrue(app.staticTexts[name].waitForExistence(timeout: 5))
+            XCTAssertTrue(app.staticTexts["You chose"].isHittable, "A new career should start at the top of its roadmap")
+            XCTAssertTrue(app.buttons["Assess my \(short) skills"].exists)
+            let capture = XCTAttachment(screenshot: app.screenshot()); capture.name = "\(short) Skill Check"; capture.lifetime = .keepAlways; add(capture)
+        }
+    }
+
+    private func verifyJourney(domain: String, shortTitle: String, firstMission: String) {
+        let app = XCUIApplication()
+        begin(app)
+        tap(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", domain)).firstMatch, in: app)
         tap(app.buttons["Choose this direction"], in: app)
         app.buttons["Choose direction"].tap()
-        tap(app.buttons["Assess my PM skills"], in: app)
+        tap(app.buttons["Assess my \(shortTitle) skills"], in: app)
         for index in 0..<8 {
             let capability = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "2 · Guided Practice")).firstMatch
             tap(capability, in: app)
@@ -69,11 +94,12 @@ final class JourneyUITests: XCTestCase {
             tap(app.buttons[index == 7 ? "Save my assessment" : "Continue"], in: app)
         }
         XCTAssertTrue(app.staticTexts["Your skill snapshot"].waitForExistence(timeout: 10))
-        tap(app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Understand Product Work")).firstMatch, in: app)
+        let roadmapImage = XCTAttachment(screenshot: app.screenshot()); roadmapImage.name = "\(shortTitle) Roadmap"; roadmapImage.lifetime = .keepAlways; add(roadmapImage)
+        tap(app.buttons.matching(NSPredicate(format: "label CONTAINS %@", firstMission)).firstMatch, in: app)
         let evidence = app.textFields["Mission evidence"].exists ? app.textFields["Mission evidence"] : app.textViews["Mission evidence"]
-        tap(evidence, in: app); evidence.typeText("PM role comparison with examples")
+        tap(evidence, in: app); evidence.typeText("\(shortTitle) project artifact with reviewed decisions")
         let reflection = app.textFields["Mission reflection"].exists ? app.textFields["Mission reflection"] : app.textViews["Mission reflection"]
-        tap(reflection, in: app); reflection.typeText("I can distinguish product outcomes from project delivery.")
+        tap(reflection, in: app); reflection.typeText("I recorded my decisions, limitations, and next improvement.")
         // Dismiss the keyboard using the navigation bar before reaching the footer.
         app.navigationBars.firstMatch.tap()
         tap(app.buttons["Complete this mission"], in: app)
@@ -91,7 +117,7 @@ final class JourneyUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         app.tabBars.buttons["Home"].tap()
-        XCTAssertTrue(app.staticTexts["PM Skill Snapshot"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "Skill Snapshot")).firstMatch.waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Next Step"].exists)
         let home = XCTAttachment(screenshot: app.screenshot())
         home.name = "Refined Home"; home.lifetime = .keepAlways; add(home)

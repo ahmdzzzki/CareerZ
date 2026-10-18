@@ -1,0 +1,274 @@
+[
+  {
+    "id": "mobile_skill_01",
+    "domainID": "mobile_development",
+    "title": "Platform Programming",
+    "summary": "Apply platform language features, lifecycle, and concurrency in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced platform language features, lifecycle, and concurrency."
+      },
+      {
+        "level": 1,
+        "text": "You can explain platform language features, lifecycle, and concurrency, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can implement a platform feature with safe state updates and error handling."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can implement a platform feature with safe state updates and error handling and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to implement a platform feature with safe state updates and error handling, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Platform feature",
+      "Lifecycle notes"
+    ]
+  },
+  {
+    "id": "mobile_skill_02",
+    "domainID": "mobile_development",
+    "title": "Mobile UI & Accessibility",
+    "summary": "Apply native controls, adaptable layout, and assistive technology in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced native controls, adaptable layout, and assistive technology."
+      },
+      {
+        "level": 1,
+        "text": "You can explain native controls, adaptable layout, and assistive technology, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can build and evaluate a screen with larger text and a screen reader."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can build and evaluate a screen with larger text and a screen reader and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to build and evaluate a screen with larger text and a screen reader, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Accessible screen",
+      "Accessibility review"
+    ]
+  },
+  {
+    "id": "mobile_skill_03",
+    "domainID": "mobile_development",
+    "title": "Navigation & State Management",
+    "summary": "Apply navigation paths, state ownership, and restoration in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced navigation paths, state ownership, and restoration."
+      },
+      {
+        "level": 1,
+        "text": "You can explain navigation paths, state ownership, and restoration, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can implement a multi-screen flow with consistent back and restoration behavior."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can implement a multi-screen flow with consistent back and restoration behavior and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to implement a multi-screen flow with consistent back and restoration behavior, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Navigation flow",
+      "State ownership map"
+    ]
+  },
+  {
+    "id": "mobile_skill_04",
+    "domainID": "mobile_development",
+    "title": "Persistence & Networking",
+    "summary": "Apply local storage, synchronization boundaries, and network failures in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced local storage, synchronization boundaries, and network failures."
+      },
+      {
+        "level": 1,
+        "text": "You can explain local storage, synchronization boundaries, and network failures, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can save user data locally and handle unavailable remote data."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can save user data locally and handle unavailable remote data and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to save user data locally and handle unavailable remote data, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Persistence checks",
+      "Offline fixtures"
+    ]
+  },
+  {
+    "id": "mobile_skill_05",
+    "domainID": "mobile_development",
+    "title": "Mobile Architecture",
+    "summary": "Apply presentation boundaries, domain services, and dependencies in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced presentation boundaries, domain services, and dependencies."
+      },
+      {
+        "level": 1,
+        "text": "You can explain presentation boundaries, domain services, and dependencies, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can separate testable logic from platform views."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can separate testable logic from platform views and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to separate testable logic from platform views, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Architecture diagram",
+      "Testable service"
+    ]
+  },
+  {
+    "id": "mobile_skill_06",
+    "domainID": "mobile_development",
+    "title": "Testing & Debugging",
+    "summary": "Apply unit, UI, lifecycle, and device-specific testing in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced unit, UI, lifecycle, and device-specific testing."
+      },
+      {
+        "level": 1,
+        "text": "You can explain unit, UI, lifecycle, and device-specific testing, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can reproduce a mobile defect and verify a targeted fix."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can reproduce a mobile defect and verify a targeted fix and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to reproduce a mobile defect and verify a targeted fix, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "UI test",
+      "Bug investigation"
+    ]
+  },
+  {
+    "id": "mobile_skill_07",
+    "domainID": "mobile_development",
+    "title": "Performance & Device Capabilities",
+    "summary": "Apply profiling, permissions, resource use, and device APIs in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced profiling, permissions, resource use, and device APIs."
+      },
+      {
+        "level": 1,
+        "text": "You can explain profiling, permissions, resource use, and device APIs, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can profile an interaction and integrate a justified device capability."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can profile an interaction and integrate a justified device capability and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to profile an interaction and integrate a justified device capability, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Profiling trace",
+      "Permission fallback"
+    ]
+  },
+  {
+    "id": "mobile_skill_08",
+    "domainID": "mobile_development",
+    "title": "Release & Maintenance",
+    "summary": "Apply signing, distribution, privacy, and release verification in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced signing, distribution, privacy, and release verification."
+      },
+      {
+        "level": 1,
+        "text": "You can explain signing, distribution, privacy, and release verification, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can prepare an installable build and verify its release requirements."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can prepare an installable build and verify its release requirements and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to prepare an installable build and verify its release requirements, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Installable build",
+      "Release checklist"
+    ]
+  }
+]

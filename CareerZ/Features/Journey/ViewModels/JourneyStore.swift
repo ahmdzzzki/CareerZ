@@ -10,6 +10,8 @@ import SwiftData
     var missions: [JourneyMission] = []
     var compassHistory: [CompassSnapshot] = []
     var skillHistory: [SkillSessionSnapshot] = []
+    var allSkillHistory: [SkillSessionSnapshot] = []
+    var activeDomain: CareerDomainID { selectedDomain ?? .productManagement }
     var evidenceRecords: [MissionEvidenceRecord] = []
     var selectedDomain: CareerDomainID?
     var errorMessage: String?
@@ -29,30 +31,38 @@ import SwiftData
         do {
             let loader = LocalJSONLoader(bundle: bundle)
             let questions = try loader.decode([CompassQuestion].self, from: "compass_questions")
-            let skills = try loader.decode([SkillDefinition].self, from: "product_management_skills")
-            let missions = try loader.decode([JourneyMission].self, from: "product_management_missions")
-            guard Set(questions.map(\.id)).count == questions.count,
-                  Set(skills.map(\.id)).count == skills.count else { throw JourneyValidationError.invalidContent }
-            // Validate content before letting a user invest time in an assessment.
+            let catalog = try CareerKnowledgeCatalog(bundle: bundle).load()
+            guard Set(questions.map(\.id)).count == questions.count else { throw JourneyValidationError.invalidContent }
             _ = try CompassEngine().assess(questions: questions, answers: Dictionary(uniqueKeysWithValues: questions.map { ($0.id, 3) }))
-            _ = try JourneyEngine().assess(skills: skills, answers: Dictionary(uniqueKeysWithValues: skills.map { ($0.id, SkillResponse(capability: 0, evidence: 0)) }))
             let fetched = try context.fetch(FetchDescriptor<AssessmentRecord>(sortBy: [SortDescriptor(\.date, order: .reverse)]))
             var seen = Set<UUID>()
             let records = fetched.filter { seen.insert($0.id).inserted }
             let decoder = JSONDecoder()
             let compass = try records.filter { $0.kind == "compass" }.map { try decoder.decode(CompassSnapshot.self, from: $0.payload) }
             let history = try records.filter { $0.kind == "skills" }.map { try decoder.decode(SkillSessionSnapshot.self, from: $0.payload) }
-            guard records.allSatisfy({ ["compass", "skills"].contains($0.kind) }), compass.allSatisfy({ $0.contentVersion == 1 }), history.allSatisfy({ $0.contentVersion == 1 && $0.domain == .productManagement }) else {
+            guard records.allSatisfy({ ["compass", "skills"].contains($0.kind) }), compass.allSatisfy({ $0.contentVersion == 1 }), history.allSatisfy({ $0.contentVersion == 1 && catalog[$0.domain] != nil }) else {
                 throw JourneyValidationError.invalidContent
             }
             let direction = try context.fetch(FetchDescriptor<DirectionRecord>(sortBy: [SortDescriptor(\.updatedAt, order: .reverse)])).first
             if let direction, CareerDomainID(rawValue: direction.domainID) == nil { throw JourneyValidationError.invalidContent }
-            self.questions = questions; self.skills = skills; self.missions = missions
-            self.compassHistory = compass; self.skillHistory = history
-            var missionIDs = Set<String>()
-            evidenceRecords = try context.fetch(FetchDescriptor<MissionEvidenceRecord>(sortBy: [SortDescriptor(\.updatedAt, order: .reverse)])).filter { missionIDs.insert($0.missionID).inserted }
             selectedDomain = direction.flatMap { CareerDomainID(rawValue: $0.domainID) }
-            roadmap = try JourneyEngine().roadmap(missions: missions, skills: skills, results: history.first?.results ?? [])
+            guard let knowledge = catalog[activeDomain] else { throw JourneyValidationError.invalidContent }
+            let skills = knowledge.skills
+            let missions = knowledge.missions
+            // Preserve every domain on disk; only the selected domain drives the dashboard.
+            for snapshot in history {
+                guard let expected = catalog[snapshot.domain]?.skills,
+                      Set(snapshot.results.map(\.skillID)) == Set(expected.map(\.id)),
+                      snapshot.results.count == expected.count,
+                      SkillHistoryService().weightedProficiency(skills: expected, session: snapshot) != nil else { throw JourneyValidationError.invalidContent }
+            }
+            self.questions = questions; self.skills = skills; self.missions = missions
+            self.compassHistory = compass; self.allSkillHistory = history
+            self.skillHistory = history.filter { $0.domain == activeDomain }
+            var missionIDs = Set<String>()
+            let activeIDs = Set(missions.map(\.id))
+            evidenceRecords = try context.fetch(FetchDescriptor<MissionEvidenceRecord>(sortBy: [SortDescriptor(\.updatedAt, order: .reverse)])).filter { activeIDs.contains($0.missionID) && missionIDs.insert($0.missionID).inserted }
+            roadmap = try JourneyEngine().roadmap(missions: missions, skills: skills, results: skillHistory.first?.results ?? [])
             isLoaded = true
             errorMessage = nil
         } catch { isLoaded = false; errorMessage = error.localizedDescription }
@@ -72,18 +82,20 @@ import SwiftData
         }
     }
 
-    func saveSkills(_ answers: [String: SkillResponse]) -> Bool {
+    func saveSkills(_ answers: [String: SkillResponse], for domain: CareerDomainID? = nil) -> Bool {
         transact {
+            guard domain == nil || domain == activeDomain else { throw JourneyValidationError.invalidContent }
             let result = try JourneyEngine().assess(skills: skills, answers: answers)
             context.insert(AssessmentRecord(kind: "skills", date: result.assessedAt, payload: try JSONEncoder().encode(result)))
         }
     }
 
     func evidence(for missionID: String) -> MissionEvidenceRecord? { evidenceRecords.first { $0.missionID == missionID } }
-    func isUnlocked(_ mission: JourneyMission) -> Bool { Set(mission.prerequisiteMissionIDs).isSubset(of: completedIDs) }
+    func isUnlocked(_ mission: JourneyMission) -> Bool { missions.contains(mission) && Set(mission.prerequisiteMissionIDs).isSubset(of: completedIDs) }
 
     func saveMission(_ mission: JourneyMission, evidence: String, reflection: String, complete: Bool) -> Bool {
         transact {
+            guard missions.contains(mission) else { throw JourneyValidationError.invalidContent }
             if complete {
                 guard isUnlocked(mission) else { throw StoreError.lockedMission }
                 guard !evidence.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,

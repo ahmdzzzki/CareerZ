@@ -92,3 +92,13 @@ xcodebuild -project CareerZ.xcodeproj -scheme CareerZ -configuration Debug \
 - Jangan menyamakan credential Apple dengan akun iCloud perangkat. Jangan menampilkan account availability sebagai bukti sync berhasil.
 - Toolbar iOS sudah memiliki glass native: jangan menambah `.buttonStyle(.glass)` atau `.glassEffect` lagi di dalam toolbar. AppButton memakai kapsul solid brand.
 - Gunakan alert native untuk konfirmasi penting agar berada di tengah pada iPhone/iPad, dengan Cancel eksplisit. Reset progress juga menghapus record cloud; jelaskan konsekuensinya.
+
+
+## Enam domain — 19 Oktober 2026
+
+- Semua enam domain memiliki konten aktif: delapan skill dan sepuluh mission per domain. `CareerKnowledgeCatalog` memvalidasi dan memuat pasangan `<domain>_skills.json` / `<domain>_missions.json`; jangan menambahkan cabang layar per-role.
+- `JourneyStore.skillHistory`, `skills`, `missions`, `evidenceRecords`, `roadmap`, dan progress hanya untuk domain terpilih. `allSkillHistory` untuk hitungan global. Pergantian arah mempertahankan semua data di disk/cloud; jangan membandingkan skor antar-domain sebagai improvement.
+- Pertahankan ID skill/mission PM lama. Domain baru memiliki prefix sendiri. Schema SwiftData V2 tidak berubah untuk perluasan konten ini.
+- Urutan roadmap mengutamakan tahap Foundation/Practice/Portfolio, kemudian gap di antara mission yang memenuhi prasyarat. Skill matang menjadi Optional Validation, bukan auto-complete.
+- Assessment menangkap domain awal dan menolak save bila arah berubah, termasuk perubahan yang diimpor dari CloudKit. Jangan menerima mission dari domain lain.
+- Instruksi, evidence, refleksi tersedia offline. Link bacaan eksternal opsional dan diberi keterangan membutuhkan internet.

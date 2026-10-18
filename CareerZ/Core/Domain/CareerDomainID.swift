@@ -21,3 +21,18 @@ enum CareerDomainID: String, Codable, CaseIterable, Identifiable, Sendable {
         }
     }
 }
+
+
+extension CareerDomainID {
+    var shortTitle: String {
+        switch self {
+        case .softwareEngineering: "Software"
+        case .mobileDevelopment: "Mobile"
+        case .productDesign: "Design"
+        case .productManagement: "PM"
+        case .dataAnalytics: "Data"
+        case .artificialIntelligence: "AI & ML"
+        }
+    }
+    var roadmapTitle: String { self == .productManagement ? "Product Manager Roadmap" : "\(title) Roadmap" }
+}

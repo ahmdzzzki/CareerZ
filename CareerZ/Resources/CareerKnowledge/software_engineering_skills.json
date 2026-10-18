@@ -1,0 +1,274 @@
+[
+  {
+    "id": "se_skill_01",
+    "domainID": "software_engineering",
+    "title": "Programming Fundamentals",
+    "summary": "Apply types, control flow, functions, and data structures in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced types, control flow, functions, and data structures."
+      },
+      {
+        "level": 1,
+        "text": "You can explain types, control flow, functions, and data structures, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can implement a small program with clear inputs, outputs, and error handling."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can implement a small program with clear inputs, outputs, and error handling and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to implement a small program with clear inputs, outputs, and error handling, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Working program",
+      "Input/output examples"
+    ]
+  },
+  {
+    "id": "se_skill_02",
+    "domainID": "software_engineering",
+    "title": "Problem Solving & Algorithms",
+    "summary": "Apply decomposition, complexity, and edge cases in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced decomposition, complexity, and edge cases."
+      },
+      {
+        "level": 1,
+        "text": "You can explain decomposition, complexity, and edge cases, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can compare two solutions and test their time and space trade-offs."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can compare two solutions and test their time and space trade-offs and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to compare two solutions and test their time and space trade-offs, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Algorithm comparison",
+      "Edge-case tests"
+    ]
+  },
+  {
+    "id": "se_skill_03",
+    "domainID": "software_engineering",
+    "title": "Software Architecture & Design",
+    "summary": "Apply module boundaries, interfaces, and dependency direction in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced module boundaries, interfaces, and dependency direction."
+      },
+      {
+        "level": 1,
+        "text": "You can explain module boundaries, interfaces, and dependency direction, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can separate domain logic from interfaces and explain a design trade-off."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can separate domain logic from interfaces and explain a design trade-off and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to separate domain logic from interfaces and explain a design trade-off, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Module diagram",
+      "Architecture decision record"
+    ]
+  },
+  {
+    "id": "se_skill_04",
+    "domainID": "software_engineering",
+    "title": "Data & API Integration",
+    "summary": "Apply HTTP contracts, validation, persistence, and failures in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced HTTP contracts, validation, persistence, and failures."
+      },
+      {
+        "level": 1,
+        "text": "You can explain HTTP contracts, validation, persistence, and failures, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can integrate a data source with validation and failure handling."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can integrate a data source with validation and failure handling and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to integrate a data source with validation and failure handling, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "API contract",
+      "Integration tests"
+    ]
+  },
+  {
+    "id": "se_skill_05",
+    "domainID": "software_engineering",
+    "title": "Testing & Debugging",
+    "summary": "Apply test boundaries, reproduction steps, and root causes in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced test boundaries, reproduction steps, and root causes."
+      },
+      {
+        "level": 1,
+        "text": "You can explain test boundaries, reproduction steps, and root causes, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can reproduce a defect and add a regression test for its cause."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can reproduce a defect and add a regression test for its cause and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to reproduce a defect and add a regression test for its cause, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Bug reproduction",
+      "Regression test"
+    ]
+  },
+  {
+    "id": "se_skill_06",
+    "domainID": "software_engineering",
+    "title": "Version Control & Collaboration",
+    "summary": "Apply branches, commits, reviews, and merge conflicts in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced branches, commits, reviews, and merge conflicts."
+      },
+      {
+        "level": 1,
+        "text": "You can explain branches, commits, reviews, and merge conflicts, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can submit a focused change and respond to review feedback."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can submit a focused change and respond to review feedback and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to submit a focused change and respond to review feedback, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Reviewed change",
+      "Commit history"
+    ]
+  },
+  {
+    "id": "se_skill_07",
+    "domainID": "software_engineering",
+    "title": "Code Quality & Documentation",
+    "summary": "Apply readability, naming, contracts, and maintainable documentation in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced readability, naming, contracts, and maintainable documentation."
+      },
+      {
+        "level": 1,
+        "text": "You can explain readability, naming, contracts, and maintainable documentation, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can refactor a module and document how to use and maintain it."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can refactor a module and document how to use and maintain it and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to refactor a module and document how to use and maintain it, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Refactoring diff",
+      "Setup guide"
+    ]
+  },
+  {
+    "id": "se_skill_08",
+    "domainID": "software_engineering",
+    "title": "Delivery & Maintenance",
+    "summary": "Apply configuration, release checks, observability, and rollback in practical work.",
+    "importanceWeight": 0.05,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced configuration, release checks, observability, and rollback."
+      },
+      {
+        "level": 1,
+        "text": "You can explain configuration, release checks, observability, and rollback, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can package a reproducible release with a recovery plan."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can package a reproducible release with a recovery plan and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to package a reproducible release with a recovery plan, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Release checklist",
+      "Recovery instructions"
+    ]
+  }
+]

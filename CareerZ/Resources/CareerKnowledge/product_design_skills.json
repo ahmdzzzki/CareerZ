@@ -1,0 +1,274 @@
+[
+  {
+    "id": "design_skill_01",
+    "domainID": "product_design",
+    "title": "User Understanding",
+    "summary": "Apply user context, needs, assumptions, and constraints in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced user context, needs, assumptions, and constraints."
+      },
+      {
+        "level": 1,
+        "text": "You can explain user context, needs, assumptions, and constraints, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can frame a user problem using observed behavior rather than preference."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can frame a user problem using observed behavior rather than preference and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to frame a user problem using observed behavior rather than preference, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "User context map",
+      "Problem brief"
+    ]
+  },
+  {
+    "id": "design_skill_02",
+    "domainID": "product_design",
+    "title": "User Research",
+    "summary": "Apply research questions, consent, methods, and synthesis in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced research questions, consent, methods, and synthesis."
+      },
+      {
+        "level": 1,
+        "text": "You can explain research questions, consent, methods, and synthesis, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can plan and conduct research and separate observations from interpretations."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can plan and conduct research and separate observations from interpretations and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to plan and conduct research and separate observations from interpretations, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Research plan",
+      "Anonymized findings"
+    ]
+  },
+  {
+    "id": "design_skill_03",
+    "domainID": "product_design",
+    "title": "Information Architecture",
+    "summary": "Apply content hierarchy, grouping, and findability in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced content hierarchy, grouping, and findability."
+      },
+      {
+        "level": 1,
+        "text": "You can explain content hierarchy, grouping, and findability, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can organize content and evaluate how users find a task."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can organize content and evaluate how users find a task and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to organize content and evaluate how users find a task, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Content map",
+      "Navigation evaluation"
+    ]
+  },
+  {
+    "id": "design_skill_04",
+    "domainID": "product_design",
+    "title": "Interaction Design",
+    "summary": "Apply task flows, states, feedback, and recovery in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced task flows, states, feedback, and recovery."
+      },
+      {
+        "level": 1,
+        "text": "You can explain task flows, states, feedback, and recovery, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can design an end-to-end interaction including failure and recovery."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can design an end-to-end interaction including failure and recovery and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to design an end-to-end interaction including failure and recovery, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Task flow",
+      "State specification"
+    ]
+  },
+  {
+    "id": "design_skill_05",
+    "domainID": "product_design",
+    "title": "Visual Design & Design Systems",
+    "summary": "Apply hierarchy, typography, contrast, and reusable tokens in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced hierarchy, typography, contrast, and reusable tokens."
+      },
+      {
+        "level": 1,
+        "text": "You can explain hierarchy, typography, contrast, and reusable tokens, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can create a consistent accessible component and token system."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can create a consistent accessible component and token system and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to create a consistent accessible component and token system, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Design tokens",
+      "Component library"
+    ]
+  },
+  {
+    "id": "design_skill_06",
+    "domainID": "product_design",
+    "title": "Prototyping",
+    "summary": "Apply prototype fidelity, interactions, and testable assumptions in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced prototype fidelity, interactions, and testable assumptions."
+      },
+      {
+        "level": 1,
+        "text": "You can explain prototype fidelity, interactions, and testable assumptions, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can build an interactive prototype suited to a research question."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can build an interactive prototype suited to a research question and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to build an interactive prototype suited to a research question, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Interactive prototype",
+      "Prototype test plan"
+    ]
+  },
+  {
+    "id": "design_skill_07",
+    "domainID": "product_design",
+    "title": "Usability Evaluation",
+    "summary": "Apply task-based evaluation, severity, and iteration in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced task-based evaluation, severity, and iteration."
+      },
+      {
+        "level": 1,
+        "text": "You can explain task-based evaluation, severity, and iteration, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can run task-based tests and prioritize observed usability issues."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can run task-based tests and prioritize observed usability issues and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to run task-based tests and prioritize observed usability issues, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Usability findings",
+      "Iteration comparison"
+    ]
+  },
+  {
+    "id": "design_skill_08",
+    "domainID": "product_design",
+    "title": "Design Communication & Handoff",
+    "summary": "Apply decision rationale, specifications, and collaboration in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced decision rationale, specifications, and collaboration."
+      },
+      {
+        "level": 1,
+        "text": "You can explain decision rationale, specifications, and collaboration, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can explain decisions and hand off states and accessibility behavior."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can explain decisions and hand off states and accessibility behavior and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to explain decisions and hand off states and accessibility behavior, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Design rationale",
+      "Handoff specification"
+    ]
+  }
+]

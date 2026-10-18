@@ -15,14 +15,14 @@ struct JourneyRootView: View {
                 } description: { Text(store.errorMessage ?? "Please try again.") }
                 actions: { Button("Try again") { store.reload() } }
             } else if !onboarded {
-                JourneyWelcomeView { onboarded = true }
+                JourneyWelcomeView { onboarded = true; selectedTab = 1 }
             } else {
                 TabView(selection: $selectedTab) {
                     JourneyDashboardView(store: store, onDiscover: { selectedTab = 1 }, onRoadmap: { selectedTab = 2 })
                         .tabItem { Label("Home", systemImage: "house.fill") }.tag(0)
                     DiscoveryView(store: store, onDevelop: { selectedTab = 2 })
                         .tabItem { Label("Discover", systemImage: "safari") }.tag(1)
-                    DevelopmentView(store: store)
+                    DevelopmentView(store: store, onDiscover: { selectedTab = 1 })
                         .tabItem { Label("Roadmap", systemImage: "map.fill") }.tag(2)
                     JourneySettingsView(store: store, onDelete: { onboarded = false; selectedTab = 0 })
                         .tabItem { Label("Profile", systemImage: "person.crop.circle") }.tag(3)

@@ -35,3 +35,17 @@ Restored the existing brand palette, original onboarding and assessment artwork,
 - Native Apple sign-in, Keychain identity, credential revalidation/revocation handling and private CloudKit-backed device storage are implemented. Simulator storage is explicitly local-only. Real authentication, two-device cloud round trips, deletion propagation and Production schema deployment remain unverified; follow `APPLE_SERVICES.md` before shipping.
 
 - Final simulator UI run: **3 tests passed**, zero failures: optional Apple connection/disclosed local simulator mode, centered delete alert with Cancel, and complete PM assessment → evidence/reflection → completion → relaunch/history/progress. A transient progress-label accessibility regression during refinement was corrected before this passing run.
+
+## 19 October 2026 — six career journeys
+
+- Added five domain-specific eight-skill taxonomies and ten-mission roadmaps alongside the existing PM journey: **48 skills and 60 missions**. All domain content is bundled; optional further reading is clearly marked as needing internet.
+- Shared scoring/roadmap services now validate one domain at a time. Domain switches retain stored assessment and mission data while filtering active history, scores, focus areas and progress. Stale assessment/mission actions are rejected; global resets cover all domains.
+- **24 domain/persistence tests passed**. Coverage includes complete assessments at all proficiency levels for every domain, prerequisite/stage ordering, mission coverage, completion of all 60 missions, reassessment, disk reopen, isolation while switching careers, undo, mixed-domain rejection and cross-domain reset behavior. Existing V1→V2 migration tests still pass. No additional SwiftData schema change was required.
+- Complete Software Engineering simulator UI journey passed: 16 capability/evidence responses, persisted result, mission evidence/reflection/completion, relaunch and first-assessment/history/progress checks.
+- All six career selection → named skill-check routes passed, with screenshots exported and inspected. Visual review revealed retained scroll position on career switching; the roadmap now resets its scroll identity per selected domain.
+- Signed Release archive succeeded and contains all 12 skill/mission JSON files plus Compass content. This remains development-signed, not an App Store submission or proof of live CloudKit sync.
+- Release still requires practitioner/content review, full physical-device accessibility/offline checks, live Apple sign-in/two-device CloudKit and Production schema verification, TestFlight and App Store metadata/privacy/support assets. See `CAREER_CONTENT.md`, `APPLE_SERVICES.md`, and the release checklist.
+- PM simulator UI regression passed after generalization: its existing assessment → first mission → persistence/relaunch/history flow remains functional.
+- Prepared English App Store description/review-note drafts for six domains; name/subtitle/keyword lengths checked. Public support/privacy URLs and live release validation remain required inputs, not invented values.
+
+- Final six-career UI route rerun passed after the scroll reset, including visible goal headings on each switch. Review screenshots are in `docs/screenshots/six-careers/`. PM and Software full-flow UI checks passed separately; the all-domain completion/reassessment/disk tests cover every career in the domain suite.

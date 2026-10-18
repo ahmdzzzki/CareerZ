@@ -1,0 +1,201 @@
+[
+  {
+    "id": "data_mission_01",
+    "domainID": "data_analytics",
+    "stage": "foundation",
+    "title": "Frame an Analytical Decision",
+    "primarySkillID": "data_skill_01",
+    "supportingSkillIDs": [
+      "data_skill_02"
+    ],
+    "prerequisiteMissionIDs": [],
+    "why": "A decision question gives an analysis a purpose beyond finding interesting patterns.",
+    "activity": "Choose an openly available or synthetic dataset and a decision question. Define audience, scope, success criteria, and what data cannot answer.",
+    "evidence": "An analysis brief with a decision question and limits.",
+    "reflection": "What decision could change because of your analysis?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  },
+  {
+    "id": "data_mission_02",
+    "domainID": "data_analytics",
+    "stage": "foundation",
+    "title": "Define Meaningful Measures",
+    "primarySkillID": "data_skill_02",
+    "supportingSkillIDs": [
+      "data_skill_01"
+    ],
+    "prerequisiteMissionIDs": [
+      "data_mission_01"
+    ],
+    "why": "A metric is only useful when its definition and coverage are understood.",
+    "activity": "Write a metric dictionary covering units, population, time window, and exclusions. Identify missing coverage, sampling bias, and inappropriate comparisons.",
+    "evidence": "A metric dictionary and measurement risk notes.",
+    "reflection": "Which population or time window is missing from your measure?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  },
+  {
+    "id": "data_mission_03",
+    "domainID": "data_analytics",
+    "stage": "foundation",
+    "title": "Retrieve and Validate Data",
+    "primarySkillID": "data_skill_03",
+    "supportingSkillIDs": [
+      "data_skill_08"
+    ],
+    "prerequisiteMissionIDs": [
+      "data_mission_02"
+    ],
+    "why": "Incorrect joins and aggregations can produce plausible but misleading results.",
+    "activity": "Write queries or equivalent structured retrieval steps. Validate row counts, keys, joins, and aggregations against small manually checked examples.",
+    "evidence": "Retrieval queries, source/license notes, and validation examples.",
+    "reflection": "How did you verify that retrieval did not multiply or omit rows?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  },
+  {
+    "id": "data_mission_04",
+    "domainID": "data_analytics",
+    "stage": "practice",
+    "title": "Build a Cleaning Pipeline",
+    "primarySkillID": "data_skill_04",
+    "supportingSkillIDs": [
+      "data_skill_03"
+    ],
+    "prerequisiteMissionIDs": [
+      "data_mission_03"
+    ],
+    "why": "Cleaning decisions affect which conclusions a dataset can support.",
+    "activity": "Profile missingness, duplicates, and invalid values. Implement explicit transformation rules and keep a record of changed or excluded rows.",
+    "evidence": "A repeatable cleaning pipeline and before/after quality report.",
+    "reflection": "Which transformation most changed your sample or results?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  },
+  {
+    "id": "data_mission_05",
+    "domainID": "data_analytics",
+    "stage": "practice",
+    "title": "Explore Patterns and Uncertainty",
+    "primarySkillID": "data_skill_05",
+    "supportingSkillIDs": [
+      "data_skill_02",
+      "data_skill_04"
+    ],
+    "prerequisiteMissionIDs": [
+      "data_mission_04"
+    ],
+    "why": "Exploration can reveal patterns without establishing their causes.",
+    "activity": "Compare distributions and meaningful segments. Quantify uncertainty where appropriate and discuss confounders; do not turn correlation into a causal claim.",
+    "evidence": "An analysis notebook with checks, figures, and uncertainty notes.",
+    "reflection": "Which alternative explanation could account for the pattern you found?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  },
+  {
+    "id": "data_mission_06",
+    "domainID": "data_analytics",
+    "stage": "practice",
+    "title": "Visualize the Decision",
+    "primarySkillID": "data_skill_06",
+    "supportingSkillIDs": [
+      "data_skill_05"
+    ],
+    "prerequisiteMissionIDs": [
+      "data_mission_05"
+    ],
+    "why": "Chart choices affect how people interpret magnitude and uncertainty.",
+    "activity": "Choose three charts tied to the original question. Label units, time windows, and sources; check scales, contrast, and color-independent interpretation.",
+    "evidence": "Three accessible charts and design rationales.",
+    "reflection": "Could someone interpret the main finding without relying on color?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  },
+  {
+    "id": "data_mission_07",
+    "domainID": "data_analytics",
+    "stage": "practice",
+    "title": "Write an Evidence-Based Recommendation",
+    "primarySkillID": "data_skill_07",
+    "supportingSkillIDs": [
+      "data_skill_01",
+      "data_skill_06"
+    ],
+    "prerequisiteMissionIDs": [
+      "data_mission_06"
+    ],
+    "why": "A recommendation should follow from the evidence and acknowledge uncertainty.",
+    "activity": "Write a short memo with a finding, supporting evidence, limitations, and a recommended action or next question. Separate facts from assumptions.",
+    "evidence": "A decision memo linking claims to analysis outputs.",
+    "reflection": "What additional evidence would change your recommendation?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  },
+  {
+    "id": "data_mission_08",
+    "domainID": "data_analytics",
+    "stage": "portfolio",
+    "title": "Make the Analysis Reproducible",
+    "primarySkillID": "data_skill_08",
+    "supportingSkillIDs": [
+      "data_skill_04",
+      "data_skill_05"
+    ],
+    "prerequisiteMissionIDs": [
+      "data_mission_06"
+    ],
+    "why": "Reproducibility lets others check results and extend the work.",
+    "activity": "Version inputs or record how to obtain them lawfully, document dependencies, and run the analysis from a clean setup. Add quality checks.",
+    "evidence": "A rerunnable project, setup guide, and data quality checks.",
+    "reflection": "Which dependency or data assumption initially blocked a clean rerun?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  },
+  {
+    "id": "data_mission_09",
+    "domainID": "data_analytics",
+    "stage": "portfolio",
+    "title": "Review With a Stakeholder",
+    "primarySkillID": "data_skill_07",
+    "supportingSkillIDs": [
+      "data_skill_08",
+      "data_skill_06"
+    ],
+    "prerequisiteMissionIDs": [
+      "data_mission_07",
+      "data_mission_08"
+    ],
+    "why": "Review can uncover analytical and communication mistakes before decisions depend on them.",
+    "activity": "Ask a peer to challenge the memo and reproduce a result. Record feedback and fix one analytical or communication issue. State if the reviewer is a peer rather than a real stakeholder.",
+    "evidence": "Review notes, reproduced results, and a revised memo.",
+    "reflection": "Which challenge from the reviewer changed your conclusion?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  },
+  {
+    "id": "data_mission_10",
+    "domainID": "data_analytics",
+    "stage": "portfolio",
+    "title": "Publish an Analytics Case Study",
+    "primarySkillID": "data_skill_01",
+    "supportingSkillIDs": [
+      "data_skill_02",
+      "data_skill_03",
+      "data_skill_04",
+      "data_skill_05",
+      "data_skill_06",
+      "data_skill_07",
+      "data_skill_08"
+    ],
+    "prerequisiteMissionIDs": [
+      "data_mission_09"
+    ],
+    "why": "An analytics portfolio should connect a decision to reproducible evidence.",
+    "activity": "Explain the decision, provenance, cleaning, analysis, visualization, recommendation, and uncertainty. Publish only permitted data or synthetic examples.",
+    "evidence": "A reproducible case study with source/license details and limitations.",
+    "reflection": "Which claims are supported by your data, and which are outside its scope?",
+    "resourceTitle": "PostgreSQL: SQL tutorial",
+    "resourceURL": "https://www.postgresql.org/docs/current/tutorial.html"
+  }
+]

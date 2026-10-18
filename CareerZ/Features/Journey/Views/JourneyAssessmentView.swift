@@ -6,6 +6,7 @@ struct JourneyAssessmentView: View {
     let kind: Kind
     @Environment(\.dismiss) private var dismiss
     @State private var index = 0
+    @State private var assessmentDomain: CareerDomainID?
     @State private var evidencePhase = false
     @State private var compassAnswers: [String: Int] = [:]
     @State private var capabilityAnswers: [String: Int] = [:]
@@ -61,7 +62,7 @@ struct JourneyAssessmentView: View {
                         .font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
                 }.padding(AppSpacing.screenHorizontal)
             }.id("\(index)-\(evidencePhase)").background(Color.appGroupedBackground)
-            .navigationTitle(kind == .compass ? "CareerZ Compass" : "PM skill assessment")
+            .navigationTitle(kind == .compass ? "CareerZ Compass" : "\(store.activeDomain.shortTitle) skill assessment")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -76,6 +77,7 @@ struct JourneyAssessmentView: View {
                     .background(Color.appGroupedBackground)
             }
             .interactiveDismissDisabled()
+            .onAppear { if assessmentDomain == nil { assessmentDomain = store.activeDomain } }
             .alert("Assessment wasn’t saved", isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })) {
                 Button("OK") { failure = nil }
             } message: { Text(failure ?? "Please try again.") }
@@ -103,6 +105,10 @@ struct JourneyAssessmentView: View {
         else { discard = true }
     }
     private func advance() {
+        guard kind == .compass || assessmentDomain == store.activeDomain else {
+            failure = "Your career direction changed. Close this assessment and start again for your selected direction."
+            return
+        }
         if kind == .skills && !evidencePhase { evidencePhase = true; return }
         guard index == count - 1 else { index += 1; evidencePhase = false; return }
         if kind == .compass {
@@ -114,7 +120,7 @@ struct JourneyAssessmentView: View {
                     answers[skill.id] = SkillResponse(capability: capability, evidence: evidence)
                 }
             }
-            if store.saveSkills(answers) { dismiss() } else { failure = store.errorMessage; store.errorMessage = nil }
+            if store.saveSkills(answers, for: assessmentDomain) { dismiss() } else { failure = store.errorMessage; store.errorMessage = nil }
         }
     }
 }

@@ -73,6 +73,8 @@ struct JourneyMission: Codable, Equatable, Identifiable, Sendable {
     let activity: String
     let evidence: String
     let reflection: String
+    var resourceTitle: String? = nil
+    var resourceURL: String? = nil
 }
 
 enum MissionClassification: String, Sendable {

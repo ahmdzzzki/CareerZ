@@ -1,0 +1,274 @@
+[
+  {
+    "id": "data_skill_01",
+    "domainID": "data_analytics",
+    "title": "Business Problem Framing",
+    "summary": "Apply stakeholders, decision questions, and success criteria in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced stakeholders, decision questions, and success criteria."
+      },
+      {
+        "level": 1,
+        "text": "You can explain stakeholders, decision questions, and success criteria, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can translate a vague request into a scoped analytical question."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can translate a vague request into a scoped analytical question and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to translate a vague request into a scoped analytical question, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Analysis brief",
+      "Decision criteria"
+    ]
+  },
+  {
+    "id": "data_skill_02",
+    "domainID": "data_analytics",
+    "title": "Data Literacy & Measurement",
+    "summary": "Apply units, populations, definitions, bias, and metric validity in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced units, populations, definitions, bias, and metric validity."
+      },
+      {
+        "level": 1,
+        "text": "You can explain units, populations, definitions, bias, and metric validity, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can define a metric and identify collection and interpretation limits."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can define a metric and identify collection and interpretation limits and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to define a metric and identify collection and interpretation limits, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Metric dictionary",
+      "Measurement critique"
+    ]
+  },
+  {
+    "id": "data_skill_03",
+    "domainID": "data_analytics",
+    "title": "SQL & Data Retrieval",
+    "summary": "Apply filters, joins, aggregation, and query validation in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced filters, joins, aggregation, and query validation."
+      },
+      {
+        "level": 1,
+        "text": "You can explain filters, joins, aggregation, and query validation, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can retrieve a reproducible dataset and validate join and aggregation behavior."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can retrieve a reproducible dataset and validate join and aggregation behavior and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to retrieve a reproducible dataset and validate join and aggregation behavior, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "SQL queries",
+      "Query validation checks"
+    ]
+  },
+  {
+    "id": "data_skill_04",
+    "domainID": "data_analytics",
+    "title": "Data Cleaning & Transformation",
+    "summary": "Apply types, missing values, duplicates, and transformation rules in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced types, missing values, duplicates, and transformation rules."
+      },
+      {
+        "level": 1,
+        "text": "You can explain types, missing values, duplicates, and transformation rules, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can build documented, repeatable cleaning steps with quality checks."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can build documented, repeatable cleaning steps with quality checks and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to build documented, repeatable cleaning steps with quality checks, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Cleaning pipeline",
+      "Quality report"
+    ]
+  },
+  {
+    "id": "data_skill_05",
+    "domainID": "data_analytics",
+    "title": "Exploratory Analysis & Statistics",
+    "summary": "Apply distributions, uncertainty, comparisons, and confounding in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced distributions, uncertainty, comparisons, and confounding."
+      },
+      {
+        "level": 1,
+        "text": "You can explain distributions, uncertainty, comparisons, and confounding, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can explore a dataset and distinguish associations from causal claims."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can explore a dataset and distinguish associations from causal claims and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to explore a dataset and distinguish associations from causal claims, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Analysis notebook",
+      "Uncertainty discussion"
+    ]
+  },
+  {
+    "id": "data_skill_06",
+    "domainID": "data_analytics",
+    "title": "Data Visualization",
+    "summary": "Apply chart choice, scales, labels, and visual accessibility in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced chart choice, scales, labels, and visual accessibility."
+      },
+      {
+        "level": 1,
+        "text": "You can explain chart choice, scales, labels, and visual accessibility, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can create a chart that answers a decision question without misleading scales."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can create a chart that answers a decision question without misleading scales and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to create a chart that answers a decision question without misleading scales, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Accessible charts",
+      "Chart rationale"
+    ]
+  },
+  {
+    "id": "data_skill_07",
+    "domainID": "data_analytics",
+    "title": "Insight Communication",
+    "summary": "Apply evidence, recommendations, uncertainty, and audience needs in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced evidence, recommendations, uncertainty, and audience needs."
+      },
+      {
+        "level": 1,
+        "text": "You can explain evidence, recommendations, uncertainty, and audience needs, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can communicate an actionable finding with its limits."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can communicate an actionable finding with its limits and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to communicate an actionable finding with its limits, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Decision memo",
+      "Stakeholder presentation"
+    ]
+  },
+  {
+    "id": "data_skill_08",
+    "domainID": "data_analytics",
+    "title": "Reproducibility & Data Quality",
+    "summary": "Apply data lineage, versioning, validation, and repeatability in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced data lineage, versioning, validation, and repeatability."
+      },
+      {
+        "level": 1,
+        "text": "You can explain data lineage, versioning, validation, and repeatability, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can make an analysis rerunnable with documented inputs and checks."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can make an analysis rerunnable with documented inputs and checks and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to make an analysis rerunnable with documented inputs and checks, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Reproducible analysis",
+      "Data quality tests"
+    ]
+  }
+]

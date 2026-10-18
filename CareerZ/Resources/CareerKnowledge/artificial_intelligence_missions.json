@@ -1,0 +1,202 @@
+[
+  {
+    "id": "ai_mission_01",
+    "domainID": "artificial_intelligence",
+    "stage": "foundation",
+    "title": "Define a Safe Learning Task",
+    "primarySkillID": "ai_skill_02",
+    "supportingSkillIDs": [
+      "ai_skill_08"
+    ],
+    "prerequisiteMissionIDs": [],
+    "why": "A measurable low-stakes task makes it possible to judge whether ML adds value.",
+    "activity": "Choose a low-stakes prediction problem using open or synthetic data. Define the target, error costs, intended use, and prohibited uses.",
+    "evidence": "A task specification and initial risk assessment.",
+    "reflection": "What kind of error would make this model inappropriate for its intended use?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  {
+    "id": "ai_mission_02",
+    "domainID": "artificial_intelligence",
+    "stage": "foundation",
+    "title": "Understand the Numerical Foundations",
+    "primarySkillID": "ai_skill_01",
+    "supportingSkillIDs": [
+      "ai_skill_04"
+    ],
+    "prerequisiteMissionIDs": [
+      "ai_mission_01"
+    ],
+    "why": "Understanding the numerical steps helps you diagnose unexpected model behavior.",
+    "activity": "Implement a small numerical exercise related to your task, such as linear prediction and a loss calculation. Check outputs by hand on a tiny example.",
+    "evidence": "An explained numerical exercise with manually verified outputs.",
+    "reflection": "Which calculation did you check manually, and what did it reveal?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  {
+    "id": "ai_mission_03",
+    "domainID": "artificial_intelligence",
+    "stage": "foundation",
+    "title": "Establish a Simple Baseline",
+    "primarySkillID": "ai_skill_04",
+    "supportingSkillIDs": [
+      "ai_skill_02"
+    ],
+    "prerequisiteMissionIDs": [
+      "ai_mission_02"
+    ],
+    "why": "A simple baseline sets a minimum standard for model usefulness.",
+    "activity": "Implement a majority, mean, or rule-based baseline. Define evaluation metrics before training and explain why a complex model may be unnecessary.",
+    "evidence": "Baseline code, metric definitions, and reproducible baseline results.",
+    "reflection": "Why is your chosen baseline a meaningful comparison?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  {
+    "id": "ai_mission_04",
+    "domainID": "artificial_intelligence",
+    "stage": "practice",
+    "title": "Prepare Data Without Leakage",
+    "primarySkillID": "ai_skill_03",
+    "supportingSkillIDs": [
+      "ai_skill_08"
+    ],
+    "prerequisiteMissionIDs": [
+      "ai_mission_03"
+    ],
+    "why": "Leakage can make evaluation appear strong without useful generalization.",
+    "activity": "Document provenance and permission. Split data appropriately for time, groups, or samples; fit preprocessing on training data only and check for leakage.",
+    "evidence": "A data preparation pipeline, split protocol, and leakage checks.",
+    "reflection": "Which preprocessing or split decision could accidentally expose test information?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  {
+    "id": "ai_mission_05",
+    "domainID": "artificial_intelligence",
+    "stage": "practice",
+    "title": "Run Controlled Experiments",
+    "primarySkillID": "ai_skill_05",
+    "supportingSkillIDs": [
+      "ai_skill_01",
+      "ai_skill_03",
+      "ai_skill_04"
+    ],
+    "prerequisiteMissionIDs": [
+      "ai_mission_04"
+    ],
+    "why": "Controlled experiments let you attribute changes to a specific decision.",
+    "activity": "Train a simple model and a small set of controlled variants. Record seeds, configuration, training data version, and validation results. Keep test data held out.",
+    "evidence": "A training script and experiment log with comparable runs.",
+    "reflection": "Which comparison isolated an effect, rather than changing several things at once?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  {
+    "id": "ai_mission_06",
+    "domainID": "artificial_intelligence",
+    "stage": "practice",
+    "title": "Evaluate Failures and Trade-offs",
+    "primarySkillID": "ai_skill_06",
+    "supportingSkillIDs": [
+      "ai_skill_02",
+      "ai_skill_05"
+    ],
+    "prerequisiteMissionIDs": [
+      "ai_mission_05"
+    ],
+    "why": "Average performance can conceal important failures and coverage gaps.",
+    "activity": "Evaluate the selected model once on held-out data. Compare with the baseline, examine failures, and discuss subgroup coverage and uncertainty.",
+    "evidence": "An evaluation report with baseline comparison and error examples.",
+    "reflection": "Which error pattern matters most for the intended use?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  {
+    "id": "ai_mission_07",
+    "domainID": "artificial_intelligence",
+    "stage": "practice",
+    "title": "Document Responsible Use",
+    "primarySkillID": "ai_skill_08",
+    "supportingSkillIDs": [
+      "ai_skill_03",
+      "ai_skill_06"
+    ],
+    "prerequisiteMissionIDs": [
+      "ai_mission_06"
+    ],
+    "why": "Documented limitations help people avoid uses the model was never tested for.",
+    "activity": "Write a model card covering intended use, limitations, privacy, fairness, and misuse. Propose a mitigation and test at least one relevant risk.",
+    "evidence": "A model card, risk test, and mitigation evidence.",
+    "reflection": "Which risk did you test, and what evidence supports your mitigation?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  {
+    "id": "ai_mission_08",
+    "domainID": "artificial_intelligence",
+    "stage": "portfolio",
+    "title": "Package a Local Inference Demo",
+    "primarySkillID": "ai_skill_07",
+    "supportingSkillIDs": [
+      "ai_skill_05",
+      "ai_skill_06"
+    ],
+    "prerequisiteMissionIDs": [
+      "ai_mission_07"
+    ],
+    "why": "A model needs predictable input, output, and failure behavior to be usable.",
+    "activity": "Build a local inference interface with input validation, a clear contract, and failure handling. Measure latency on your device; no paid cloud deployment is required.",
+    "evidence": "A runnable local demo, input/output contract, and latency measurements.",
+    "reflection": "How does your interface behave on an invalid or unfamiliar input?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  {
+    "id": "ai_mission_09",
+    "domainID": "artificial_intelligence",
+    "stage": "portfolio",
+    "title": "Plan Monitoring and Human Review",
+    "primarySkillID": "ai_skill_07",
+    "supportingSkillIDs": [
+      "ai_skill_08",
+      "ai_skill_06"
+    ],
+    "prerequisiteMissionIDs": [
+      "ai_mission_08"
+    ],
+    "why": "Changing inputs can invalidate yesterday\u2019s evaluation.",
+    "activity": "Define checks for input shifts, failing predictions, and misuse. Specify when to fall back, stop the model, or request human review; test one failure scenario.",
+    "evidence": "A monitoring/fallback plan and a demonstrated failure scenario.",
+    "reflection": "What observable signal should trigger fallback or human review?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  {
+    "id": "ai_mission_10",
+    "domainID": "artificial_intelligence",
+    "stage": "portfolio",
+    "title": "Create an ML Case Study",
+    "primarySkillID": "ai_skill_08",
+    "supportingSkillIDs": [
+      "ai_skill_01",
+      "ai_skill_02",
+      "ai_skill_03",
+      "ai_skill_04",
+      "ai_skill_05",
+      "ai_skill_06",
+      "ai_skill_07"
+    ],
+    "prerequisiteMissionIDs": [
+      "ai_mission_09"
+    ],
+    "why": "An ML portfolio needs reproducible evidence and honest limits, not a single impressive score.",
+    "activity": "Connect task framing, data, baseline, experiments, evaluation, responsible use, and deployment limits. Distinguish measured performance from claims outside the dataset.",
+    "evidence": "A reproducible ML case study, model card, and reviewable demo.",
+    "reflection": "Which performance claim would fail outside your evaluation setting?",
+    "resourceTitle": "scikit-learn: common pitfalls",
+    "resourceURL": "https://scikit-learn.org/stable/common_pitfalls.html"
+  }
+]

@@ -1,0 +1,274 @@
+[
+  {
+    "id": "ai_skill_01",
+    "domainID": "artificial_intelligence",
+    "title": "Programming & Math Foundations",
+    "summary": "Apply array operations, probability, linear algebra, and optimization in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced array operations, probability, linear algebra, and optimization."
+      },
+      {
+        "level": 1,
+        "text": "You can explain array operations, probability, linear algebra, and optimization, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can implement and explain numerical steps used by a simple model."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can implement and explain numerical steps used by a simple model and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to implement and explain numerical steps used by a simple model, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Numerical exercise",
+      "Explained implementation"
+    ]
+  },
+  {
+    "id": "ai_skill_02",
+    "domainID": "artificial_intelligence",
+    "title": "Problem Framing & Baselines",
+    "summary": "Apply prediction targets, error costs, feasibility, and simple baselines in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced prediction targets, error costs, feasibility, and simple baselines."
+      },
+      {
+        "level": 1,
+        "text": "You can explain prediction targets, error costs, feasibility, and simple baselines, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can define a measurable task and compare it to a non-model baseline."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can define a measurable task and compare it to a non-model baseline and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to define a measurable task and compare it to a non-model baseline, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Task specification",
+      "Baseline results"
+    ]
+  },
+  {
+    "id": "ai_skill_03",
+    "domainID": "artificial_intelligence",
+    "title": "Data Preparation",
+    "summary": "Apply splits, preprocessing, leakage, and provenance in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced splits, preprocessing, leakage, and provenance."
+      },
+      {
+        "level": 1,
+        "text": "You can explain splits, preprocessing, leakage, and provenance, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can prepare reproducible train, validation, and test data without leakage."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can prepare reproducible train, validation, and test data without leakage and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to prepare reproducible train, validation, and test data without leakage, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Split protocol",
+      "Data preparation pipeline"
+    ]
+  },
+  {
+    "id": "ai_skill_04",
+    "domainID": "artificial_intelligence",
+    "title": "ML Fundamentals",
+    "summary": "Apply learning objectives, generalization, overfitting, and model families in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced learning objectives, generalization, overfitting, and model families."
+      },
+      {
+        "level": 1,
+        "text": "You can explain learning objectives, generalization, overfitting, and model families, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can justify a simple model and explain its assumptions."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can justify a simple model and explain its assumptions and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to justify a simple model and explain its assumptions, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Model rationale",
+      "Learning-curve analysis"
+    ]
+  },
+  {
+    "id": "ai_skill_05",
+    "domainID": "artificial_intelligence",
+    "title": "Model Training & Experimentation",
+    "summary": "Apply controlled experiments, tuning, and reproducibility in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced controlled experiments, tuning, and reproducibility."
+      },
+      {
+        "level": 1,
+        "text": "You can explain controlled experiments, tuning, and reproducibility, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can run comparable experiments and record configurations and outcomes."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can run comparable experiments and record configurations and outcomes and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to run comparable experiments and record configurations and outcomes, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Experiment log",
+      "Reproducible training script"
+    ]
+  },
+  {
+    "id": "ai_skill_06",
+    "domainID": "artificial_intelligence",
+    "title": "Model Evaluation",
+    "summary": "Apply metric selection, held-out tests, error analysis, and subgroup limits in practical work.",
+    "importanceWeight": 0.15,
+    "portfolioTarget": 3,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced metric selection, held-out tests, error analysis, and subgroup limits."
+      },
+      {
+        "level": 1,
+        "text": "You can explain metric selection, held-out tests, error analysis, and subgroup limits, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can evaluate a model against a baseline and inspect failures."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can evaluate a model against a baseline and inspect failures and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to evaluate a model against a baseline and inspect failures, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Evaluation report",
+      "Error analysis"
+    ]
+  },
+  {
+    "id": "ai_skill_07",
+    "domainID": "artificial_intelligence",
+    "title": "Deployment & Monitoring",
+    "summary": "Apply inference contracts, latency, drift, and fallback behavior in practical work.",
+    "importanceWeight": 0.05,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced inference contracts, latency, drift, and fallback behavior."
+      },
+      {
+        "level": 1,
+        "text": "You can explain inference contracts, latency, drift, and fallback behavior, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can package inference and define checks and a safe fallback."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can package inference and define checks and a safe fallback and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to package inference and define checks and a safe fallback, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Inference demo",
+      "Monitoring plan"
+    ]
+  },
+  {
+    "id": "ai_skill_08",
+    "domainID": "artificial_intelligence",
+    "title": "Responsible AI",
+    "summary": "Apply privacy, fairness, misuse, uncertainty, and human oversight in practical work.",
+    "importanceWeight": 0.1,
+    "portfolioTarget": 2,
+    "levelDescriptors": [
+      {
+        "level": 0,
+        "text": "You have not yet studied or practiced privacy, fairness, misuse, uncertainty, and human oversight."
+      },
+      {
+        "level": 1,
+        "text": "You can explain privacy, fairness, misuse, uncertainty, and human oversight, but have not applied them in a project."
+      },
+      {
+        "level": 2,
+        "text": "With a tutorial, template, or reviewer guiding you, you can document risks and test a relevant limitation with mitigation."
+      },
+      {
+        "level": 3,
+        "text": "Independently, you can document risks and test a relevant limitation with mitigation and explain your choices."
+      },
+      {
+        "level": 4,
+        "text": "You have used this skill in a real context to document risks and test a relevant limitation with mitigation, received feedback, and can explain the outcome and trade-offs."
+      }
+    ],
+    "evidenceExamples": [
+      "Model card",
+      "Risk assessment"
+    ]
+  }
+]

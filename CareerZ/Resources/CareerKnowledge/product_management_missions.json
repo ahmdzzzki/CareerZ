@@ -12,7 +12,9 @@
     "why": "Product work connects decisions to user and business outcomes.",
     "activity": "Choose a product you use. Compare the responsibilities of a PM, Project Manager, and Product Owner using its context.",
     "evidence": "A one-page role comparison with examples.",
-    "reflection": "Which responsibility interests you, and which assumption do you need to check?"
+    "reflection": "Which responsibility interests you, and which assumption do you need to check?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   },
   {
     "id": "pm_mission_02",
@@ -29,7 +31,9 @@
     "why": "A clear problem stops a team from treating a feature idea as a user need.",
     "activity": "Describe one real user, their context, the evidence for a problem, and a desired outcome. Separate observations from assumptions.",
     "evidence": "A problem statement with user, context, evidence, and outcome.",
-    "reflection": "What would make you change your problem statement?"
+    "reflection": "What would make you change your problem statement?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   },
   {
     "id": "pm_mission_03",
@@ -46,7 +50,9 @@
     "why": "Product decisions need to balance value, viability, and feasibility.",
     "activity": "Map your problem across user needs, business goals, and technical constraints. Explain one strategic choice and its trade-off.",
     "evidence": "A product triangle analysis and a strategic choice.",
-    "reflection": "Which side of the triangle has the weakest evidence?"
+    "reflection": "Which side of the triangle has the weakest evidence?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   },
   {
     "id": "pm_mission_04",
@@ -63,7 +69,9 @@
     "why": "Listening helps challenge assumptions before you invest in a solution.",
     "activity": "Write neutral interview questions. Talk to at least three potential users with their consent. Avoid collecting identifying or sensitive details in your notes.",
     "evidence": "An interview guide and at least three anonymized interview notes.",
-    "reflection": "Which answer surprised you, and what did you ask that might have led the participant?"
+    "reflection": "Which answer surprised you, and what did you ask that might have led the participant?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   },
   {
     "id": "pm_mission_05",
@@ -80,7 +88,9 @@
     "why": "Individual observations become useful when you explain the pattern and its limits.",
     "activity": "Group observations from your interviews, identify patterns, and write opportunity statements. Keep contradictory findings.",
     "evidence": "Affinity groups, insights, and opportunity statements.",
-    "reflection": "Which insight is supported by multiple observations?"
+    "reflection": "Which insight is supported by multiple observations?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   },
   {
     "id": "pm_mission_06",
@@ -98,7 +108,9 @@
     "why": "Limited time makes prioritization a decision with consequences.",
     "activity": "Compare at least three opportunities with a simple impact/effort matrix. Explain assumptions, confidence, and what you will defer.",
     "evidence": "A prioritization matrix and written rationale.",
-    "reflection": "What evidence could reverse your priority order?"
+    "reflection": "What evidence could reverse your priority order?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   },
   {
     "id": "pm_mission_07",
@@ -115,7 +127,9 @@
     "why": "Clear requirements connect a proposed change to a measurable outcome.",
     "activity": "Write a mini PRD with problem, scope, non-goals, acceptance criteria, and success metrics. Include a baseline and a measurement plan.",
     "evidence": "A mini PRD, acceptance criteria, and success metrics.",
-    "reflection": "Could a teammate understand what success looks like without asking you?"
+    "reflection": "Could a teammate understand what success looks like without asking you?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   },
   {
     "id": "pm_mission_08",
@@ -132,7 +146,9 @@
     "why": "A roadmap explains the outcomes you seek and the uncertainty between them.",
     "activity": "Create an outcome roadmap for your chosen problem. Include assumptions, dependencies, and a way to revisit priorities.",
     "evidence": "An outcome roadmap with assumptions and dependencies.",
-    "reflection": "Which dependency could change your plan most?"
+    "reflection": "Which dependency could change your plan most?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   },
   {
     "id": "pm_mission_09",
@@ -149,7 +165,9 @@
     "why": "Shared decisions and visible risks make collaboration easier.",
     "activity": "Prepare a kickoff plan for a small team. Include responsibilities, a decision log, risks, and a concise stakeholder update. Ask a peer for feedback.",
     "evidence": "A kickoff plan, decision log, risk list, and stakeholder update.",
-    "reflection": "What feedback changed your plan?"
+    "reflection": "What feedback changed your plan?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   },
   {
     "id": "pm_mission_10",
@@ -172,6 +190,8 @@
     "why": "A case study makes your reasoning reviewable rather than claiming expertise.",
     "activity": "Connect your problem, research, priorities, requirements, measurement plan, and reflection. Explain limits and decisions. Request feedback and document one improvement.",
     "evidence": "An end-to-end product case study and feedback reflection.",
-    "reflection": "What did you learn, what remains unproven, and what would you do next?"
+    "reflection": "What did you learn, what remains unproven, and what would you do next?",
+    "resourceTitle": "GOV.UK: agile delivery",
+    "resourceURL": "https://www.gov.uk/service-manual/agile-delivery"
   }
 ]

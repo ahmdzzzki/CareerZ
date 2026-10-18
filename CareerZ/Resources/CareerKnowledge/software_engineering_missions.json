@@ -1,0 +1,198 @@
+[
+  {
+    "id": "se_mission_01",
+    "domainID": "software_engineering",
+    "stage": "foundation",
+    "title": "Define a Small Software Problem",
+    "primarySkillID": "se_skill_01",
+    "supportingSkillIDs": [
+      "se_skill_03"
+    ],
+    "prerequisiteMissionIDs": [],
+    "why": "A small, testable problem gives you a clear way to judge whether the software works.",
+    "activity": "Choose a recurring task. Write its inputs, outputs, constraints, and three acceptance examples before picking a solution.",
+    "evidence": "A scoped problem brief and three acceptance examples.",
+    "reflection": "Which constraint most affected the scope you chose?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  },
+  {
+    "id": "se_mission_02",
+    "domainID": "software_engineering",
+    "stage": "foundation",
+    "title": "Implement the Core Logic",
+    "primarySkillID": "se_skill_02",
+    "supportingSkillIDs": [
+      "se_skill_01"
+    ],
+    "prerequisiteMissionIDs": [
+      "se_mission_01"
+    ],
+    "why": "Boundary cases expose mistakes that a successful demo can hide.",
+    "activity": "Build the smallest working solution. Compare a straightforward algorithm with an alternative and test empty, typical, and boundary inputs.",
+    "evidence": "Runnable source, edge-case tests, and a complexity comparison.",
+    "reflection": "Which input broke your first solution, and why?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  },
+  {
+    "id": "se_mission_03",
+    "domainID": "software_engineering",
+    "stage": "foundation",
+    "title": "Design Clear Boundaries",
+    "primarySkillID": "se_skill_03",
+    "supportingSkillIDs": [
+      "se_skill_07"
+    ],
+    "prerequisiteMissionIDs": [
+      "se_mission_02"
+    ],
+    "why": "Explicit boundaries let you change one concern without rewriting the whole program.",
+    "activity": "Split input/output concerns from domain logic. Draw module dependencies and record one alternative you rejected.",
+    "evidence": "A module diagram and architecture decision with rationale.",
+    "reflection": "Which dependency would make the next change hardest?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  },
+  {
+    "id": "se_mission_04",
+    "domainID": "software_engineering",
+    "stage": "practice",
+    "title": "Connect a Data Source",
+    "primarySkillID": "se_skill_04",
+    "supportingSkillIDs": [
+      "se_skill_03"
+    ],
+    "prerequisiteMissionIDs": [
+      "se_mission_03"
+    ],
+    "why": "Data contracts fail in ways your core logic must be prepared to handle.",
+    "activity": "Use a local dataset or documented API. Define a data contract, validate inputs, and handle unavailable or malformed data. Keep fixtures for offline testing.",
+    "evidence": "A data adapter, local fixture, and failure-handling examples.",
+    "reflection": "What happens when your data source returns an unexpected value?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  },
+  {
+    "id": "se_mission_05",
+    "domainID": "software_engineering",
+    "stage": "practice",
+    "title": "Debug and Protect Behavior",
+    "primarySkillID": "se_skill_05",
+    "supportingSkillIDs": [
+      "se_skill_02"
+    ],
+    "prerequisiteMissionIDs": [
+      "se_mission_03"
+    ],
+    "why": "A regression test records why a bug must not return.",
+    "activity": "Reproduce a defect in your program, locate its cause, and add a meaningful regression test. Run both success and failure cases.",
+    "evidence": "Reproduction steps, root-cause notes, and passing regression tests.",
+    "reflection": "Does your test fail before the fix and pass after it?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  },
+  {
+    "id": "se_mission_06",
+    "domainID": "software_engineering",
+    "stage": "practice",
+    "title": "Review a Focused Change",
+    "primarySkillID": "se_skill_06",
+    "supportingSkillIDs": [
+      "se_skill_07"
+    ],
+    "prerequisiteMissionIDs": [
+      "se_mission_04",
+      "se_mission_05"
+    ],
+    "why": "A reviewable change lets others understand both the code and your reasoning.",
+    "activity": "Create a small branch and reviewable change. Ask a peer for feedback, or perform a documented checklist review if a peer is unavailable. Record which type of review happened.",
+    "evidence": "A focused diff, review notes, and your response to feedback.",
+    "reflection": "Which feedback changed your implementation or explanation?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  },
+  {
+    "id": "se_mission_07",
+    "domainID": "software_engineering",
+    "stage": "practice",
+    "title": "Improve Maintainability",
+    "primarySkillID": "se_skill_07",
+    "supportingSkillIDs": [
+      "se_skill_03"
+    ],
+    "prerequisiteMissionIDs": [
+      "se_mission_06"
+    ],
+    "why": "Maintainability matters when someone has to revisit unfamiliar code.",
+    "activity": "Refactor one confusing module while preserving behavior. Document setup, public contracts, known limits, and test commands.",
+    "evidence": "Before/after diff, passing checks, and a reproducible README.",
+    "reflection": "Could someone else run and change the module using only your guide?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  },
+  {
+    "id": "se_mission_08",
+    "domainID": "software_engineering",
+    "stage": "portfolio",
+    "title": "Prepare a Reproducible Release",
+    "primarySkillID": "se_skill_08",
+    "supportingSkillIDs": [
+      "se_skill_05"
+    ],
+    "prerequisiteMissionIDs": [
+      "se_mission_07"
+    ],
+    "why": "A release is useful only if others can reproduce it and recover from failure.",
+    "activity": "Create a versioned build or package. Run release checks in a clean environment and document configuration and recovery steps.",
+    "evidence": "A versioned artifact, release checklist, and recovery instructions.",
+    "reflection": "Which release or recovery step was not reproducible at first?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  },
+  {
+    "id": "se_mission_09",
+    "domainID": "software_engineering",
+    "stage": "portfolio",
+    "title": "Validate With a User",
+    "primarySkillID": "se_skill_06",
+    "supportingSkillIDs": [
+      "se_skill_05",
+      "se_skill_08"
+    ],
+    "prerequisiteMissionIDs": [
+      "se_mission_08"
+    ],
+    "why": "Real use challenges assumptions that code tests cannot fully cover.",
+    "activity": "Ask someone to try the release against the acceptance examples. With consent, record non-identifying feedback and fix one observed issue.",
+    "evidence": "Anonymized feedback, a follow-up change, and validation results.",
+    "reflection": "What did the user do differently from your acceptance examples?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  },
+  {
+    "id": "se_mission_10",
+    "domainID": "software_engineering",
+    "stage": "portfolio",
+    "title": "Publish a Software Case Study",
+    "primarySkillID": "se_skill_03",
+    "supportingSkillIDs": [
+      "se_skill_01",
+      "se_skill_02",
+      "se_skill_04",
+      "se_skill_05",
+      "se_skill_06",
+      "se_skill_07",
+      "se_skill_08"
+    ],
+    "prerequisiteMissionIDs": [
+      "se_mission_09"
+    ],
+    "why": "A case study makes decisions and their evidence easier to evaluate.",
+    "activity": "Explain the problem, architecture, algorithm and data decisions, tests, delivery, and limitations. Link reproducible artifacts and distinguish measured results from assumptions.",
+    "evidence": "A reviewable case study with source, tests, release evidence, and reflection.",
+    "reflection": "Which outcome can you demonstrate, and which remains an assumption?",
+    "resourceTitle": "MDN: testing fundamentals",
+    "resourceURL": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing"
+  }
+]
