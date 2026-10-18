@@ -68,7 +68,7 @@ struct DiscoveryView: View {
                 }.padding(AppSpacing.screenHorizontal)
             }
             .background(Color.appGroupedBackground).navigationTitle("Discover")
-            .sheet(isPresented: $showAssessment) { JourneyAssessmentView(store: store, kind: .compass) }
+            .fullScreenCover(isPresented: $showAssessment) { JourneyAssessmentView(store: store, kind: .compass) }
         }
     }
 }

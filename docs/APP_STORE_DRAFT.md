@@ -42,6 +42,20 @@ CareerZ provides self-assessment and career exploration guidance for personal de
 - Sign in with Apple is optional. iCloud synchronization uses the iCloud account configured on the device, independently of the Apple sign-in connection.
 - All core content is bundled. Further reading opens external websites; it is optional.
 
-## Listing inputs still needed
+## Confirmed public contacts and URLs — 19 October 2026
 
-Confirm the public support/contact URL, privacy-policy URL, final category, age-rating questionnaire and App Store privacy answers for the distributed binary. Review the optional Apple/iCloud copy after Production sync is verified. Capture and review store screenshots from the release build; `docs/screenshots` currently contains simulator verification evidence with deliberately entered test data.
+- Support email: ahzaki95@gmail.com (owner supplied).
+- Marketing URL: https://careerz-app.vercel.app/
+- Support URL: https://careerz-app.vercel.app/support/
+- Privacy Policy URL: https://careerz-app.vercel.app/privacy/
+- Suggested primary category: Education. Secondary: Productivity.
+- Pricing direction: free; no in-app purchases or subscriptions in this build.
+- Copyright: 2026 Ahmad Zaki (confirm legal display name in App Store Connect).
+
+## App Store Connect actions still required
+
+Build **1.0 (2)** has been uploaded. The subsequent iPad assessment/keyboard fixes are prepared as build **3**; upload that verified candidate after restoring the Xcode account, then select its processed build for final review. Upload the prepared screenshots and paste the description/review notes above. Complete the age-rating questionnaire from actual content, App Privacy answers for the exact binary, content rights, availability/pricing, and the reviewer contact fields (Apple also requires a contact name and phone number). Support email alone does not fill those required fields.
+
+The app has no advertising, tracking, analytics SDK or custom backend. Assessment/progress are stored locally and in the user's private iCloud database. Do not claim that a privacy manifest automatically completes App Store privacy labels; review Apple's definitions for on-device data, private iCloud storage, and the locally stored Apple identifier.
+
+Verify CloudKit Production schema and a real TestFlight device run before submitting for review. Uploaded/processing is different from accepted for review or publicly available.

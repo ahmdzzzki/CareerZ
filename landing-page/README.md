@@ -16,3 +16,9 @@ Motion (the library formerly known as Framer Motion) is bundled locally through 
 Deploy this directory only to Vercel, using the Vite build and `dist` output in `vercel.json`; do not upload the iOS project. The logo is copied from the app assets. `.vercel` holds local deployment identity and is ignored by Git.
 
 The design was approved in conversation, following the bounded-change and verification workflow from obra/superpowers. Superpowers is development guidance, not a browser dependency.
+
+## App Store support pages
+
+Static English support and privacy pages live in `public/support/index.html` and `public/privacy/index.html`. Vite copies these into `dist`. Public contact: ahzaki95@gmail.com. Update policy copy when actual data handling changes. No analytics scripts are installed.
+
+Vercel project: `ahmdzzzkis-projects/careerz`. Public alias: https://careerz-app.vercel.app. Project authentication was disabled with explicit owner approval on 19 October 2026. The public domain is attached to the CareerZ project for subsequent production deployments. Local `.vercel/` and `.env*` files must stay ignored.

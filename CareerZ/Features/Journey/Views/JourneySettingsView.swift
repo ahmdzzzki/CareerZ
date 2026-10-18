@@ -33,6 +33,8 @@ struct JourneySettingsView: View {
                 }
                 Section {
                     NavigationLink("About CareerZ & assessment") { about }
+                    Link("Privacy Policy", destination: URL(string: "https://careerz-app.vercel.app/privacy/")!)
+                    Link("Support & contact", destination: URL(string: "https://careerz-app.vercel.app/support/")!)
                 }
                 Section("Manage progress") {
                     Button("Reset assessment history", role: .destructive) { ask(.assessments) }

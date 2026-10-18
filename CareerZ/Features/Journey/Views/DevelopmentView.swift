@@ -31,7 +31,7 @@ struct DevelopmentView: View {
                     }
                 }.padding(.horizontal, AppSpacing.screenHorizontal).padding(.vertical, AppSpacing.md)
             }.id(store.selectedDomain).background(Color.appGroupedBackground).toolbar(.hidden, for: .navigationBar)
-                .sheet(isPresented: $assessment) { JourneyAssessmentView(store: store, kind: .skills) }
+                .fullScreenCover(isPresented: $assessment) { JourneyAssessmentView(store: store, kind: .skills) }
                 .sheet(isPresented: $profile) { JourneySettingsView(store: store, onDelete: { profile = false; onboarded = false }) }
         }
     }
@@ -143,6 +143,8 @@ struct MissionActivityView: View {
     @State private var reflection = ""
     @State private var saved = false
     @State private var undo = false
+    private enum NoteField: Hashable { case evidence, reflection }
+    @FocusState private var focusedNote: NoteField?
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.xl) {
@@ -168,9 +170,11 @@ struct MissionActivityView: View {
                 Text("Describe what you made and where you keep it. Avoid personal or sensitive details; CareerZ stores these notes locally and does not verify external artifacts.")
                     .font(AppTypography.footnote).foregroundStyle(Color.appTextSecondary)
                 TextField("Artifact description or link", text: $evidence, axis: .vertical).lineLimit(3...8)
+                    .focused($focusedNote, equals: .evidence)
                     .padding(AppSpacing.md).cardBackground().accessibilityLabel("Mission evidence")
                 Text("Your reflection").font(AppTypography.headline)
                 TextField("What did you learn?", text: $reflection, axis: .vertical).lineLimit(3...8)
+                    .focused($focusedNote, equals: .reflection)
                     .padding(AppSpacing.md).cardBackground().accessibilityLabel("Mission reflection")
                 Button("Save notes without completing") { saved = store.saveMission(item.mission, evidence: evidence, reflection: reflection, complete: store.completedIDs.contains(item.id)) }
                     .frame(minHeight: 44)
@@ -185,6 +189,12 @@ struct MissionActivityView: View {
                     .font(AppTypography.caption).foregroundStyle(Color.appTextSecondary)
             }.padding(AppSpacing.screenHorizontal)
         }.scrollDismissesKeyboard(.interactively).background(Color.appGroupedBackground).navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") { focusedNote = nil }
+            }
+        }
         .onAppear { evidence = store.evidence(for: item.id)?.evidence ?? ""; reflection = store.evidence(for: item.id)?.reflection ?? "" }
         .onChange(of: evidence) { _, _ in saved = false }
         .onChange(of: reflection) { _, _ in saved = false }

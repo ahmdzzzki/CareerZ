@@ -90,7 +90,7 @@ struct JourneyDashboardView: View {
 
                 }.padding(.horizontal, AppSpacing.screenHorizontal).padding(.vertical, AppSpacing.md)
             }.background(Color.appGroupedBackground).toolbar(.hidden, for: .navigationBar)
-                .sheet(isPresented: $assessment) { JourneyAssessmentView(store: store, kind: .skills) }
+                .fullScreenCover(isPresented: $assessment) { JourneyAssessmentView(store: store, kind: .skills) }
                 .sheet(isPresented: $profile) { JourneySettingsView(store: store, onDelete: { profile = false; onboarded = false }) }
         }
     }

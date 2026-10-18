@@ -1,6 +1,6 @@
 # CareerZ release checklist
 
-This is an engineering development pilot, not a claim of App Store readiness.
+Release preparation is underway. Signed builds have been uploaded to App Store Connect; this does not mean that App Review submission or public release has occurred. See `RELEASE_HANDOFF.md` for evidence and remaining owner actions.
 
 ## Implemented scope
 
@@ -30,7 +30,7 @@ Manifest structure follows [Apple TN3183](https://developer.apple.com/documentat
 
 - Product name/subtitle/description/keywords/category and age rating.
 - Real device screenshots from the released flow; no illustrative scores presented as user activity.
-- Public support URL/contact and privacy policy URL. No invented contact addresses.
+- Public support/privacy pages and owner-provided contact are deployed: `https://careerz-app.vercel.app/support/` and `/privacy/`. Links are included in Profile.
 - Review notes describing offline storage, optional Apple sign-in/private iCloud sync and the six-domain development journey.
 - Reconcile marketing landing page with available app features; check domain content and match claims to the exact shipped build.
 - App icon already exists; review sizes/appearance and branding before submission.

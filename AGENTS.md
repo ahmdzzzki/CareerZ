@@ -102,3 +102,10 @@ xcodebuild -project CareerZ.xcodeproj -scheme CareerZ -configuration Debug \
 - Urutan roadmap mengutamakan tahap Foundation/Practice/Portfolio, kemudian gap di antara mission yang memenuhi prasyarat. Skill matang menjadi Optional Validation, bukan auto-complete.
 - Assessment menangkap domain awal dan menolak save bila arah berubah, termasuk perubahan yang diimpor dari CloudKit. Jangan menerima mission dari domain lain.
 - Instruksi, evidence, refleksi tersedia offline. Link bacaan eksternal opsional dan diberi keterangan membutuhkan internet.
+
+## Persiapan App Store — 19 Oktober 2026
+
+- `docs/RELEASE_HANDOFF.md` mencatat upload yang benar-benar berhasil, paket distribusi, URL publik, dan langkah Apple yang belum selesai. Upload/processing tidak sama dengan submission App Review atau rilis publik.
+- Halaman publik Support dan Privacy Policy berada di `landing-page/public/`; tautan resmi `https://careerz-app.vercel.app/support/` dan `/privacy/` tersedia di Profile. Kontak publik diberikan pemilik: ahzaki95@gmail.com. Jangan commit `.vercel/`, `.env*`, IPA, sertifikat, atau provisioning profile.
+- Assessment panjang memakai `fullScreenCover` dari Home, Roadmap, dan Discover agar pemilihan jawaban konsisten pada iPad. Konfirmasi destruktif tetap alert native. Mission notes menyediakan aksi keyboard Done melalui FocusState.
+- Screenshot test memakai simulator khusus dan menghapus data lewat UI. iPad menampilkan tab di toolbar atas; helper test memilih tab secara adaptif. Jangan menganggap query `.tabBars` selalu tersedia pada iPad.
