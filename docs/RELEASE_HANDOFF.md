@@ -1,5 +1,13 @@
 # CareerZ 1.0 — release handoff, 19 October 2026
 
+## Latest listing update — metadata saved, submission not sent
+
+On 19 October 2026, authenticated App Store Connect API access was established using an owner-provided team key kept outside the repository. English description/keywords/promotional text, support/marketing/privacy URLs, subtitle, Education/Productivity categories, source-based age questionnaire (Apple calculated 4+), copyright, build 3 selection, optional sign-in, private review contact, and review notes were saved successfully. The existing release-after-approval selection was retained. Eight real screenshot candidates were uploaded; all returned `COMPLETE` without asset errors.
+
+Apple rejected adding version 1.0 to the draft review submission because two requirements remain: published App Privacy data-usage answers and app pricing. The public API has no supported App Privacy label-editing endpoint; the owner was asked to Publish those answers through the UI. A pricing change to free was stopped by automatic approval review pending explicit owner confirmation of price/territories. Pricing and availability have not been set by this attempt. No final review submission has occurred. The created review-submission container is a draft, even though its API state is named READY_FOR_REVIEW.
+
+Read-back receipt: `app-store/submission/apple-status.json`. It excludes private reviewer contact details and API credentials. Private key and JWTs are never committed or printed. Earlier no-access/blank-listing statements below are historical.
+
 ## Latest verified status — build 3 uploaded
 
 Xcode Organizer's archive receipt confirms **CareerZ 1.0 (3) uploaded successfully on 19 October 2026 at 14:07 WIB (07:07 UTC)** for App Store app `6824272166`, with no upload errors or warnings. ContentDelivery also reports `UPLOAD SUCCEEDED with no errors` and Apple state `PROCESSING` at upload completion. See `app-store/build-3-upload-receipt.json` for the minimal receipt. Current processing completion, version/build association, icon visibility in the authenticated App Store Connect UI, TestFlight availability, and App Review submission have not been verified.

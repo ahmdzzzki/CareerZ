@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-10-19T13:09:07.357Z",
+  "appStoreID": "6824272166",
+  "version": "1.0",
+  "build": "3",
+  "appVersionState": "PREPARE_FOR_SUBMISSION",
+  "metadataSaved": true,
+  "privacyPolicyUrl": "https://careerz-app.vercel.app/privacy/",
+  "copyright": "2026 Ahmad Zaki",
+  "ageRating": "FOUR_PLUS",
+  "primaryCategory": "EDUCATION",
+  "secondaryCategory": "PRODUCTIVITY",
+  "screenshots": [
+    {
+      "device": "iphone",
+      "display": "APP_IPHONE_61",
+      "name": "home",
+      "id": "00c00019-6c22-8126-8028-22dbec7be569",
+      "state": "COMPLETE"
+    },
+    {
+      "device": "iphone",
+      "display": "APP_IPHONE_61",
+      "name": "discover",
+      "id": "6a400019-6c22-8126-803e-da53425d7647",
+      "state": "COMPLETE"
+    },
+    {
+      "device": "iphone",
+      "display": "APP_IPHONE_61",
+      "name": "roadmap",
+      "id": "b7c00019-6c22-8126-801d-8ab2e3fba83f",
+      "state": "COMPLETE"
+    },
+    {
+      "device": "iphone",
+      "display": "APP_IPHONE_61",
+      "name": "explore-mobile",
+      "id": "9c000019-6c22-8126-8016-c21020c0e1d7",
+      "state": "COMPLETE"
+    },
+    {
+      "device": "ipad",
+      "display": "APP_IPAD_PRO_3GEN_129",
+      "name": "home",
+      "id": "29400019-6c22-8126-8023-8f118f6c7931",
+      "state": "COMPLETE"
+    },
+    {
+      "device": "ipad",
+      "display": "APP_IPAD_PRO_3GEN_129",
+      "name": "discover",
+      "id": "8c400019-6c22-8126-8012-6d759d234961",
+      "state": "COMPLETE"
+    },
+    {
+      "device": "ipad",
+      "display": "APP_IPAD_PRO_3GEN_129",
+      "name": "roadmap",
+      "id": "ef800019-6c22-8126-8026-d8ba5fa36389",
+      "state": "COMPLETE"
+    },
+    {
+      "device": "ipad",
+      "display": "APP_IPAD_PRO_3GEN_129",
+      "name": "explore-mobile",
+      "id": "ee400019-6c22-8126-8035-8c0b39c8d9f5",
+      "state": "COMPLETE"
+    }
+  ],
+  "reviewSubmissionID": "e68a9e81-2971-46af-86e9-0fd72f131b53",
+  "submitted": false,
+  "remainingAppleValidationErrors": [
+    "APP_DATA_USAGES_REQUIRED",
+    "APP_PRICING_REQUIRED"
+  ],
+  "pendingOwnerActions": [
+    "Publish App Privacy answers in Apple UI",
+    "Confirm price and distribution territories"
+  ],
+  "reviewContactSaved": true
+}

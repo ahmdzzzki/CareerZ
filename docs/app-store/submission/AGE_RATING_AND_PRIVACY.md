@@ -1,6 +1,6 @@
 # Age ratings and App Privacy — build 3
 
-These are content-based answers prepared from CareerZ's actual code and bundled guidance. They have NOT been submitted to Apple. Apple calculates the final regional age ratings; do not force a rating to skip the questionnaire.
+These are content-based answers prepared from CareerZ's actual code and bundled guidance. The age-rating questionnaire has now been saved through Apple’s API, which calculated 4+. App Privacy label answers still require Publish in the Apple UI. The app has NOT been sent to App Review. Apple calculates the final regional age ratings; do not force a rating to skip the questionnaire.
 
 ## App Information → Age Ratings → Set Up / Edit
 
