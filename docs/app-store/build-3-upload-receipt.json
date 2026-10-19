@@ -1,0 +1,13 @@
+{
+  "app": "CareerZ",
+  "bundleID": "com.academy.CareerZ",
+  "appStoreID": "6824272166",
+  "version": "1.0",
+  "uploadedBuildNumber": "3",
+  "uploadState": "success",
+  "uploadedAtUTC": "2026-10-19T07:07:49Z",
+  "errors": [],
+  "warnings": [],
+  "processingObserved": "PROCESSING at upload completion; current completion not verified",
+  "sourceArchive": "/Users/ahmadzaki/Library/Developer/Xcode/Archives/2026-10-19/CareerZ-1.0-3-final.xcarchive"
+}

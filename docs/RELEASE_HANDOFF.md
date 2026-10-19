@@ -1,6 +1,12 @@
 # CareerZ 1.0 — release handoff, 19 October 2026
 
-## Actual distribution status
+## Latest verified status — build 3 uploaded
+
+Xcode Organizer's archive receipt confirms **CareerZ 1.0 (3) uploaded successfully on 19 October 2026 at 14:07 WIB (07:07 UTC)** for App Store app `6824272166`, with no upload errors or warnings. ContentDelivery also reports `UPLOAD SUCCEEDED with no errors` and Apple state `PROCESSING` at upload completion. See `app-store/build-3-upload-receipt.json` for the minimal receipt. Current processing completion, version/build association, icon visibility in the authenticated App Store Connect UI, TestFlight availability, and App Review submission have not been verified.
+
+The uploaded archive is `~/Library/Developer/Xcode/Archives/2026-10-19/CareerZ-1.0-3-final.xcarchive`. Choose the processed build 3 in the App Store version's Build section and Save. The account failures and build-2-only status below are historical and superseded by this successful Organizer upload.
+
+## Earlier distribution history
 
 Xcode automatic signing successfully archived and uploaded **version 1.0 (build 2)** to App Store Connect. Upload finished with `Upload succeeded`, `Uploaded CareerZ`, and `EXPORT SUCCEEDED`; Apple then reported that the package was processing. Build 1 was also uploaded during preparation; build 2 includes public support/privacy links. Final review should use the subsequent build 3 candidate once its upload succeeds (see below). Processing completion, TestFlight availability, App Review submission, and public release are not verified by an upload receipt.
 
@@ -66,3 +72,13 @@ xcodebuild -exportArchive \
 ```
 
 `Configuration/AppStoreExportOptions.plist` exports an IPA instead. Both configurations use Production iCloud, the existing signing team, and the explicit build number from the archive. Increment `CURRENT_PROJECT_VERSION` before uploading another binary with an already-used build number. No App Store password or API key is stored in these files.
+
+## Icon and account follow-up — 19 October 2026
+
+The owner reported a missing logo on the App Store Connect version page. Local inspection confirmed `ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon`, a 1024×1024 opaque base PNG, generated `CFBundleIcons`/`CFBundleIconName = AppIcon` in the distribution package, and compiled 1024×1024 icon renditions for iPhone and iPad in build 3's `Assets.car`. No missing application icon file was found, and no replacement branding was introduced.
+
+The App Store Connect page itself has not been inspected through an authenticated browser-control tool. Associate a processed build in the version page's Build section, then Done → Save. Apple documents the icon/build string appearing in that section: https://developer.apple.com/help/app-store-connect/manage-builds/choose-a-build-to-submit/. Use the final verified build 3 for submission once uploaded.
+
+The owner added team settings to the UI-test target; those local project changes are preserved. A new build 3 upload attempt still failed, now specifically with `Failed to Use Accounts — App Store Connect access for 3NN7487Y49 is required`. Reauthenticate the Apple Account in Xcode Settings → Accounts and verify its access to CareerZ in App Store Connect. This is account access, not an icon-asset compilation failure. Log: `/tmp/careerz-build3-upload.log`. Build 3 has not been uploaded by this attempt.
+
+After the owner confirmed reauthentication, a further upload retry still returned `Failed to Use Accounts` (log `/tmp/careerz-build3-upload-retry.log`). The verified archive `/tmp/CareerZ-1.0-3-final.xcarchive` was opened with Xcode for distribution through Organizer. Use Distribute App → TestFlight & App Store; older/custom flows label this App Store Connect → Upload. This opening action is not an upload receipt: build 3 remains unconfirmed until Organizer reports upload success.

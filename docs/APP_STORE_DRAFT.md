@@ -54,7 +54,7 @@ CareerZ provides self-assessment and career exploration guidance for personal de
 
 ## App Store Connect actions still required
 
-Build **1.0 (2)** has been uploaded. The subsequent iPad assessment/keyboard fixes are prepared as build **3**; upload that verified candidate after restoring the Xcode account, then select its processed build for final review. Upload the prepared screenshots and paste the description/review notes above. Complete the age-rating questionnaire from actual content, App Privacy answers for the exact binary, content rights, availability/pricing, and the reviewer contact fields (Apple also requires a contact name and phone number). Support email alone does not fill those required fields.
+Build **1.0 (3)**, including the iPad assessment/keyboard fixes, was successfully uploaded through Xcode Organizer on 19 October 2026. Select build **3** after Apple finishes processing it for final review. Upload the prepared screenshots and paste the description/review notes above. Complete the age-rating questionnaire from actual content, App Privacy answers for the exact binary, content rights, availability/pricing, and the reviewer contact fields (Apple also requires a contact name and phone number). Support email alone does not fill those required fields.
 
 The app has no advertising, tracking, analytics SDK or custom backend. Assessment/progress are stored locally and in the user's private iCloud database. Do not claim that a privacy manifest automatically completes App Store privacy labels; review Apple's definitions for on-device data, private iCloud storage, and the locally stored Apple identifier.
 
