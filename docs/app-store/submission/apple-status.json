@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-19T13:09:07.357Z",
+  "checkedAt": "2026-10-19T13:15:07.869642+00:00",
   "appStoreID": "6824272166",
   "version": "1.0",
   "build": "3",
@@ -71,12 +71,15 @@
   "reviewSubmissionID": "e68a9e81-2971-46af-86e9-0fd72f131b53",
   "submitted": false,
   "remainingAppleValidationErrors": [
-    "APP_DATA_USAGES_REQUIRED",
-    "APP_PRICING_REQUIRED"
+    "APP_DATA_USAGES_REQUIRED"
   ],
   "pendingOwnerActions": [
-    "Publish App Privacy answers in Apple UI",
-    "Confirm price and distribution territories"
+    "Apple still reports unpublished App Privacy data-usage answers after owner confirmation; verify final Publish confirmation."
   ],
-  "reviewContactSaved": true
+  "reviewContactSaved": true,
+  "pricing": "FREE",
+  "availabilityTerritoryCount": 175,
+  "availableInNewTerritories": true,
+  "ownerApprovedPricingAndTerritories": true,
+  "lastSubmissionAttempt": "HTTP 409: APP_DATA_USAGES_REQUIRED remains after a delayed retry; pricing error cleared."
 }

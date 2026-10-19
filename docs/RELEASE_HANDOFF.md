@@ -1,5 +1,11 @@
 # CareerZ 1.0 — release handoff, 19 October 2026
 
+## Latest update — free worldwide, App Privacy publication still blocked
+
+The owner explicitly confirmed free pricing and availability in all Apple-supported territories. The App Store price schedule now reads customer price/proceeds 0.0. Availability was created for all 175 returned territories, including availability in new territories. These settings were read back successfully; the earlier pricing approval block is resolved.
+
+The owner reported publishing App Privacy, but Apple still returned HTTP 409 `APP_DATA_USAGES_REQUIRED` when adding version 1.0 to the review submission, including after a delayed retry. No other validation errors remained in that response. The owner was asked to verify both the page-level Publish action and its final confirmation dialog for the data-collection answers. Saving the policy URL is a separate action. The public API does not expose this App Privacy label-publication flow. Submission is still NOT sent.
+
 ## Latest listing update — metadata saved, submission not sent
 
 On 19 October 2026, authenticated App Store Connect API access was established using an owner-provided team key kept outside the repository. English description/keywords/promotional text, support/marketing/privacy URLs, subtitle, Education/Productivity categories, source-based age questionnaire (Apple calculated 4+), copyright, build 3 selection, optional sign-in, private review contact, and review notes were saved successfully. The existing release-after-approval selection was retained. Eight real screenshot candidates were uploaded; all returned `COMPLETE` without asset errors.
