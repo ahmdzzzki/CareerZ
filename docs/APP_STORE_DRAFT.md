@@ -50,7 +50,7 @@ CareerZ provides self-assessment and career exploration guidance for personal de
 - Privacy Policy URL: https://careerz-app.vercel.app/privacy/
 - Suggested primary category: Education. Secondary: Productivity.
 - Pricing direction: free; no in-app purchases or subscriptions in this build.
-- Copyright: 2026 Ahmad Zaki (confirm legal display name in App Store Connect).
+- Copyright: 2026 Ahmad Zaki (owner-supplied name).
 
 ## App Store Connect actions still required
 
