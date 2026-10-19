@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-19T13:15:07.869642+00:00",
+  "checkedAt": "2026-10-19T13:49:01.582913+00:00",
   "appStoreID": "6824272166",
   "version": "1.0",
   "build": "3",
-  "appVersionState": "PREPARE_FOR_SUBMISSION",
+  "appVersionState": "WAITING_FOR_REVIEW",
   "metadataSaved": true,
   "privacyPolicyUrl": "https://careerz-app.vercel.app/privacy/",
   "copyright": "2026 Ahmad Zaki",
@@ -69,17 +69,16 @@
     }
   ],
   "reviewSubmissionID": "e68a9e81-2971-46af-86e9-0fd72f131b53",
-  "submitted": false,
-  "remainingAppleValidationErrors": [
-    "APP_DATA_USAGES_REQUIRED"
-  ],
-  "pendingOwnerActions": [
-    "Apple still reports unpublished App Privacy data-usage answers after owner confirmation; verify final Publish confirmation."
-  ],
+  "submitted": true,
+  "remainingAppleValidationErrors": [],
+  "pendingOwnerActions": [],
   "reviewContactSaved": true,
   "pricing": "FREE",
   "availabilityTerritoryCount": 175,
   "availableInNewTerritories": true,
   "ownerApprovedPricingAndTerritories": true,
-  "lastSubmissionAttempt": "HTTP 409: APP_DATA_USAGES_REQUIRED remains after a delayed retry; pricing error cleared."
+  "lastSubmissionAttempt": "Accepted by Apple; submission and version both WAITING_FOR_REVIEW.",
+  "submittedDate": "2026-10-19T13:48:47.29Z",
+  "reviewSubmissionState": "WAITING_FOR_REVIEW",
+  "appPrivacyPublished": true
 }

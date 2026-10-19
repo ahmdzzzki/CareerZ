@@ -1,18 +1,14 @@
 # CareerZ 1.0 — release handoff, 19 October 2026
 
-## Latest update — free worldwide, App Privacy publication still blocked
+## Current status — submitted to App Review
 
-The owner explicitly confirmed free pricing and availability in all Apple-supported territories. The App Store price schedule now reads customer price/proceeds 0.0. Availability was created for all 175 returned territories, including availability in new territories. These settings were read back successfully; the earlier pricing approval block is resolved.
+CareerZ 1.0 (build 3) was submitted successfully on **19 October 2026 at 20:48:47 WIB (13:48:47 UTC)**. Both the review submission and app version were read back from Apple as **WAITING_FOR_REVIEW**. This confirms submission, not approval or public availability. The existing release-after-approval setting remains active.
 
-The owner reported publishing App Privacy, but Apple still returned HTTP 409 `APP_DATA_USAGES_REQUIRED` when adding version 1.0 to the review submission, including after a delayed retry. No other validation errors remained in that response. The owner was asked to verify both the page-level Publish action and its final confirmation dialog for the data-collection answers. Saving the policy URL is a separate action. The public API does not expose this App Privacy label-publication flow. Submission is still NOT sent.
+App Privacy was completed and published through the authenticated App Store Connect UI, including the final confirmation. Apple then accepted the version into the review submission and accepted the submit action. The earlier `APP_DATA_USAGES_REQUIRED` error is resolved.
 
-## Latest listing update — metadata saved, submission not sent
+The listing includes English metadata, public support/privacy URLs, Education/Productivity categories, age rating 4+, copyright, private review contact and notes, and eight complete iPhone/iPad screenshots. Owner-approved pricing is free, available in all 175 supported territories and new territories.
 
-On 19 October 2026, authenticated App Store Connect API access was established using an owner-provided team key kept outside the repository. English description/keywords/promotional text, support/marketing/privacy URLs, subtitle, Education/Productivity categories, source-based age questionnaire (Apple calculated 4+), copyright, build 3 selection, optional sign-in, private review contact, and review notes were saved successfully. The existing release-after-approval selection was retained. Eight real screenshot candidates were uploaded; all returned `COMPLETE` without asset errors.
-
-Apple rejected adding version 1.0 to the draft review submission because two requirements remain: published App Privacy data-usage answers and app pricing. The public API has no supported App Privacy label-editing endpoint; the owner was asked to Publish those answers through the UI. A pricing change to free was stopped by automatic approval review pending explicit owner confirmation of price/territories. Pricing and availability have not been set by this attempt. No final review submission has occurred. The created review-submission container is a draft, even though its API state is named READY_FOR_REVIEW.
-
-Read-back receipt: `app-store/submission/apple-status.json`. It excludes private reviewer contact details and API credentials. Private key and JWTs are never committed or printed. Earlier no-access/blank-listing statements below are historical.
+Read-back receipt: `app-store/submission/apple-status.json`. No private reviewer phone, API credentials, or JWTs are included. Remaining technical checks recorded below are not implied complete by Apple's submission acceptance. Earlier distribution notes below are historical and superseded by this status.
 
 ## Latest verified status — build 3 uploaded
 
