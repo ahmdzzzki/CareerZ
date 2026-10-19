@@ -1,0 +1,25 @@
+{
+  "locale": "en-US",
+  "appStoreID": "6824272166",
+  "build": "3",
+  "values": {
+    "name": "CareerZ",
+    "subtitle": "Find your career direction",
+    "promotional_text": "Explore six technology career paths, understand your skill gaps, and build work you can show with practical missions and progress at your pace.",
+    "description": "Find a career direction worth exploring\u2014and turn it into practical next steps.\n\nCareerZ helps students and fresh graduates reflect on their interests, understand their current skills, and build evidence of what they can do.\n\nEXPLORE SIX TECHNOLOGY CAREER PATHS\nSoftware Engineering, Mobile Development, Product Design, Product Management, Data & Analytics, and AI & Machine Learning.\n\nDISCOVER YOUR DIRECTION\nTake CareerZ Compass to explore matches based on eight tendencies. See the traits behind each match, compare leading directions, or choose a path directly.\n\nUNDERSTAND YOUR STARTING POINT\nAssess eight skills in your selected career. Behavioral descriptions and evidence levels help you reflect on your experience. See a skill breakdown and the areas to focus on next.\n\nBUILD WORK YOU CAN SHOW\nFollow ten practical missions across Foundation, Practice, and Portfolio. Each mission explains the task, the evidence to create, and a reflection to help you learn from your decisions.\n\nTRACK REAL PROGRESS\nSave mission notes, complete or undo milestones, and revisit past assessments. Reassess to compare your progress within a career path. Changing direction keeps the work you have already recorded.\n\nOFFLINE FIRST\nAssessments, instructions, and progress work on your device without a login. Sign in with Apple is optional. Supported device builds use private iCloud synchronization to carry progress between devices. Optional further-reading links require internet.\n\nCareerZ provides self-assessment and career exploration guidance for personal development. It is not a psychological assessment, professional certification, or guarantee of employment.",
+    "keywords": "career,students,graduates,skills,roadmap,portfolio,self assessment,technology,learning,goals",
+    "support_url": "https://careerz-app.vercel.app/support/",
+    "marketing_url": "https://careerz-app.vercel.app/",
+    "privacy_policy_url": "https://careerz-app.vercel.app/privacy/",
+    "version": "1.0",
+    "copyright": "2026 CareerZ",
+    "primary_category": "Education",
+    "secondary_category": "Productivity",
+    "review_notes": "CareerZ is a career exploration and self-development app for students and fresh graduates. No CareerZ account or demo credentials are required to use the core app. Leave \"Sign-in required\" unchecked.\n\nReview flow:\n1. Tap Get Started, open Discover, and either take CareerZ Compass or choose a career direction directly.\n2. Choose any of the six paths, then complete its 16-step skill assessment (capability and evidence for eight skills).\n3. Open the generated roadmap. Each path has ten missions across Foundation, Practice, and Portfolio.\n4. Open the first unlocked mission, add an evidence note and reflection, then complete it. Progress is retained after relaunch.\n5. Reassess within the same path to compare actual stored results. Changing career keeps earlier work.\n\nSign in with Apple is optional. CloudKit sync uses the device's iCloud account independently of the Apple sign-in connection. Assessments, bundled content, and local progress work offline. Further-reading links are optional and open external websites.\n\nProfile provides Privacy Policy, Support, About Assessment, reset controls, and deletion of all progress. Mission evidence is self-reported. Compass matches are exploration guidance, not psychological testing, employability certification, or an employment guarantee."
+  },
+  "copyright_note": "CareerZ is used as the rights-owner display name; replace with the owner-supplied legal copyright name if different.",
+  "sign_in_required": false,
+  "privacy_choice_recommended": "No, we do not collect data from this app (based on build 3: local-only developer access, private user CloudKit, no analytics/tracking)",
+  "age_rating_answers_file": "AGE_RATING_AND_PRIVACY.md",
+  "review_contact": "Owner must provide first name, last name, phone number; email ahzaki95@gmail.com. Never commit private phone numbers."
+}

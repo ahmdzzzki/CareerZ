@@ -1,0 +1,12 @@
+CareerZ is a career exploration and self-development app for students and fresh graduates. No CareerZ account or demo credentials are required to use the core app. Leave "Sign-in required" unchecked.
+
+Review flow:
+1. Tap Get Started, open Discover, and either take CareerZ Compass or choose a career direction directly.
+2. Choose any of the six paths, then complete its 16-step skill assessment (capability and evidence for eight skills).
+3. Open the generated roadmap. Each path has ten missions across Foundation, Practice, and Portfolio.
+4. Open the first unlocked mission, add an evidence note and reflection, then complete it. Progress is retained after relaunch.
+5. Reassess within the same path to compare actual stored results. Changing career keeps earlier work.
+
+Sign in with Apple is optional. CloudKit sync uses the device's iCloud account independently of the Apple sign-in connection. Assessments, bundled content, and local progress work offline. Further-reading links are optional and open external websites.
+
+Profile provides Privacy Policy, Support, About Assessment, reset controls, and deletion of all progress. Mission evidence is self-reported. Compass matches are exploration guidance, not psychological testing, employability certification, or an employment guarantee.
